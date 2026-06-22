@@ -90,7 +90,7 @@ namespace Duality
             }
 
             // Move player
-            _player.Update(gameTime, _inputManager.GetMovementDirection(), _polarityManager, _environmentObjects, _enemies, _interactables);
+            _player.Update(gameTime, _inputManager.GetMovementDirection(), _polarityManager, _environmentObjects, _enemies, _interactables, _levelManager.LevelBounds);
 
             foreach (var enemy in _enemies) {
                 enemy.Update(gameTime);
@@ -98,7 +98,7 @@ namespace Duality
 
             // TODO: Collision resolution between _player and _environmentObjects 
             // relying on EnvironmentObject.IsSolid(_polarityManager.CurrentFrequency)
-            _camera.Follow(_player.Position, (float)gameTime.ElapsedGameTime.TotalSeconds);
+            _camera.Follow(_player.Position, (float)gameTime.ElapsedGameTime.TotalSeconds, _levelManager.LevelBounds);
 
             base.Update(gameTime);
         }

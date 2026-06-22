@@ -26,6 +26,9 @@ namespace Duality.Data
     public class LevelDTO
     {
         public string LevelName { get; set; }
+        public int Width { get; set; }
+        public int Height { get; set; }
+
         public float PlayerStartX { get; set; }
         public float PlayerStartY { get; set; }
         public List<EnvironmentObjectDTO> EnvironmentObjects { get; set; }
@@ -53,6 +56,8 @@ namespace Duality.Data
         public List<EnvironmentObject> EnvironmentObjects { get; private set; } = new();
         public List<Enemy> Enemies { get; private set; } = new(); // Exposed to Game1
 
+        public Rectangle LevelBounds { get; private set; }
+
         public List<Decal> Decals { get; private set; } = new();
         public List<InteractableObject> Interactables { get; private set; } = new();
 
@@ -61,6 +66,8 @@ namespace Duality.Data
             var data = JsonSerializer.Deserialize<LevelDTO>(json);
 
             PlayerStart = new Vector2(data.PlayerStartX, data.PlayerStartY);
+
+            LevelBounds = new Rectangle(0, 0, data.Width, data.Height);
 
             EnvironmentObjects.Clear();
             foreach (var obj in data.EnvironmentObjects) {
@@ -93,18 +100,18 @@ namespace Duality.Data
             }
 
             Decals.Clear();
-            if (data.Decals != null) {
-                foreach (var d in data.Decals) {
-                    Decals.Add(new Decal(new Vector2(d.X, d.Y), d.Text, ParseHex(d.ColorHex), d.AnchorFrequency) { Range = d.Range });
-                }
-            }
+if (data.Decals != null) {
+    foreach (var d in data.Decals) {
+        Decals.Add(new Decal(new Vector2(d.X, d.Y), d.Text, ParseHex(d.ColorHex), d.AnchorFrequency) { Range = d.Range });
+    }
+}
 
-            Interactables.Clear();
-            if (data.Interactables != null) {
-                foreach (var i in data.Interactables) {
-                    Interactables.Add(new InteractableObject(new Rectangle(i.X, i.Y, i.Width, i.Height), ParseHex(i.ColorHex), i.AnchorFrequency) { Range = i.Range });
-                }
-            }
+Interactables.Clear();
+if (data.Interactables != null) {
+    foreach (var i in data.Interactables) {
+        Interactables.Add(new InteractableObject(new Rectangle(i.X, i.Y, i.Width, i.Height), ParseHex(i.ColorHex), i.AnchorFrequency) { Range = i.Range });
+    }
+}
         }
 
         private Color ParseHex(string hex) {

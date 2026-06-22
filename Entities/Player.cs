@@ -21,7 +21,7 @@ namespace Duality.Entities
         // The full rendering bounds
         public Rectangle Bounds => new Rectangle((int)Position.X, (int)Position.Y, Width, Height);
 
-        public void Update(GameTime gameTime, Vector2 movementDirection, PolarityManager polarityManager, List<EnvironmentObject> envObjects, List<Enemy> enemies, List<InteractableObject> interactables) {
+        public void Update(GameTime gameTime, Vector2 movementDirection, PolarityManager polarityManager, List<EnvironmentObject> envObjects, List<Enemy> enemies, List<InteractableObject> interactables, Rectangle levelBounds) {
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             Vector2 velocity = movementDirection * Speed * deltaTime;
     
@@ -56,6 +56,13 @@ namespace Duality.Entities
                 Position = StartPosition;
                 polarityManager.SetFrequency(0f);
             }
+
+            // 5. Clamp Player to Level Bounds
+            // Prevent the player from walking off the edge of the world map
+            Position = new Vector2(
+                MathHelper.Clamp(Position.X, levelBounds.Left, levelBounds.Right - Width),
+                MathHelper.Clamp(Position.Y, levelBounds.Top, levelBounds.Bottom - Height)
+            );
         }
         
 
