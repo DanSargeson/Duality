@@ -1,8 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
+using SharpDX.MediaFoundation;
 using System;
 
 namespace Duality.Entities
 {
+
+    public enum ObjectType { Obstacle, Hazard, Platform }
+
     public class EnvironmentObject
     {
         public Rectangle Bounds { get; set; }
@@ -14,10 +18,14 @@ namespace Duality.Entities
         // How far from the anchor can the frequency drift before the object vanishes/loses solidity?
         public float Range { get; set; } = 0.4f;
 
-        public EnvironmentObject(Rectangle bounds, Color color, float anchorFrequency) {
+        // The physical purpose of the object
+        public ObjectType Type { get; set; }
+
+        public EnvironmentObject(Rectangle bounds, Color color, float anchorFrequency, ObjectType objectType) {
             Bounds = bounds;
             BaseColor = color;
             AnchorFrequency = anchorFrequency;
+            Type = objectType;
         }
 
         // Calculates how "real" the object currently is based on the global manager

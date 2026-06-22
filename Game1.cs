@@ -32,16 +32,22 @@ namespace Duality
 
             // Initialize Player
             _player = new Player {
-                Position = new Vector2(100, 250)
+                Position = new Vector2(100, 250),
+                StartPosition = new Vector2(100, 250)
             };
 
             // Initialize Environment (This would eventually be loaded from a level file)
             _environmentObjects = new List<EnvironmentObject>
             {
-                // A Density wall (Anchor 0.0)
-                new EnvironmentObject(new Rectangle(300, 200, 50, 200), Color.SteelBlue, 0.0f),
-                // An Insight bridge (Anchor 1.0)
-                new EnvironmentObject(new Rectangle(350, 250, 200, 50), Color.HotPink, 1.0f)
+                // A Density Wall that blocks you
+                new EnvironmentObject(new Rectangle(300, 200, 50, 200), Color.SteelBlue, 0.0f, ObjectType.Obstacle),
+    
+                // A permanent physical gap in the floor. 
+                // We give it a massive Range (100f) so it never fades regardless of frequency.
+                new EnvironmentObject(new Rectangle(350, 250, 200, 50), new Color(10, 10, 10), 0.0f, ObjectType.Hazard) { Range = 100f },
+
+                // An Insight Bridge layered directly over the gap
+                new EnvironmentObject(new Rectangle(350, 250, 200, 50), Color.HotPink, 1.0f, ObjectType.Platform)
             };
 
             base.Initialize();
@@ -66,7 +72,7 @@ namespace Duality
             );
 
             // Move player
-            _player.Update(gameTime, _inputManager.GetMovementDirection());
+            _player.Update(gameTime, _inputManager.GetMovementDirection(), _polarityManager.CurrentFrequency, _environmentObjects);
 
             // TODO: Collision resolution between _player and _environmentObjects 
             // relying on EnvironmentObject.IsSolid(_polarityManager.CurrentFrequency)
