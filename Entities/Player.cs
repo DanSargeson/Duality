@@ -35,13 +35,15 @@ namespace Duality.Entities
             }
 
             // 3. Top-Down Hazard Check
-            if (IsFalling(currentFrequency, envObjects)) {
+            CheckGround(currentFrequency, envObjects, out bool isFalling, out bool isCompletelySafe);
+
+            if (isFalling) {
                 // The player fell! (e.g. they shifted to Density while standing on the Insight bridge)
-                // Snap them back to the last safe ground they were standing on.
+                // Snap them back to the last truly safe ground they were standing on.
                 Position = LastSafePosition;
             }
-            else {
-                // If we aren't falling, this is a safe spot. Update our safety anchor.
+            else if (isCompletelySafe) {
+                // Only update our safety anchor if we are on solid ground, NOT over a pit at all.
                 LastSafePosition = Position;
             }
         }
@@ -56,12 +58,11 @@ namespace Duality.Entities
             return false;
         }
 
-        private bool IsFalling(float currentFrequency, List<EnvironmentObject> envObjects) {
+        private void CheckGround(float currentFrequency, List<EnvironmentObject> envObjects, out bool isFalling, out bool isCompletelySafe) {
             bool overHazard = false;
             bool overPlatform = false;
 
             // In Top-Down, we only care if the absolute CENTER of the player is over the pit.
-            // This allows you to walk closely along the edge of a pit without instantly dying.
             Point playerCenter = Bounds.Center;
 
             foreach (var obj in envObjects) {
@@ -73,7 +74,10 @@ namespace Duality.Entities
             }
 
             // You fall if your center is over a hazard, AND there's no platform to hold you up
-            return overHazard && !overPlatform;
+            isFalling = overHazard && !overPlatform;
+
+            // You are completely safe only if you are not over a hazard at all
+            isCompletelySafe = !overHazard;
         }
     }
 }

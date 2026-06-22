@@ -16,6 +16,8 @@ namespace Duality
         private PolarityManager _polarityManager;
         private DualRenderer _renderer;
 
+        private LevelManager _levelManager;
+
         // State
         private Player _player;
         private List<EnvironmentObject> _environmentObjects;
@@ -29,6 +31,9 @@ namespace Duality
         protected override void Initialize() {
             _inputManager = new InputManager();
             _polarityManager = new PolarityManager();
+            _levelManager = new LevelManager();
+
+            _levelManager.LoadLevel("Content/Level_Tutorial.json");
 
             // Initialize Player
             _player = new Player {
@@ -37,26 +42,7 @@ namespace Duality
             };
 
             // Initialize Environment (This would eventually be loaded from a level file)
-            _environmentObjects = new List<EnvironmentObject>
-            {
-                // 1. DENSITY WALL (Anchor 0.0) 
-                // Blocks you early on. You must shift towards Insight to make it fade so you can walk through.
-                new EnvironmentObject(new Rectangle(200, 150, 50, 250), Color.SteelBlue, 0.0f, ObjectType.Obstacle),
-
-                // 2. THE CHASM (Hazard)
-                // A massive permanent pit. Range is 100f so it never fades. 
-                // If you step here without a bridge, you get bounced back.
-                new EnvironmentObject(new Rectangle(350, 150, 150, 250), new Color(10, 10, 10), 0.0f, ObjectType.Hazard) { Range = 100f },
-
-                // 3. INSIGHT BRIDGE (Anchor 1.0)
-                // Appears over the chasm when in Insight so you can safely cross.
-                new EnvironmentObject(new Rectangle(350, 200, 150, 50), Color.HotPink, 1.0f, ObjectType.Platform),
-
-                // 4. INSIGHT WALL (Anchor 1.0)
-                // Blocks you right after the bridge. If you stay in Insight, you can't pass.
-                // You must drop your frequency back to Density to make this wall fade!
-                new EnvironmentObject(new Rectangle(550, 150, 50, 250), Color.HotPink, 1.0f, ObjectType.Obstacle)
-            };
+            _environmentObjects = _levelManager.EnvironmentObjects;
 
             base.Initialize();
         }

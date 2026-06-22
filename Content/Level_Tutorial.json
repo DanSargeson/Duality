@@ -1,0 +1,47 @@
+{
+  "LevelName": "Tutorial Chasm",
+  "PlayerStartX": 100,
+  "PlayerStartY": 250,
+  "EnvironmentObjects": [
+    {
+      "X": 200,
+      "Y": 0,
+      "Width": 50,
+      "Height": 2550,
+      "ColorHex": "#4682B4",
+      "AnchorFrequency": 0.0,
+      "Type": "Obstacle",
+      "Range": 0.4
+    },
+    {
+      "X": 350,
+      "Y": 150,
+      "Width": 150,
+      "Height": 250,
+      "ColorHex": "#0A0A0A",
+      "AnchorFrequency": 0.0,
+      "Type": "Hazard",
+      "Range": 100.0
+    },
+    {
+      "X": 350,
+      "Y": 200,
+      "Width": 150,
+      "Height": 50,
+      "ColorHex": "#FF69B4",
+      "AnchorFrequency": 1.0,
+      "Type": "Platform",
+      "Range": 0.4
+    },
+    {
+      "X": 550,
+      "Y": 0,
+      "Width": 50,
+      "Height": 2550,
+      "ColorHex": "#80EF80",
+      "AnchorFrequency": 1.0,
+      "Type": "Obstacle",
+      "Range": 0.4
+    }
+  ]
+}
