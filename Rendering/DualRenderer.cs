@@ -12,27 +12,24 @@ namespace Duality.Rendering
         private SpriteBatch _spriteBatch;
         private Texture2D _pixel;
         private Random _random;
+        private SpriteFont _font;
 
-        public DualRenderer(GraphicsDevice graphicsDevice) {
+        public DualRenderer(GraphicsDevice graphicsDevice, SpriteFont font) {
             _graphicsDevice = graphicsDevice;
             _spriteBatch = new SpriteBatch(_graphicsDevice);
             _pixel = new Texture2D(_graphicsDevice, 1, 1);
+            _font = font;
             _pixel.SetData(new[] { Color.White });
             _random = new Random();
         }
 
-        public void Draw(float currentFrequency, List<EnvironmentObject> envObjects, Player player) {
+        // ADDED: List<Enemy> enemies
+        public void Draw(float currentFrequency, List<EnvironmentObject> envObjects, List<Enemy> enemies, List<InteractableObject> interactables, List<Decal> decals, Player player, Camera camera) {
 
-            // 1. Calculate Friction Intensity (Exponential Curve)
-            // Cubing the frequency means 0.5 frequency only applies 12% friction. 
-            // But 0.9 frequency applies 72% friction. It ramps up violently at the end.
             float frictionIntensity = (float)Math.Pow(currentFrequency, 3);
-
-            // 2. Dynamic Background
             Color bgColor = Color.Lerp(new Color(20, 20, 20), Color.White, currentFrequency);
             _graphicsDevice.Clear(bgColor);
 
-            // 3. Screen Shake Matrix
             float maxShakePixels = 6.0f;
             float currentShake = maxShakePixels * frictionIntensity;
 
@@ -44,33 +41,60 @@ namespace Duality.Rendering
                 );
             }
 
-            // A Matrix allows us to offset everything drawn in this SpriteBatch at once
-            Matrix cameraTransform = Matrix.CreateTranslation(new Vector3(shakeOffset, 0));
-
-            // Start drawing, passing in the Matrix
+            Matrix cameraTransform = camera.GetTransform(shakeOffset);
             _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, transformMatrix: cameraTransform);
 
-            // 4. Render Environment
+
+
+            // Render Clues (Decals)
+            foreach (var decal in decals) {
+                float presence = decal.GetPresence(currentFrequency);
+                if (presence <= 0f) continue;
+
+                // Draw the text
+                _spriteBatch.DrawString(_font, decal.Text, decal.Position, decal.BaseColor * presence);
+            }
+
+            // Render Interactables
+            foreach (var interactable in interactables) {
+                float presence = interactable.GetPresence(currentFrequency);
+                if (presence <= 0f) continue;
+
+                Color drawColor = interactable.BaseColor * presence;
+                if (frictionIntensity > 0.5f && _random.NextDouble() > 0.8) {
+                    drawColor = _random.Next(2) == 0 ? Color.Red * presence : Color.Cyan * presence;
+                }
+                _spriteBatch.Draw(_pixel, interactable.Bounds, drawColor);
+            }
+
+
+            // Render Environment
             foreach (var obj in envObjects) {
                 float presence = obj.GetPresence(currentFrequency);
                 if (presence <= 0f) continue;
 
                 Color drawColor = obj.BaseColor * presence;
-
-                // Glitch Effect: If friction is high, randomly shift the color to pure red or blue for a single frame
                 if (frictionIntensity > 0.5f && _random.NextDouble() > 0.8) {
                     drawColor = _random.Next(2) == 0 ? Color.Red * presence : Color.Cyan * presence;
                 }
-
-                // Render the main object
                 _spriteBatch.Draw(_pixel, obj.Bounds, drawColor);
             }
 
-            // 5. Render Player
-            // The player color interpolates from a solid green to a harsh, unstable white
+            // Render Enemies
+            foreach (var enemy in enemies) {
+                float presence = enemy.GetPresence(currentFrequency);
+
+                // ADDED: Skip drawing the enemy entirely if its presence is 0
+                if (presence <= 0f) continue;
+
+                // Enemies pulse slightly to make them look alive/dangerous
+                Color drawColor = enemy.BaseColor * presence;
+                _spriteBatch.Draw(_pixel, enemy.Bounds, drawColor);
+            }
+
+            // Render Player
             Color playerColor = Color.Lerp(Color.LimeGreen, Color.White, currentFrequency);
 
-            // Player Shadow/Ghosting (draws a larger, fainter box behind the player at high friction)
             if (frictionIntensity > 0.2f) {
                 Rectangle ghostBounds = player.Bounds;
                 ghostBounds.Inflate((int)(10 * frictionIntensity), (int)(10 * frictionIntensity));

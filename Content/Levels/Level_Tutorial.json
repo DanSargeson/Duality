@@ -43,5 +43,36 @@
       "Type": "Obstacle",
       "Range": 0.4
     }
-  ]
+  ],
+  "Enemies": [
+    {
+      "X": 280,
+      "Y": 150,
+      "ColorHex": "#FF0000",
+      "AnchorFrequency": 1.0,
+      "Range": 0.4,
+      "Waypoints": [
+        { "X": 280, "Y": 150 },
+        { "X": 280, "Y": 350 }
+      ]
+    }
+  ],
+  "Decals": [
+  {
+    "X": 150, "Y": 250,
+    "Text": "1 - 4 - 9",
+    "ColorHex": "#FF00FF",
+    "AnchorFrequency": 1.0,
+    "Range": 0.4
+  }
+],
+"Interactables": [
+  {
+    "X": 250, "Y": 200,
+    "Width": 50, "Height": 100,
+    "ColorHex": "#FFA500",
+    "AnchorFrequency": 0.0,
+    "Range": 0.4
+  }
+]
 }
