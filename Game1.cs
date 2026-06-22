@@ -33,21 +33,29 @@ namespace Duality
             // Initialize Player
             _player = new Player {
                 Position = new Vector2(100, 250),
-                StartPosition = new Vector2(100, 250)
+                LastSafePosition = new Vector2(100, 250)
             };
 
             // Initialize Environment (This would eventually be loaded from a level file)
             _environmentObjects = new List<EnvironmentObject>
             {
-                // A Density Wall that blocks you
-                new EnvironmentObject(new Rectangle(300, 200, 50, 200), Color.SteelBlue, 0.0f, ObjectType.Obstacle),
-    
-                // A permanent physical gap in the floor. 
-                // We give it a massive Range (100f) so it never fades regardless of frequency.
-                new EnvironmentObject(new Rectangle(350, 250, 200, 50), new Color(10, 10, 10), 0.0f, ObjectType.Hazard) { Range = 100f },
+                // 1. DENSITY WALL (Anchor 0.0) 
+                // Blocks you early on. You must shift towards Insight to make it fade so you can walk through.
+                new EnvironmentObject(new Rectangle(200, 150, 50, 250), Color.SteelBlue, 0.0f, ObjectType.Obstacle),
 
-                // An Insight Bridge layered directly over the gap
-                new EnvironmentObject(new Rectangle(350, 250, 200, 50), Color.HotPink, 1.0f, ObjectType.Platform)
+                // 2. THE CHASM (Hazard)
+                // A massive permanent pit. Range is 100f so it never fades. 
+                // If you step here without a bridge, you get bounced back.
+                new EnvironmentObject(new Rectangle(350, 150, 150, 250), new Color(10, 10, 10), 0.0f, ObjectType.Hazard) { Range = 100f },
+
+                // 3. INSIGHT BRIDGE (Anchor 1.0)
+                // Appears over the chasm when in Insight so you can safely cross.
+                new EnvironmentObject(new Rectangle(350, 200, 150, 50), Color.HotPink, 1.0f, ObjectType.Platform),
+
+                // 4. INSIGHT WALL (Anchor 1.0)
+                // Blocks you right after the bridge. If you stay in Insight, you can't pass.
+                // You must drop your frequency back to Density to make this wall fade!
+                new EnvironmentObject(new Rectangle(550, 150, 50, 250), Color.HotPink, 1.0f, ObjectType.Obstacle)
             };
 
             base.Initialize();
