@@ -1,12 +1,48 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 
 namespace Duality
 {
-    internal class InputManager
+    public class InputManager
     {
+        private KeyboardState _currentKeyState;
+        private KeyboardState _previousKeyState;
+
+        // Call this exactly once per frame at the very top of Game1.Update()
+        public void Update() {
+            _previousKeyState = _currentKeyState;
+            _currentKeyState = Keyboard.GetState();
+        }
+
+        // Semantic Action: Polarity Shifting (Continuous)
+        public bool IsShiftingToInsight => _currentKeyState.IsKeyDown(Keys.Q);
+        public bool IsShiftingToDensity => _currentKeyState.IsKeyDown(Keys.E);
+
+        // Semantic Action: Movement (Returns a normalized vector to prevent fast diagonal movement)
+        public Vector2 GetMovementDirection() {
+            Vector2 direction = Vector2.Zero;
+
+            if (_currentKeyState.IsKeyDown(Keys.W) || _currentKeyState.IsKeyDown(Keys.Up))
+                direction.Y -= 1;
+            if (_currentKeyState.IsKeyDown(Keys.S) || _currentKeyState.IsKeyDown(Keys.Down))
+                direction.Y += 1;
+            if (_currentKeyState.IsKeyDown(Keys.A) || _currentKeyState.IsKeyDown(Keys.Left))
+                direction.X -= 1;
+            if (_currentKeyState.IsKeyDown(Keys.D) || _currentKeyState.IsKeyDown(Keys.Right))
+                direction.X += 1;
+
+            if (direction != Vector2.Zero)
+                direction.Normalize();
+
+            return direction;
+        }
+
+        // Utility: Check for a single key press (useful for pausing, opening doors, etc.)
+        public bool WasActionPressed(Keys key) {
+            return _currentKeyState.IsKeyDown(key) && !_previousKeyState.IsKeyDown(key);
+        }
+
+        // Example of a semantic single-press action
+        public bool IsPausePressed => WasActionPressed(Keys.Escape);
     }
 }

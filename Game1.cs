@@ -1,19 +1,24 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
+using Duality.Entities;
+using Duality.Mechanics;
+using Duality.Rendering;
 
 namespace Duality
 {
     public class Game1 : Game
     {
         private GraphicsDeviceManager _graphics;
-        private SpriteBatch _spriteBatch;
 
-        // The core mechanic: 0.0 is Density, 1.0 is Insight.
-        public static float CurrentFrequency { get; private set; } = 0.0f;
+        // Systems
+        private InputManager _inputManager;
+        private PolarityManager _polarityManager;
+        private DualRenderer _renderer;
 
-        // Mock textures for the prototype
-        private Texture2D _pixel;
+        // State
+        private Player _player;
+        private List<EnvironmentObject> _environmentObjects;
 
         public Game1() {
             _graphics = new GraphicsDeviceManager(this);
@@ -21,69 +26,57 @@ namespace Duality
             IsMouseVisible = true;
         }
 
-        protected override void LoadContent() {
-            _spriteBatch = new SpriteBatch(GraphicsDevice);
+        protected override void Initialize() {
+            _inputManager = new InputManager();
+            _polarityManager = new PolarityManager();
 
-            // Create a simple 1x1 white pixel for prototyping shapes
-            _pixel = new Texture2D(GraphicsDevice, 1, 1);
-            _pixel.SetData(new[] { Color.White });
+            // Initialize Player
+            _player = new Player {
+                Position = new Vector2(100, 250)
+            };
+
+            // Initialize Environment (This would eventually be loaded from a level file)
+            _environmentObjects = new List<EnvironmentObject>
+            {
+                // A Density wall (Anchor 0.0)
+                new EnvironmentObject(new Rectangle(300, 200, 50, 200), Color.SteelBlue, 0.0f),
+                // An Insight bridge (Anchor 1.0)
+                new EnvironmentObject(new Rectangle(350, 250, 200, 50), Color.HotPink, 1.0f)
+            };
+
+            base.Initialize();
+        }
+
+        protected override void LoadContent() {
+            // Initialize renderer here because it requires the GraphicsDevice to be ready
+            _renderer = new DualRenderer(GraphicsDevice);
         }
 
         protected override void Update(GameTime gameTime) {
-            var kstate = Keyboard.GetState();
+            _inputManager.Update();
 
-            if (kstate.IsKeyDown(Keys.Escape))
+            if (_inputManager.IsPausePressed)
                 Exit();
 
-            // 1. Update the Polarity Slider
-            // Shift towards Insight (Q) or Density (E)
-            float shiftSpeed = 1.5f * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            // Shift polarity based on input
+            _polarityManager.Update(
+                gameTime,
+                _inputManager.IsShiftingToInsight,
+                _inputManager.IsShiftingToDensity
+            );
 
-            if (kstate.IsKeyDown(Keys.Q))
-                CurrentFrequency += shiftSpeed;
-            if (kstate.IsKeyDown(Keys.E))
-                CurrentFrequency -= shiftSpeed;
+            // Move player
+            _player.Update(gameTime, _inputManager.GetMovementDirection());
 
-            // Clamp the frequency between the two absolutes
-            CurrentFrequency = MathHelper.Clamp(CurrentFrequency, 0.0f, 1.0f);
-
-            // TODO: Update Player position (collision logic will check CurrentFrequency)
+            // TODO: Collision resolution between _player and _environmentObjects 
+            // relying on EnvironmentObject.IsSolid(_polarityManager.CurrentFrequency)
 
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime) {
-            // The background color dynamically shifts based on frequency
-            // Density = Dark Gray, Insight = Stark White
-            Color bgColor = Color.Lerp(new Color(20, 20, 20), Color.White, CurrentFrequency);
-            GraphicsDevice.Clear(bgColor);
-
-            _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
-
-            // ---------------------------------------------------------
-            // RENDER DENSITY OBJECTS (Fades out as Frequency approaches 1.0)
-            // ---------------------------------------------------------
-            float densityAlpha = 1.0f - CurrentFrequency;
-            Color densityColor = Color.SteelBlue * densityAlpha;
-
-            // Example: A physical wall
-            _spriteBatch.Draw(_pixel, new Rectangle(300, 200, 50, 200), densityColor);
-
-            // ---------------------------------------------------------
-            // RENDER INSIGHT OBJECTS (Fades in as Frequency approaches 1.0)
-            // ---------------------------------------------------------
-            float insightAlpha = CurrentFrequency;
-            Color insightColor = Color.HotPink * insightAlpha;
-
-            // Example: A hidden bridge that only appears at high frequency
-            _spriteBatch.Draw(_pixel, new Rectangle(350, 250, 200, 50), insightColor);
-
-            // ---------------------------------------------------------
-            // RENDER PLAYER (Always visible, but maybe changes color/sprite)
-            // ---------------------------------------------------------
-            _spriteBatch.Draw(_pixel, new Rectangle(100, 250, 32, 32), Color.LimeGreen);
-
-            _spriteBatch.End();
+            // Pass the current state to the renderer
+            _renderer.Draw(_polarityManager.CurrentFrequency, _environmentObjects, _player);
 
             base.Draw(gameTime);
         }
