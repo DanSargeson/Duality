@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Duality.Entities;
 using Duality.Mechanics;
 using Duality.Rendering;
+using Duality.Data;
 
 namespace Duality
 {
@@ -33,7 +34,7 @@ namespace Duality
             _polarityManager = new PolarityManager();
             _levelManager = new LevelManager();
 
-            _levelManager.LoadLevel("Content/Level_Tutorial.json");
+            _levelManager.LoadLevel("Content/Levels/Level_Tutorial.json");
 
             // Initialize Player
             _player = new Player {
