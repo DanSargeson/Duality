@@ -23,10 +23,23 @@ namespace Duality.Scenes
             Game.GraphicsDevice.Clear(new Color(15, 15, 15));
             Game._spriteBatch.Begin();
 
-            // Simple centered text for the menu
-            Game._spriteBatch.DrawString(Game._font, "D U A L I T Y", new Vector2(330, 200), Color.White);
-            Game._spriteBatch.DrawString(Game._font, "Press ENTER to Start", new Vector2(300, 300), Color.LightGray);
-            Game._spriteBatch.DrawString(Game._font, "Press ESC to Quit", new Vector2(315, 350), Color.DarkGray);
+            int screenWidth = Game.GraphicsDevice.Viewport.Width;
+            int screenHeight = Game.GraphicsDevice.Viewport.Height;
+
+            // Center Title
+            string title = "D U A L I T Y";
+            Vector2 titleSize = Game._font.MeasureString(title);
+            Game._spriteBatch.DrawString(Game._font, title, new Vector2((screenWidth - titleSize.X) / 2, screenHeight * 0.3f), Color.White);
+
+            // Center Start Text
+            string startText = "Press ENTER to Start";
+            Vector2 startSize = Game._font.MeasureString(startText);
+            Game._spriteBatch.DrawString(Game._font, startText, new Vector2((screenWidth - startSize.X) / 2, screenHeight * 0.5f), Color.LightGray);
+
+            // Center Quit Text
+            string quitText = "Press ESC to Quit";
+            Vector2 quitSize = Game._font.MeasureString(quitText);
+            Game._spriteBatch.DrawString(Game._font, quitText, new Vector2((screenWidth - quitSize.X) / 2, screenHeight * 0.6f), Color.DarkGray);
 
             Game._spriteBatch.End();
         }
