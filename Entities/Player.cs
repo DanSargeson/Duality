@@ -1,6 +1,8 @@
-﻿using Duality.Mechanics;
+﻿using Duality.Data;
+using Duality.Mechanics;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
+
 
 namespace Duality.Entities
 {
@@ -21,24 +23,24 @@ namespace Duality.Entities
         // The full rendering bounds
         public Rectangle Bounds => new Rectangle((int)Position.X, (int)Position.Y, Width, Height);
 
-        public void Update(GameTime gameTime, Vector2 movementDirection, PolarityManager polarityManager, List<EnvironmentObject> envObjects, List<Enemy> enemies, List<InteractableObject> interactables, Rectangle levelBounds) {
+        public void Update(GameTime gameTime, Vector2 movementDirection, PolarityManager polarityManager, Data.Level level) {
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             Vector2 velocity = movementDirection * Speed * deltaTime;
     
             // 1. X-Axis Movement & Collision
             Position += new Vector2(velocity.X, 0);
-            if (IsCollidingWithObstacle(polarityManager.CurrentFrequency, envObjects, interactables)) {
+            if (IsCollidingWithObstacle(polarityManager.CurrentFrequency, level)) {
                 Position -= new Vector2(velocity.X, 0); // Revert X if we hit a wall
             }
 
             // 2. Y-Axis Movement & Collision
             Position += new Vector2(0, velocity.Y);
-            if (IsCollidingWithObstacle(polarityManager.CurrentFrequency, envObjects, interactables)) {
+            if (IsCollidingWithObstacle(polarityManager.CurrentFrequency, level)) {
                 Position -= new Vector2(0, velocity.Y); // Revert Y if we hit a wall
             }
 
             // 3. Top-Down Hazard Check
-            CheckGround(polarityManager.CurrentFrequency, envObjects, out bool isFalling, out bool isCompletelySafe);
+            CheckGround(polarityManager.CurrentFrequency, level, out bool isFalling, out bool isCompletelySafe);
 
             if (isFalling) {
                 // The player fell! (e.g. they shifted to Density while standing on the Insight bridge)
@@ -51,7 +53,7 @@ namespace Duality.Entities
                  
             }
 
-            if (IsCollidingWithEnemy(polarityManager.CurrentFrequency, enemies)) {
+            if (IsCollidingWithEnemy(polarityManager.CurrentFrequency, level)) {
                 // Caught! Bounce back to the last safe spot
                 Position = StartPosition;
                 polarityManager.SetFrequency(0f);
@@ -60,21 +62,21 @@ namespace Duality.Entities
             // 5. Clamp Player to Level Bounds
             // Prevent the player from walking off the edge of the world map
             Position = new Vector2(
-                MathHelper.Clamp(Position.X, levelBounds.Left, levelBounds.Right - Width),
-                MathHelper.Clamp(Position.Y, levelBounds.Top, levelBounds.Bottom - Height)
+                MathHelper.Clamp(Position.X, level.Bounds.Left, level.Bounds.Right - Width),
+                MathHelper.Clamp(Position.Y, level.Bounds.Top, level.Bounds.Bottom - Height)
             );
         }
         
 
-        private bool IsCollidingWithObstacle(float currentFrequency, List<EnvironmentObject> envObjects, List<InteractableObject> interactables) {
-            foreach (var obj in envObjects) {
+        private bool IsCollidingWithObstacle(float currentFrequency, Data.Level level) {
+            foreach (var obj in level.EnvironmentObjects) {
                 // For walls, we still check the full Bounds so you stop right at the edge
                 if (obj.Type == ObjectType.Obstacle && obj.IsSolid(currentFrequency) && Bounds.Intersects(obj.Bounds)) {
                     return true;
                 }
             }
 
-            foreach (var interactable in interactables) {
+            foreach (var interactable in level.Interactables) {
                 if (interactable.IsSolid(currentFrequency) && Bounds.Intersects(interactable.Bounds)) {
                     return true;
                 }
@@ -82,8 +84,8 @@ namespace Duality.Entities
             return false;
         }
 
-        private bool IsCollidingWithEnemy(float currentFrequency, List<Enemy> enemies) {
-            foreach (var enemy in enemies) {
+        private bool IsCollidingWithEnemy(float currentFrequency, Data.Level level) {
+            foreach (var enemy in level.Enemies) {
                 // If the enemy exists on this frequency and touches you, you're caught
                 if (enemy.IsDangerous(currentFrequency) && Bounds.Intersects(enemy.Bounds)) {
                     return true;
@@ -92,14 +94,14 @@ namespace Duality.Entities
             return false;
         }
 
-        private void CheckGround(float currentFrequency, List<EnvironmentObject> envObjects, out bool isFalling, out bool isCompletelySafe) {
+        private void CheckGround(float currentFrequency, Data.Level level, out bool isFalling, out bool isCompletelySafe) {
             bool overHazard = false;
             bool overPlatform = false;
 
             // In Top-Down, we only care if the absolute CENTER of the player is over the pit.
             Point playerCenter = Bounds.Center;
 
-            foreach (var obj in envObjects) {
+            foreach (var obj in level.EnvironmentObjects) {
                 // Note we use 'Contains' instead of 'Intersects' here
                 if (obj.Bounds.Contains(playerCenter)) {
                     if (obj.Type == ObjectType.Hazard && obj.IsSolid(currentFrequency)) overHazard = true;

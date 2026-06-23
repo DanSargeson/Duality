@@ -22,25 +22,19 @@ namespace Duality
 
         // State
         private Player _player;
-        private Enemy _enemy;
-        private List<EnvironmentObject> _environmentObjects;
-        private List<Enemy> _enemies;
-
-
-        private List<Decal> _decals;
-        private List<InteractableObject> _interactables;
 
         public Game1() {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+
+            Window.AllowUserResizing = true;
         }
 
         protected override void Initialize() {
             _inputManager = new InputManager();
             _polarityManager = new PolarityManager();
             _levelManager = new LevelManager();
-            _camera = new Camera(GraphicsDevice.Viewport);
             _levelManager.LoadLevel("Content/Levels/Level_Tutorial.json");
             // Initialize Player
             _player = new Player {
@@ -49,14 +43,6 @@ namespace Duality
                 StartPosition = new Vector2(100, 250)
             };
 
-            // Initialize Environment (This would eventually be loaded from a level file)
-            _environmentObjects = _levelManager.EnvironmentObjects;
-
-            _enemies = _levelManager.Enemies;
-
-            _decals = _levelManager.Decals;
-            _interactables = _levelManager.Interactables;
-
             base.Initialize();
         }
 
@@ -64,7 +50,7 @@ namespace Duality
             // Initialize renderer here because it requires the GraphicsDevice to be ready
             SpriteFont font = Content.Load<SpriteFont>("Font");
             _renderer = new DualRenderer(GraphicsDevice, font);
-            _camera = new Camera(GraphicsDevice.Viewport);
+            _camera = new Camera(_renderer.VirtualWidth, _renderer.VirtualHeight);
         }
 
         protected override void Update(GameTime gameTime) {
@@ -80,8 +66,16 @@ namespace Duality
                 _inputManager.IsShiftingToDensity
             );
 
+           
+            var currentLevel = _levelManager.CurrentLevel;
+
+
+            foreach (var enemy in currentLevel.Enemies) {
+                enemy.Update(gameTime);
+            }
+
             if (_inputManager.IsInteractPressed) {
-                foreach (var interactable in _interactables) {
+                foreach (var interactable in currentLevel.Interactables) {
                     // If the door is closed and the player is standing next to it
                     if (interactable.IsClosed && interactable.InteractionArea.Intersects(_player.Bounds)) {
                         interactable.IsClosed = false; // Open the door!
@@ -89,23 +83,22 @@ namespace Duality
                 }
             }
 
-            // Move player
-            _player.Update(gameTime, _inputManager.GetMovementDirection(), _polarityManager, _environmentObjects, _enemies, _interactables, _levelManager.LevelBounds);
 
-            foreach (var enemy in _enemies) {
-                enemy.Update(gameTime);
-            }
+            // Move player
+            _player.Update(gameTime, _inputManager.GetMovementDirection(), _polarityManager, currentLevel);
+
+            float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             // TODO: Collision resolution between _player and _environmentObjects 
             // relying on EnvironmentObject.IsSolid(_polarityManager.CurrentFrequency)
-            _camera.Follow(_player.Position, (float)gameTime.ElapsedGameTime.TotalSeconds, _levelManager.LevelBounds);
+            _camera.Follow(_player.Position, deltaTime, currentLevel.Bounds);
 
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime) {
             // Pass the current state to the renderer
-            _renderer.Draw(_polarityManager.CurrentFrequency, _environmentObjects, _enemies, _interactables, _decals, _player, _camera);
+            _renderer.Draw(_polarityManager.CurrentFrequency, _levelManager.CurrentLevel, _player, _camera);
 
             base.Draw(gameTime);
         }

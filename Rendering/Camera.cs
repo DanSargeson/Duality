@@ -3,30 +3,31 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Duality.Rendering
 {
+
     public class Camera
     {
         public Vector2 Position { get; private set; }
-        private Viewport _viewport;
+       // private Viewport _viewport;
 
-        public Camera(Viewport viewport) {
-            _viewport = viewport;
+        private int _virtualWidth;
+        private int _virtualHeight;
+
+        public Camera(int virtualWidth, int virtualHeight) {
+            _virtualWidth = virtualWidth;
+            _virtualHeight = virtualHeight;
             Position = Vector2.Zero;
         }
 
-        public void Update(Viewport viewport) {
-            // Keep the viewport updated in case the player resizes the game window
-            _viewport = viewport;
-        }
-
+        
         public void Follow(Vector2 targetPosition, float deltaTime, Rectangle levelBounds) {
 
             Vector2 desiredPosition = Vector2.Lerp(Position, targetPosition, 5f * deltaTime);
 
             // Calculate the limits so the edge of the screen doesn't pass the edge of the level
-            float minX = levelBounds.X + (_viewport.Width / 2f);
-            float maxX = levelBounds.Width - (_viewport.Width / 2f);
-            float minY = levelBounds.Y + (_viewport.Height / 2f);
-            float maxY = levelBounds.Height - (_viewport.Height / 2f);
+            float minX = levelBounds.X + (_virtualWidth / 2f);
+            float maxX = levelBounds.Width - (_virtualWidth / 2f);
+            float minY = levelBounds.Y + (_virtualHeight / 2f);
+            float maxY = levelBounds.Height - (_virtualHeight / 2f);
 
             // Fallback in case the screen is actually larger than the level itself
             if (maxX < minX) maxX = minX;
@@ -44,7 +45,7 @@ namespace Duality.Rendering
             // 2. Add the chaotic screen shake offset
             // 3. Move the world positively by half the screen dimensions so (0,0) sits perfectly in the middle of your monitor
             return Matrix.CreateTranslation(new Vector3(-Position.X + shakeOffset.X, -Position.Y + shakeOffset.Y, 0)) *
-                   Matrix.CreateTranslation(new Vector3(_viewport.Width / 2f, _viewport.Height / 2f, 0));
+                   Matrix.CreateTranslation(new Vector3(_virtualWidth / 2f, _virtualHeight / 2f, 0));
         }
     }
 }

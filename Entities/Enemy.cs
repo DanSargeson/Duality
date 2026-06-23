@@ -4,16 +4,12 @@ using System.Collections.Generic;
 
 namespace Duality.Entities
 {
-    public class Enemy
+    public class Enemy : Entity
     {
         public Vector2 Position { get; set; }
         public int Width { get; set; } = 32;
         public int Height { get; set; } = 32;
         public Rectangle Bounds => new Rectangle((int)Position.X, (int)Position.Y, Width, Height);
-
-        public Color BaseColor { get; set; }
-        public float AnchorFrequency { get; set; }
-        public float Range { get; set; } = 0.4f;
         public float Speed { get; set; } = 100f;
 
         public List<Vector2> Waypoints { get; set; }
@@ -45,12 +41,6 @@ namespace Duality.Entities
                 direction.Normalize();
                 Position += direction * Speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
-        }
-
-        public float GetPresence(float currentFrequency) {
-            float distance = Math.Abs(AnchorFrequency - currentFrequency);
-            if (distance > Range) return 0f;
-            return 1f - (distance / Range);
         }
 
         // Enemies are only dangerous if they are materialized enough to touch you

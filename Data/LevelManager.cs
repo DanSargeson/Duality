@@ -52,35 +52,32 @@ namespace Duality.Data
 
     public class LevelManager
     {
-        public Vector2 PlayerStart { get; private set; }
-        public List<EnvironmentObject> EnvironmentObjects { get; private set; } = new();
-        public List<Enemy> Enemies { get; private set; } = new(); // Exposed to Game1
-
-        public Rectangle LevelBounds { get; private set; }
-
-        public List<Decal> Decals { get; private set; } = new();
-        public List<InteractableObject> Interactables { get; private set; } = new();
+        public Level CurrentLevel { get; private set; }
 
         public void LoadLevel(string path) {
             string json = File.ReadAllText(path);
             var data = JsonSerializer.Deserialize<LevelDTO>(json);
 
-            PlayerStart = new Vector2(data.PlayerStartX, data.PlayerStartY);
+            // 2. Instantiate the new Level container
+            CurrentLevel = new Level {
+                Name = data.LevelName,
+                PlayerStart = new Vector2(data.PlayerStartX, data.PlayerStartY),
+                Bounds = new Rectangle(0, 0, data.Width, data.Height)
+            };
 
-            LevelBounds = new Rectangle(0, 0, data.Width, data.Height);
+            // 3. Populate the lists inside CurrentLevel instead of local lists
+            if (data.EnvironmentObjects != null) {
+                foreach (var obj in data.EnvironmentObjects) {
+                    Rectangle bounds = new Rectangle(obj.X, obj.Y, obj.Width, obj.Height);
+                    var color = ParseHex(obj.ColorHex);
+                    Enum.TryParse(obj.Type, out ObjectType type);
 
-            EnvironmentObjects.Clear();
-            foreach (var obj in data.EnvironmentObjects) {
-                Rectangle bounds = new Rectangle(obj.X, obj.Y, obj.Width, obj.Height);
-                var color = ParseHex(obj.ColorHex);
-                Enum.TryParse(obj.Type, out ObjectType type);
-
-                EnvironmentObjects.Add(new EnvironmentObject(bounds, color, obj.AnchorFrequency, type) {
-                    Range = obj.Range
-                });
+                    CurrentLevel.EnvironmentObjects.Add(new EnvironmentObject(bounds, color, obj.AnchorFrequency, type) {
+                        Range = obj.Range
+                    });
+                }
             }
 
-            Enemies.Clear();
             if (data.Enemies != null) {
                 foreach (var e in data.Enemies) {
                     var color = ParseHex(e.ColorHex);
@@ -93,25 +90,23 @@ namespace Duality.Data
                         }
                     }
 
-                    Enemies.Add(new Enemy(startPos, color, e.AnchorFrequency, waypoints) {
+                    CurrentLevel.Enemies.Add(new Enemy(startPos, color, e.AnchorFrequency, waypoints) {
                         Range = e.Range
                     });
                 }
             }
 
-            Decals.Clear();
-if (data.Decals != null) {
-    foreach (var d in data.Decals) {
-        Decals.Add(new Decal(new Vector2(d.X, d.Y), d.Text, ParseHex(d.ColorHex), d.AnchorFrequency) { Range = d.Range });
-    }
-}
+            if (data.Decals != null) {
+                foreach (var d in data.Decals) {
+                    CurrentLevel.Decals.Add(new Decal(new Vector2(d.X, d.Y), d.Text, ParseHex(d.ColorHex), d.AnchorFrequency) { Range = d.Range });
+                }
+            }
 
-Interactables.Clear();
-if (data.Interactables != null) {
-    foreach (var i in data.Interactables) {
-        Interactables.Add(new InteractableObject(new Rectangle(i.X, i.Y, i.Width, i.Height), ParseHex(i.ColorHex), i.AnchorFrequency) { Range = i.Range });
-    }
-}
+            if (data.Interactables != null) {
+                foreach (var i in data.Interactables) {
+                    CurrentLevel.Interactables.Add(new InteractableObject(new Rectangle(i.X, i.Y, i.Width, i.Height), ParseHex(i.ColorHex), i.AnchorFrequency) { Range = i.Range });
+                }
+            }
         }
 
         private Color ParseHex(string hex) {
