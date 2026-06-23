@@ -33,7 +33,7 @@ namespace Duality.Entities
             if (Behaviour == EnemyBehaviour.Hunter) {
                 // Hunters only chase if they exist enough to be dangerous
                 if (IsDangerous(currentFrequency)) {
-                    Vector2 direction = targetPlayer.Position - Position;
+                    Vector2 direction = targetPlayer.Bounds.Center.ToVector2() - Bounds.Center.ToVector2();
                     if (direction.Length() > 0) {
                         direction.Normalize();
                         Position += direction * Speed * deltaTime;
