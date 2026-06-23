@@ -23,6 +23,26 @@ namespace Duality.Entities
         // The full rendering bounds
         public Rectangle Bounds => new Rectangle((int)Position.X, (int)Position.Y, Width, Height);
 
+
+        public bool IsInsideAnyObstacle(Data.Level level) {
+            // Check normal walls
+            foreach (var obj in level.EnvironmentObjects) {
+                if (obj.Type == ObjectType.Obstacle && Bounds.Intersects(obj.Bounds)) {
+                    return true;
+                }
+            }
+
+            // Check locked doors
+            foreach (var interactable in level.Interactables) {
+                if (interactable.IsClosed && Bounds.Intersects(interactable.Bounds)) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+
         public void Update(GameTime gameTime, Vector2 movementDirection, PolarityManager polarityManager, Data.Level level) {
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             Vector2 velocity = movementDirection * Speed * deltaTime;
@@ -42,12 +62,15 @@ namespace Duality.Entities
             // 3. Top-Down Hazard Check
             CheckGround(polarityManager.CurrentFrequency, level, out bool isFalling, out bool isCompletelySafe);
 
-            if (isFalling) {
+            // Are we currently stuck inside a solid wall because of a frequency shift?
+            bool isStuckInWall = IsCollidingWithObstacle(polarityManager.CurrentFrequency, level);
+
+            if (isFalling || isStuckInWall) {
                 // The player fell! (e.g. they shifted to Density while standing on the Insight bridge)
                 // Snap them back to the last truly safe ground they were standing on.
                 Position = LastSafePosition;
             }
-            else if (isCompletelySafe) {
+            else if (isCompletelySafe && !IsInsideAnyObstacle(level)) {
                 // Only update our safety anchor if we are on solid ground, NOT over a pit at all.
                 LastSafePosition = Position;
                  

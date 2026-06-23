@@ -7,73 +7,151 @@ using Duality.Entities;
 
 namespace Duality.Data
 {
-    // Need to use the DTO container mapped from JSON
-    public class LevelDTOContainer
-    {
-        public string LevelName { get; set; }
-        public int Width { get; set; }
-        public int Height { get; set; }
-        public float PlayerStartX { get; set; }
-        public float PlayerStartY { get; set; }
-        public string NextLevel { get; set; }
-        public InteractableDTO ExitZone { get; set; }
-
-        public List<EnvironmentObjectData> EnvironmentObjects { get; set; }
-        public List<EnemyDTO> Enemies { get; set; }
-        public List<DecalDTO> Decals { get; set; }
-        public List<InteractableDTO> Interactables { get; set; }
-    }
-
     public class LevelManager
     {
         public Level CurrentLevel { get; private set; }
 
-        public void LoadLevel(string path) {
+        public void LoadLDtkLevel(string path, string levelName) {
             string json = File.ReadAllText(path);
-            var data = JsonSerializer.Deserialize<LevelDTOContainer>(json);
 
             CurrentLevel = new Level {
-                Name = data.LevelName,
-                PlayerStart = new Vector2(data.PlayerStartX, data.PlayerStartY),
-                Bounds = new Rectangle(0, 0, data.Width, data.Height),
-                NextLevelPath = data.NextLevel
+                Name = levelName,
+                EnvironmentObjects = new List<EnvironmentObject>(),
+                Enemies = new List<Enemy>(),
+                Decals = new List<Decal>(),
+                Interactables = new List<InteractableObject>()
             };
 
-            if (data.ExitZone != null) {
-                CurrentLevel.ExitZone = new Rectangle(data.ExitZone.X, data.ExitZone.Y, data.ExitZone.Width, data.ExitZone.Height);
-            }
+            // Parse the LDtk JSON dynamically
+            using (JsonDocument doc = JsonDocument.Parse(json)) {
+                JsonElement root = doc.RootElement;
 
-            if (data.EnvironmentObjects != null) {
-                foreach (var obj in data.EnvironmentObjects) {
-                    Enum.TryParse(obj.Type, out ObjectType type);
-                    CurrentLevel.EnvironmentObjects.Add(new EnvironmentObject(new Rectangle(obj.X, obj.Y, obj.Width, obj.Height), ParseHex(obj.ColorHex), obj.AnchorFrequency, type) { Range = obj.Range });
+                // 1. Find the correct level
+                JsonElement targetLevel = default;
+                bool levelFound = false;
+
+                foreach (var level in root.GetProperty("levels").EnumerateArray()) {
+                    if (level.GetProperty("identifier").GetString() == levelName) {
+                        targetLevel = level;
+                        levelFound = true;
+                        break;
+                    }
                 }
-            }
 
-            if (data.Enemies != null) {
-                foreach (var e in data.Enemies) {
-                    var waypoints = new List<Vector2>();
-                    if (e.Waypoints != null) foreach (var wp in e.Waypoints) waypoints.Add(new Vector2(wp.X, wp.Y));
+                if (!levelFound) throw new Exception($"Level '{levelName}' not found in LDtk file.");
 
-                    Enum.TryParse(e.Behaviour ?? "Patrol", out EnemyBehaviour behaviour);
+                // Set level bounds
+                CurrentLevel.Bounds = new Rectangle(0, 0,
+                    targetLevel.GetProperty("pxWid").GetInt32(),
+                    targetLevel.GetProperty("pxHei").GetInt32());
 
-                    CurrentLevel.Enemies.Add(new Enemy(new Vector2(e.X, e.Y), ParseHex(e.ColorHex), e.AnchorFrequency, waypoints) {
-                        Range = e.Range,
-                        Behaviour = behaviour
-                    });
+                // 2. Find the "Entities" layer
+                foreach (var layer in targetLevel.GetProperty("layerInstances").EnumerateArray()) {
+                    if (layer.GetProperty("__identifier").GetString() == "Entities") {
+
+                        // 3. Loop through all entities placed in this layer
+                        foreach (var entity in layer.GetProperty("entityInstances").EnumerateArray()) {
+                            ParseEntity(entity);
+                        }
+                    }
                 }
-            }
-
-            if (data.Decals != null) {
-                foreach (var d in data.Decals) CurrentLevel.Decals.Add(new Decal(new Vector2(d.X, d.Y), d.Text, ParseHex(d.ColorHex), d.AnchorFrequency) { Range = d.Range });
-            }
-
-            if (data.Interactables != null) {
-                foreach (var i in data.Interactables) CurrentLevel.Interactables.Add(new InteractableObject(new Rectangle(i.X, i.Y, i.Width, i.Height), ParseHex(i.ColorHex), i.AnchorFrequency) { Range = i.Range });
             }
         }
 
+        private void ParseEntity(JsonElement entity) {
+            string type = entity.GetProperty("__identifier").GetString();
+
+            // LDtk stores pixel coordinates in an array: [x, y]
+            int x = entity.GetProperty("px")[0].GetInt32();
+            int y = entity.GetProperty("px")[1].GetInt32();
+            int width = entity.GetProperty("width").GetInt32();
+            int height = entity.GetProperty("height").GetInt32();
+            Rectangle bounds = new Rectangle(x, y, width, height);
+
+            switch (type) {
+                case "PlayerStart":
+                    CurrentLevel.PlayerStart = new Vector2(x, y);
+                    break;
+
+                case "ExitZone":
+                    CurrentLevel.ExitZone = bounds;
+                    CurrentLevel.NextLevelPath = GetStringField(entity, "NextLevel");
+                    break;
+
+                // Group all 4 of your custom LDtk obstacle types into the same EnvironmentObject list
+                case "InsightObstacle":
+                case "DensityObstacle":
+                case "Hazard":
+                case "Platform":
+                    Enum.TryParse(GetStringField(entity, "ObjectType"), out ObjectType objType);
+                    CurrentLevel.EnvironmentObjects.Add(new EnvironmentObject(
+                        bounds,
+                        ParseHex(GetStringField(entity, "ColourHex")), // Updated to your spelling
+                        GetFloatField(entity, "AnchorFrequency"),
+                        objType) { Range = GetFloatField(entity, "Range") }
+                    );
+                    break;
+                case "PatrolEnemy":
+                case "HunterEnemy":
+                case "StalkerEnemy":
+                case "Enemy":
+                    Enum.TryParse(GetStringField(entity, "EnemyBehaviour"), out EnemyBehaviour behaviour);
+
+                    // Extract the Waypoints! (16 is your default LDtk grid size)
+                    List<Vector2> waypoints = GetWaypoints(entity, "Point", 16);
+
+                    CurrentLevel.Enemies.Add(new Enemy(
+                        new Vector2(x, y),
+                        ParseHex(GetStringField(entity, "ColourHex")), // Updated to your spelling
+                        GetFloatField(entity, "AnchorFrequency"),
+                        waypoints) { Range = GetFloatField(entity, "Range"), Behaviour = behaviour, WakeDelay = GetFloatField(entity, "WakeDelay" )}
+                    );
+                    break;
+            }
+        }
+
+        // ADD THIS HELPER METHOD underneath GetFloatField:
+        private List<Vector2> GetWaypoints(JsonElement entity, string fieldName, int gridSize) {
+            var waypoints = new List<Vector2>();
+            foreach (var field in entity.GetProperty("fieldInstances").EnumerateArray()) {
+                if (field.GetProperty("__identifier").GetString() == fieldName) {
+                    var val = field.GetProperty("__value");
+                    if (val.ValueKind == JsonValueKind.Array) {
+                        foreach (var pt in val.EnumerateArray()) {
+                            // LDtk stores points in Grid coordinates (cx, cy). Multiply by grid size for world pixels!
+                            float pxX = pt.GetProperty("cx").GetInt32() * gridSize;
+                            float pxY = pt.GetProperty("cy").GetInt32() * gridSize;
+                            waypoints.Add(new Vector2(pxX, pxY));
+                        }
+                    }
+                }
+            }
+            return waypoints;
+        }
+
+        // --- Helper methods to extract Custom Fields from LDtk Entities ---
+
+        private string GetStringField(JsonElement entity, string fieldName) {
+            foreach (var field in entity.GetProperty("fieldInstances").EnumerateArray()) {
+                if (field.GetProperty("__identifier").GetString() == fieldName) {
+                    return field.GetProperty("__value").GetString();
+                }
+            }
+            return ""; // Default
+        }
+
+        private float GetFloatField(JsonElement entity, string fieldName) {
+            foreach (var field in entity.GetProperty("fieldInstances").EnumerateArray()) {
+                if (field.GetProperty("__identifier").GetString() == fieldName) {
+                    var value = field.GetProperty("__value");
+                    return value.ValueKind == JsonValueKind.Null ? 0f : value.GetSingle();
+                }
+            }
+            return 0f; // Default
+        }
+
         private Color ParseHex(string hex) {
+            if (string.IsNullOrEmpty(hex) || hex.Length < 7) return Color.Magenta; // Fallback error color
             var r = Convert.ToByte(hex.Substring(1, 2), 16);
             var g = Convert.ToByte(hex.Substring(3, 2), 16);
             var b = Convert.ToByte(hex.Substring(5, 2), 16);

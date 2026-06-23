@@ -11,6 +11,9 @@ namespace Duality.Entities
         public Vector2 Position { get; set; }
         public int Width { get; set; } = 32;
         public int Height { get; set; } = 32;
+
+        public float WakeDelay { get; set; } = 0f;
+        private float _wakeTimer = 0f;
         public Rectangle Bounds => new Rectangle((int)Position.X, (int)Position.Y, Width, Height);
 
         public float Speed { get; set; } = 100f;
@@ -29,6 +32,18 @@ namespace Duality.Entities
         // Updated signature to take the player and frequency for Hunter AI
         public void Update(GameTime gameTime, Player targetPlayer, float currentFrequency) {
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            if (base.GetPresence(currentFrequency) > 0f) {
+                _wakeTimer += deltaTime;
+                if (_wakeTimer > WakeDelay) _wakeTimer = WakeDelay;
+            }
+            else {
+                // Player left the sweet spot! Fade back into the static twice as fast.
+                _wakeTimer -= deltaTime * 2f;
+                if (_wakeTimer < 0f) _wakeTimer = 0f;
+            }
+
+
 
             if (Behaviour == EnemyBehaviour.Hunter) {
                 // Hunters only chase if they exist enough to be dangerous
@@ -54,6 +69,16 @@ namespace Duality.Entities
                     Position += direction * Speed * deltaTime;
                 }
             }
+        }
+
+        public override float GetPresence(float currentFrequency) {
+            float basePresence = base.GetPresence(currentFrequency);
+
+            // Normal enemies behave normally
+            if (WakeDelay <= 0f) return basePresence;
+
+            // Stalkers scale their visibility/solidity by how "awake" they are!
+            return basePresence * (_wakeTimer / WakeDelay);
         }
 
         public bool IsDangerous(float currentFrequency) {

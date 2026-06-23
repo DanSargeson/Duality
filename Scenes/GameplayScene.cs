@@ -13,16 +13,18 @@ namespace Duality.Scenes
         private Camera _camera;
         private LevelManager _levelManager;
         private Player _player;
-        private string _levelPath;
+        private string _ldtkFilePath;
+        private string _levelName;
 
-        public GameplayScene(Game1 game, string levelPath) : base(game) {
-            _levelPath = levelPath;
+        public GameplayScene(Game1 game, string ldtkFilepath, string levelName) : base(game) {
+            _ldtkFilePath = ldtkFilepath;
+            _levelName = levelName;
         }
 
         public override void Initialize() {
             _polarityManager = new PolarityManager();
             _levelManager = new LevelManager();
-            _levelManager.LoadLevel(_levelPath);
+            _levelManager.LoadLDtkLevel(_ldtkFilePath, _levelName);
 
             _player = new Player {
                 Position = _levelManager.CurrentLevel.PlayerStart,
@@ -68,7 +70,7 @@ namespace Duality.Scenes
             // Level Transition Logic
             if (currentLevel.ExitZone != Rectangle.Empty && _player.Bounds.Intersects(currentLevel.ExitZone)) {
                 if (!string.IsNullOrEmpty(currentLevel.NextLevelPath))
-                    Game.ChangeScene(new GameplayScene(Game, currentLevel.NextLevelPath));
+                    Game.ChangeScene(new GameplayScene(Game, _ldtkFilePath, currentLevel.NextLevelPath));
                 else
                     Game.ChangeScene(new MainMenuScene(Game)); // Back to menu if game is over
             }

@@ -13,7 +13,7 @@ namespace Duality.Scenes
         public override void Update(GameTime gameTime) {
             // Enter to start, Escape to quit
             if (Game._inputManager.WasActionPressed(Keys.Enter))
-                Game.ChangeScene(new GameplayScene(Game, "Content/Levels/Level_Tutorial.json"));
+                Game.ChangeScene(new GameplayScene(Game, "Content/Levels/Project.ldtk", "TUTORIAL"));
 
             if (Game._inputManager.WasActionPressed(Keys.Escape))
                 Game.Exit();
