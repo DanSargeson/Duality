@@ -9,8 +9,9 @@ namespace Duality.Data
         public string Name { get; set; }
         public Rectangle Bounds { get; set; }
         public Vector2 PlayerStart { get; set; }
+        public string NextLevelPath { get; set; }
+        public Rectangle ExitZone { get; set; }
 
-        // All our game objects live inside the level now!
         public List<EnvironmentObject> EnvironmentObjects { get; set; } = new List<EnvironmentObject>();
         public List<Enemy> Enemies { get; set; } = new List<Enemy>();
         public List<InteractableObject> Interactables { get; set; } = new List<InteractableObject>();

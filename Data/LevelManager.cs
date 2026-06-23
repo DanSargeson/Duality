@@ -7,47 +7,21 @@ using Duality.Entities;
 
 namespace Duality.Data
 {
-    public class WaypointDTO
-    {
-        public float X { get; set; }
-        public float Y { get; set; }
-    }
-
-    public class EnemyDTO
-    {
-        public float X { get; set; }
-        public float Y { get; set; }
-        public string ColorHex { get; set; }
-        public float AnchorFrequency { get; set; }
-        public float Range { get; set; }
-        public List<WaypointDTO> Waypoints { get; set; }
-    }
-
-    public class LevelDTO
+    // Need to use the DTO container mapped from JSON
+    public class LevelDTOContainer
     {
         public string LevelName { get; set; }
         public int Width { get; set; }
         public int Height { get; set; }
-
         public float PlayerStartX { get; set; }
         public float PlayerStartY { get; set; }
-        public List<EnvironmentObjectDTO> EnvironmentObjects { get; set; }
-        public List<EnemyDTO> Enemies { get; set; } // Added Enemies List
+        public string NextLevel { get; set; }
+        public InteractableDTO ExitZone { get; set; }
 
+        public List<EnvironmentObjectData> EnvironmentObjects { get; set; }
+        public List<EnemyDTO> Enemies { get; set; }
         public List<DecalDTO> Decals { get; set; }
         public List<InteractableDTO> Interactables { get; set; }
-    }
-
-    public class EnvironmentObjectDTO
-    {
-        public int X { get; set; }
-        public int Y { get; set; }
-        public int Width { get; set; }
-        public int Height { get; set; }
-        public string ColorHex { get; set; }
-        public float AnchorFrequency { get; set; }
-        public string Type { get; set; }
-        public float Range { get; set; }
     }
 
     public class LevelManager
@@ -56,56 +30,46 @@ namespace Duality.Data
 
         public void LoadLevel(string path) {
             string json = File.ReadAllText(path);
-            var data = JsonSerializer.Deserialize<LevelDTO>(json);
+            var data = JsonSerializer.Deserialize<LevelDTOContainer>(json);
 
-            // 2. Instantiate the new Level container
             CurrentLevel = new Level {
                 Name = data.LevelName,
                 PlayerStart = new Vector2(data.PlayerStartX, data.PlayerStartY),
-                Bounds = new Rectangle(0, 0, data.Width, data.Height)
+                Bounds = new Rectangle(0, 0, data.Width, data.Height),
+                NextLevelPath = data.NextLevel
             };
 
-            // 3. Populate the lists inside CurrentLevel instead of local lists
+            if (data.ExitZone != null) {
+                CurrentLevel.ExitZone = new Rectangle(data.ExitZone.X, data.ExitZone.Y, data.ExitZone.Width, data.ExitZone.Height);
+            }
+
             if (data.EnvironmentObjects != null) {
                 foreach (var obj in data.EnvironmentObjects) {
-                    Rectangle bounds = new Rectangle(obj.X, obj.Y, obj.Width, obj.Height);
-                    var color = ParseHex(obj.ColorHex);
                     Enum.TryParse(obj.Type, out ObjectType type);
-
-                    CurrentLevel.EnvironmentObjects.Add(new EnvironmentObject(bounds, color, obj.AnchorFrequency, type) {
-                        Range = obj.Range
-                    });
+                    CurrentLevel.EnvironmentObjects.Add(new EnvironmentObject(new Rectangle(obj.X, obj.Y, obj.Width, obj.Height), ParseHex(obj.ColorHex), obj.AnchorFrequency, type) { Range = obj.Range });
                 }
             }
 
             if (data.Enemies != null) {
                 foreach (var e in data.Enemies) {
-                    var color = ParseHex(e.ColorHex);
-                    var startPos = new Vector2(e.X, e.Y);
-
                     var waypoints = new List<Vector2>();
-                    if (e.Waypoints != null) {
-                        foreach (var wp in e.Waypoints) {
-                            waypoints.Add(new Vector2(wp.X, wp.Y));
-                        }
-                    }
+                    if (e.Waypoints != null) foreach (var wp in e.Waypoints) waypoints.Add(new Vector2(wp.X, wp.Y));
 
-                    CurrentLevel.Enemies.Add(new Enemy(startPos, color, e.AnchorFrequency, waypoints) {
-                        Range = e.Range
+                    Enum.TryParse(e.Behaviour ?? "Patrol", out EnemyBehaviour behaviour);
+
+                    CurrentLevel.Enemies.Add(new Enemy(new Vector2(e.X, e.Y), ParseHex(e.ColorHex), e.AnchorFrequency, waypoints) {
+                        Range = e.Range,
+                        Behaviour = behaviour
                     });
                 }
             }
 
             if (data.Decals != null) {
-                foreach (var d in data.Decals) {
-                    CurrentLevel.Decals.Add(new Decal(new Vector2(d.X, d.Y), d.Text, ParseHex(d.ColorHex), d.AnchorFrequency) { Range = d.Range });
-                }
+                foreach (var d in data.Decals) CurrentLevel.Decals.Add(new Decal(new Vector2(d.X, d.Y), d.Text, ParseHex(d.ColorHex), d.AnchorFrequency) { Range = d.Range });
             }
 
             if (data.Interactables != null) {
-                foreach (var i in data.Interactables) {
-                    CurrentLevel.Interactables.Add(new InteractableObject(new Rectangle(i.X, i.Y, i.Width, i.Height), ParseHex(i.ColorHex), i.AnchorFrequency) { Range = i.Range });
-                }
+                foreach (var i in data.Interactables) CurrentLevel.Interactables.Add(new InteractableObject(new Rectangle(i.X, i.Y, i.Width, i.Height), ParseHex(i.ColorHex), i.AnchorFrequency) { Range = i.Range });
             }
         }
 

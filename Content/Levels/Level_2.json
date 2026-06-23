@@ -1,15 +1,15 @@
 {
-  "LevelName": "Tutorial Chasm",
-  "Width": 800,
-  "Height": 1000,
-  "PlayerStartX": 100,
-  "PlayerStartY": 250,
+  "LevelName": "Level 2",
+  "Width": 1600,
+  "Height": 600,
+  "PlayerStartX": 10,
+  "PlayerStartY": 300,
   "EnvironmentObjects": [
     {
       "X": 200,
       "Y": 0,
-      "Width": 50,
-      "Height": 1100,
+      "Width": 100,
+      "Height": 600,
       "ColorHex": "#4682B4",
       "AnchorFrequency": 0.0,
       "Type": "Obstacle",
@@ -17,9 +17,9 @@
     },
     {
       "X": 350,
-      "Y": 150,
-      "Width": 150,
-      "Height": 250,
+      "Y": 0,
+      "Width": 400,
+      "Height": 600,
       "ColorHex": "#0A0A0A",
       "AnchorFrequency": 0.0,
       "Type": "Hazard",
@@ -27,36 +27,23 @@
     },
     {
       "X": 350,
-      "Y": 200,
-      "Width": 150,
-      "Height": 50,
+      "Y": 800,
+      "Width": 400,
+      "Height": 100,
       "ColorHex": "#FF69B4",
       "AnchorFrequency": 1.0,
       "Type": "Platform",
       "Range": 0.4
-    },
-    {
-      "X": 550,
-      "Y": 0,
-      "Width": 50,
-      "Height": 1100,
-      "ColorHex": "#80EF80",
-      "AnchorFrequency": 1.0,
-      "Type": "Obstacle",
-      "Range": 0.4
     }
-  ],
+      ],
   "Enemies": [
     {
-      "X": 280,
-      "Y": 150,
+      "X": 315,
+      "Y": 15,
       "ColorHex": "#FF0000",
       "AnchorFrequency": 1.0,
       "Range": 0.4,
-      "Waypoints": [
-        { "X": 280, "Y": 150 },
-        { "X": 280, "Y": 350 }
-      ]
+      "Behaviour": "Hunter"
     }
   ],
   "Decals": [
@@ -79,8 +66,8 @@
 ],
 "NextLevel": "Content/Levels/Level_2.json",
   "ExitZone": {
-    "X": 500,
-    "Y": 900,
+    "X": 1500,
+    "Y": 500,
     "Width": 100,
     "Height": 50
   }
