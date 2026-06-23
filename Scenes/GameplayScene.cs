@@ -63,7 +63,7 @@ namespace Duality.Scenes
             _player.Update(gameTime, Game._inputManager.GetMovementDirection(), _polarityManager, currentLevel);
 
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            _camera.Follow(_player.Position, deltaTime, currentLevel.Bounds);
+            _camera.Follow(_player.Bounds.Center.ToVector2(), deltaTime, currentLevel.Bounds);
 
             // Level Transition Logic
             if (currentLevel.ExitZone != Rectangle.Empty && _player.Bounds.Intersects(currentLevel.ExitZone)) {
