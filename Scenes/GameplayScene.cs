@@ -76,6 +76,10 @@ namespace Duality.Scenes
             }
         }
 
+        public override void Unload() {
+            _renderer?.Unload(); // Explicitly clear the RenderTarget2D from VRAM
+        }
+
         public override void Draw(GameTime gameTime) {
             _renderer.Draw(gameTime, _polarityManager, _levelManager.CurrentLevel, _player, _camera);
         }

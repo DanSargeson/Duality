@@ -68,6 +68,15 @@ namespace Duality.Data
             int height = entity.GetProperty("height").GetInt32();
             Rectangle bounds = new Rectangle(x, y, width, height);
 
+
+            var fields = new Dictionary<string, JsonElement>();
+            if (entity.TryGetProperty("fieldInstances", out JsonElement fieldInstances)) {
+                foreach (var field in fieldInstances.EnumerateArray()) {
+                    fields[field.GetProperty("__identifier").GetString()] = field.GetProperty("__value");
+                }
+            }
+
+
             switch (type) {
                 case "PlayerStart":
                     CurrentLevel.PlayerStart = new Vector2(x, y);

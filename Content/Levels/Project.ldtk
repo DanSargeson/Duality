@@ -1585,7 +1585,7 @@
 					"max": null,
 					"regex": null,
 					"acceptFileTypes": null,
-					"defaultOverride": { "id": "V_Float", "params": [0.3] },
+					"defaultOverride": { "id": "V_Float", "params": [0.7] },
 					"textLanguageMode": null,
 					"symmetricalRef": false,
 					"autoChainRef": true,
@@ -2357,7 +2357,7 @@
 							"defUid": 58,
 							"px": [392,360],
 							"fieldInstances": [
-								{ "__identifier": "Range", "__type": "Float", "__value": 0.3, "__tile": null, "defUid": 59, "realEditorValues": [] },
+								{ "__identifier": "Range", "__type": "Float", "__value": 0.7, "__tile": null, "defUid": 59, "realEditorValues": [] },
 								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 0.5, "__tile": null, "defUid": 60, "realEditorValues": [] },
 								{ "__identifier": "Point", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 61, "realEditorValues": [] },
 								{ "__identifier": "EnemyBehaviour", "__type": "LocalEnum.EnemyBehaviour", "__value": "Hunter", "__tile": null, "defUid": 62, "realEditorValues": [] },

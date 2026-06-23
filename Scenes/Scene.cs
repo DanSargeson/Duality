@@ -1,8 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
+using System;
 
 namespace Duality.Scenes
 {
-    public abstract class Scene
+    public abstract class Scene : IDisposable
     {
         protected Game1 Game;
 
@@ -14,5 +15,10 @@ namespace Duality.Scenes
         public abstract void LoadContent();
         public abstract void Update(GameTime gameTime);
         public abstract void Draw(GameTime gameTime);
+        public abstract void Unload();
+
+        public virtual void Dispose() {
+            Unload();
+        }
     }
 }

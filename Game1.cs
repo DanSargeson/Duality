@@ -30,6 +30,7 @@ namespace Duality
         }
 
         public void ChangeScene(Scene newScene) {
+            _currentScene?.Dispose();
             _currentScene = newScene;
             _currentScene.Initialize();
             _currentScene.LoadContent();

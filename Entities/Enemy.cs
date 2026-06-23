@@ -33,7 +33,7 @@ namespace Duality.Entities
         public void Update(GameTime gameTime, Player targetPlayer, float currentFrequency) {
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            if (base.GetPresence(currentFrequency) > 0f) {
+            if (base.GetPresence(currentFrequency) > 0.5f) {
                 _wakeTimer += deltaTime;
                 if (_wakeTimer > WakeDelay) _wakeTimer = WakeDelay;
             }
@@ -42,8 +42,6 @@ namespace Duality.Entities
                 _wakeTimer -= deltaTime * 2f;
                 if (_wakeTimer < 0f) _wakeTimer = 0f;
             }
-
-
 
             if (Behaviour == EnemyBehaviour.Hunter) {
                 // Hunters only chase if they exist enough to be dangerous

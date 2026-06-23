@@ -29,6 +29,10 @@ namespace Duality.Rendering
             _renderTarget = new RenderTarget2D(_graphicsDevice, VirtualWidth, VirtualHeight);
         }
 
+        public void Unload() {
+            _renderTarget?.Dispose();
+        }
+
         // MODIFIED: We pass in the PolarityManager instead of just the float
         public void Draw(GameTime gameTime, Mechanics.PolarityManager polarityManager, Data.Level level, Entities.Player player, Camera camera) {
             float currentFrequency = polarityManager.CurrentFrequency;

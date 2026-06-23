@@ -10,6 +10,8 @@ namespace Duality.Scenes
         public override void Initialize() { }
         public override void LoadContent() { }
 
+        public override void Unload() { }
+
         public override void Update(GameTime gameTime) {
             // Enter to start, Escape to quit
             if (Game._inputManager.WasActionPressed(Keys.Enter))
