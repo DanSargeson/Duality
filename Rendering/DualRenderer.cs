@@ -4,6 +4,7 @@ using Duality.Mechanics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.Text;
 
 namespace Duality.Rendering
 {
@@ -33,7 +34,75 @@ namespace Duality.Rendering
             _renderTarget?.Dispose();
         }
 
-        // MODIFIED: We pass in the PolarityManager instead of just the float
+
+        public void DrawDocumentOverlay(string documentText) {
+            // We start a new batch. 
+            // IMPORTANT: This must be called BEFORE the final "DRAW TO SCREEN" block where the render target is cleared.
+            _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
+
+            // 1. Dim the gameplay in the background
+            _spriteBatch.Draw(_pixel, new Rectangle(0, 0, VirtualWidth, VirtualHeight), Color.Black * 0.8f);
+
+            // 2. Draw the document background (Brutalist Terminal Aesthetic)
+            int docWidth = 600;
+            int docHeight = 400;
+            Rectangle docRect = new Rectangle(
+                (VirtualWidth - docWidth) / 2,
+                (VirtualHeight - docHeight) / 2,
+                docWidth,
+                docHeight
+            );
+
+            // Dark terminal background with a slight green border
+            _spriteBatch.Draw(_pixel, docRect, new Color(5, 10, 5));
+            _spriteBatch.Draw(_pixel, new Rectangle(docRect.X, docRect.Y, docRect.Width, 2), Color.DarkGreen);
+            _spriteBatch.Draw(_pixel, new Rectangle(docRect.X, docRect.Bottom, docRect.Width, 2), Color.DarkGreen);
+
+            // 3. Wrap and draw the text
+            string wrappedText = WrapText(_font, documentText, docWidth - 40);
+            _spriteBatch.DrawString(_font, wrappedText, new Vector2(docRect.X + 20, docRect.Y + 20), Color.LimeGreen);
+
+            _spriteBatch.End();
+        }
+
+        // Reusable text wrapping system
+        private string WrapText(SpriteFont spriteFont, string text, float maxLineWidth) {
+            if (string.IsNullOrEmpty(text)) return string.Empty;
+
+            // 1. Normalize line endings. 
+            // This catches both manual "\n" typing and LDtk's 'Enter' key presses.
+            text = text.Replace("\\n", "\n").Replace("\r\n", "\n");
+
+            // 2. Split into distinct paragraphs FIRST
+            string[] paragraphs = text.Split('\n');
+            StringBuilder sb = new StringBuilder();
+            float spaceWidth = spriteFont.MeasureString(" ").X;
+
+            foreach (string paragraph in paragraphs) {
+                string[] words = paragraph.Split(' ');
+                float lineWidth = 0f; // Reset line width at the start of every paragraph
+
+                foreach (string word in words) {
+                    Vector2 size = spriteFont.MeasureString(word);
+
+                    if (lineWidth + size.X < maxLineWidth) {
+                        sb.Append(word + " ");
+                        lineWidth += size.X + spaceWidth;
+                    }
+                    else {
+                        sb.Append("\n" + word + " ");
+                        lineWidth = size.X + spaceWidth;
+                    }
+                }
+                sb.Append("\n"); // Add the paragraph break back in
+            }
+
+            // Clean up the trailing whitespace and newlines
+            return sb.ToString().TrimEnd('\n', ' ');
+        }
+
+
+
         public void Draw(GameTime gameTime, Mechanics.PolarityManager polarityManager, Data.Level level, Entities.Player player, Camera camera) {
             float currentFrequency = polarityManager.CurrentFrequency;
 
@@ -77,17 +146,11 @@ namespace Duality.Rendering
                 _spriteBatch.Draw(_pixel, level.ExitZone, Color.Gold * pulse);
             }
 
-            // Render Clues (Decals)
-            foreach (var decal in level.Decals) {
-                float presence = decal.GetPresence(currentFrequency);
-                if (presence <= 0f) continue;
-                _spriteBatch.DrawString(_font, decal.Text, decal.Position, decal.BaseColor * presence);
-            }
-
             // Render Physical Blocks
             foreach (var obj in level.EnvironmentObjects) drawBlock(obj, obj.Bounds);
             foreach (var interactable in level.Interactables) drawBlock(interactable, interactable.Bounds);
             foreach (var enemy in level.Enemies) drawBlock(enemy, enemy.Bounds);
+            foreach (var document in level.Documents) drawBlock(document, document.Bounds);
 
             // Render Player
             Color playerColor = Color.Lerp(Color.LimeGreen, Color.White, currentFrequency);
@@ -97,6 +160,18 @@ namespace Duality.Rendering
                 _spriteBatch.Draw(_pixel, ghostBounds, Color.Gray * (0.3f * totalStress));
             }
             _spriteBatch.Draw(_pixel, player.Bounds, playerColor);
+
+            // Render Clues (Decals)
+            foreach (var decal in level.Decals) {
+                float presence = decal.GetPresence(currentFrequency);
+                if (presence <= 0f) continue;
+
+                // Grab the pre-calculated string for our current frequency distance
+                string textToDraw = decal.GetCurrentText(currentFrequency);
+
+                _spriteBatch.DrawString(_font, textToDraw, decal.Position, decal.BaseColor * presence);
+            }
+
 
             _spriteBatch.End();
 
@@ -139,8 +214,9 @@ namespace Duality.Rendering
 
                 _spriteBatch.End();
             }
+        }
 
-
+        public void PresentToScreen() {
             // --- DRAW TO SCREEN ---
             _graphicsDevice.SetRenderTarget(null);
             _graphicsDevice.Clear(Color.Black);

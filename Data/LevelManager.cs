@@ -20,6 +20,7 @@ namespace Duality.Data
                 Enemies = new List<Enemy>(),
                 Decals = new List<Decal>(),
                 Interactables = new List<InteractableObject>(),
+                Documents = new List<DocumentObject>()
             };
 
             // Parse the LDtk JSON dynamically
@@ -115,6 +116,15 @@ namespace Duality.Data
                         GetFloatField(entity, "AnchorFrequency"),
                         waypoints) { Range = GetFloatField(entity, "Range"), Behaviour = behaviour, WakeDelay = GetFloatField(entity, "WakeDelay" )}
                     );
+                    break;
+                case "Document":
+                    CurrentLevel.Documents.Add(new DocumentObject(
+                        bounds,
+                        ParseHex(GetStringField(entity, "ColourHex")),
+                        GetFloatField(entity, "AnchorFrequency"),
+                        GetFloatField(entity, "Range"),
+                        GetStringField(entity, "TextContent") // The multi-line LDtk field
+                    ));
                     break;
                 case "Decal":
                     CurrentLevel.Decals.Add(new Decal(

@@ -12,6 +12,8 @@ namespace Duality.Data
         public string NextLevelPath { get; set; }
         public Rectangle ExitZone { get; set; }
 
+        public List<DocumentObject> Documents { get; set; } = new List<DocumentObject>();
+
         public List<EnvironmentObject> EnvironmentObjects { get; set; } = new List<EnvironmentObject>();
         public List<Enemy> Enemies { get; set; } = new List<Enemy>();
         public List<InteractableObject> Interactables { get; set; } = new List<InteractableObject>();

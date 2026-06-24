@@ -7,6 +7,13 @@ using Duality.Audio;
 
 namespace Duality.Scenes
 {
+    public enum GameplayState
+    {
+        Active,
+        ReadingDocument,
+        Paused // Ready for future use
+    }
+
     public class GameplayScene : Scene
     {
         private PolarityManager _polarityManager;
@@ -17,6 +24,8 @@ namespace Duality.Scenes
         private string _ldtkFilePath;
         private string _levelName;
         private AudioManager _audioManager;
+        private GameplayState _currentState = GameplayState.Active;
+        private string _activeDocumentText = string.Empty;
 
         public GameplayScene(Game1 game, string ldtkFilepath, string levelName) : base(game) {
             _ldtkFilePath = ldtkFilepath;
@@ -50,6 +59,20 @@ namespace Duality.Scenes
                 return;
             }
 
+            switch (_currentState) {
+                case GameplayState.Active:
+                    UpdateActiveState(gameTime);
+                    break;
+                case GameplayState.ReadingDocument:
+                    UpdateReadingState(gameTime);
+                    break;
+            }
+
+            
+        }
+
+        private void UpdateActiveState(GameTime gameTime) {
+
             _polarityManager.Update(gameTime, Game._inputManager.IsShiftingToInsight, Game._inputManager.IsShiftingToDensity);
             _audioManager.Update(_polarityManager.CurrentFrequency, _polarityManager.TotalStress);
 
@@ -60,7 +83,20 @@ namespace Duality.Scenes
                 enemy.Update(gameTime, _player, _polarityManager.CurrentFrequency);
             }
 
+            //foreach(var decal in currentLevel.Decals) {
+            //    decal.Update(gameTime, _polarityManager.CurrentFrequency);
+            //}
+
             if (Game._inputManager.IsInteractPressed) {
+                // 1. Check for Documents First
+                foreach (var document in currentLevel.Documents) { // Assuming you create a Documents list in Level.cs
+                    if (document.InteractionArea.Intersects(_player.Bounds)) {
+                        _activeDocumentText = document.TextContent; // Grab the text parsed from LDtk
+                        _currentState = GameplayState.ReadingDocument;
+                        return; // Halt further updates this frame
+                    }
+                }
+                // 2. Standard Interactables (Doors, etc.)
                 foreach (var interactable in currentLevel.Interactables) {
                     if (interactable.IsClosed && interactable.InteractionArea.Intersects(_player.Bounds)) {
                         interactable.IsClosed = false;
@@ -80,6 +116,16 @@ namespace Duality.Scenes
                 else
                     Game.ChangeScene(new MainMenuScene(Game)); // Back to menu if game is over
             }
+
+        }
+
+
+        private void UpdateReadingState(GameTime gameTime) {
+            // If the player presses Interact or a specific 'Close' button
+            if (Game._inputManager.IsInteractPressed /* || Game._inputManager.IsCancelPressed */) {
+                _activeDocumentText = string.Empty;
+                _currentState = GameplayState.Active;
+            }
         }
 
         public override void Unload() {
@@ -89,6 +135,11 @@ namespace Duality.Scenes
 
         public override void Draw(GameTime gameTime) {
             _renderer.Draw(gameTime, _polarityManager, _levelManager.CurrentLevel, _player, _camera);
+            if (_currentState == GameplayState.ReadingDocument) {
+                _renderer.DrawDocumentOverlay(_activeDocumentText);
+            }
+
+            _renderer.PresentToScreen();
         }
     }
 }
