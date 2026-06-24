@@ -13,12 +13,20 @@ namespace Duality.Mechanics
         public float Strain { get; private set; } = 0.0f; // 0.0 to 1.0
         public bool IsBurntOut { get; private set; } = false;
 
+        public float TotalStress {
+            get {
+                float baseTension = (float)System.Math.Pow(CurrentFrequency, 3);
+                return System.Math.Max(baseTension, Strain) * CurrentFrequency;
+            }
+        }
+
         // Configuration for future upgrades
         public float MaxInsightTime { get; set; } = 3.0f; // Seconds before overload
         public float RecoveryTime { get; set; } = 4.0f;   // Seconds to recover from burnout
 
         // Threshold at which Strain starts building
         private const float StrainThreshold = 0.8f;
+
 
         public void Update(GameTime gameTime, bool shiftingToInsight, bool shiftingToDensity) {
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;

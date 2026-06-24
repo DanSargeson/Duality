@@ -3,6 +3,7 @@ using Duality.Entities;
 using Duality.Mechanics;
 using Duality.Rendering;
 using Duality.Data;
+using Duality.Audio;
 
 namespace Duality.Scenes
 {
@@ -15,6 +16,7 @@ namespace Duality.Scenes
         private Player _player;
         private string _ldtkFilePath;
         private string _levelName;
+        private AudioManager _audioManager;
 
         public GameplayScene(Game1 game, string ldtkFilepath, string levelName) : base(game) {
             _ldtkFilePath = ldtkFilepath;
@@ -31,11 +33,14 @@ namespace Duality.Scenes
                 LastSafePosition = _levelManager.CurrentLevel.PlayerStart,
                 StartPosition = _levelManager.CurrentLevel.PlayerStart
             };
+
+            _audioManager = new AudioManager();
         }
 
         public override void LoadContent() {
             _renderer = new DualRenderer(Game.GraphicsDevice, Game._font);
             _camera = new Camera(_renderer.VirtualWidth, _renderer.VirtualHeight);
+            _audioManager.LoadContent(Game.Content);
         }
 
         public override void Update(GameTime gameTime) {
@@ -46,6 +51,7 @@ namespace Duality.Scenes
             }
 
             _polarityManager.Update(gameTime, Game._inputManager.IsShiftingToInsight, Game._inputManager.IsShiftingToDensity);
+            _audioManager.Update(_polarityManager.CurrentFrequency, _polarityManager.TotalStress);
 
             var currentLevel = _levelManager.CurrentLevel;
 
@@ -78,6 +84,7 @@ namespace Duality.Scenes
 
         public override void Unload() {
             _renderer?.Unload(); // Explicitly clear the RenderTarget2D from VRAM
+            _audioManager.Unload(); // Stop and dispose audio instances
         }
 
         public override void Draw(GameTime gameTime) {

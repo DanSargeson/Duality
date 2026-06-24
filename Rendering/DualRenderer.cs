@@ -40,7 +40,7 @@ namespace Duality.Rendering
             // 1. Calculate Unified Stress
             // Frequency builds base tension. Strain builds the violent peak before burnout.
             float baseTension = (float)Math.Pow(currentFrequency, 3);
-            float totalStress = Math.Max(baseTension, polarityManager.Strain) * currentFrequency;
+            float totalStress = polarityManager.TotalStress;
 
             Color bgColor = Color.Lerp(new Color(20, 20, 20), Color.White, currentFrequency);
 
