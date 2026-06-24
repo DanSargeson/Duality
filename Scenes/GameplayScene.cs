@@ -26,6 +26,7 @@ namespace Duality.Scenes
         private AudioManager _audioManager;
         private GameplayState _currentState = GameplayState.Active;
         private string _activeDocumentText = string.Empty;
+        private BlastEffect _activeBlast;
 
         public GameplayScene(Game1 game, string ldtkFilepath, string levelName) : base(game) {
             _ldtkFilePath = ldtkFilepath;
@@ -104,8 +105,10 @@ namespace Duality.Scenes
 
 
             if (Game._inputManager.IsDischargePressed && !_polarityManager.IsBurntOut && _polarityManager.CurrentFrequency >= 0.8f) { //TODO MAGIC NUMBER -  REMOVE/MOVE
-                float blastRadius = 250f;       //TODO MAGIC NUMBER -  REMOVE/MOVE
+                float blastRadius = 150f;       //TODO MAGIC NUMBER -  REMOVE/MOVE
                 Vector2 playerCenter = _player.Bounds.Center.ToVector2();
+
+                _activeBlast = new BlastEffect(playerCenter, blastRadius);
 
                 for (int i = currentLevel.Enemies.Count - 1; i >= 0; i--) {
                     var enemy = currentLevel.Enemies[i];
@@ -126,7 +129,9 @@ namespace Duality.Scenes
                 // _audioManager.PlaySound("ringing"); // Hook up your single-shot audio here
             }
 
+
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            _activeBlast?.Update(deltaTime);
             _camera.Follow(_player.Bounds.Center.ToVector2(), deltaTime, currentLevel.Bounds);
 
             // Level Transition Logic
@@ -154,7 +159,7 @@ namespace Duality.Scenes
         }
 
         public override void Draw(GameTime gameTime) {
-            _renderer.Draw(gameTime, _polarityManager, _levelManager.CurrentLevel, _player, _camera);
+            _renderer.Draw(gameTime, _polarityManager, _levelManager.CurrentLevel, _player, _camera, _activeBlast);
             if (_currentState == GameplayState.ReadingDocument) {
                 _renderer.DrawDocumentOverlay(_activeDocumentText);
             }

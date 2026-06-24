@@ -16,6 +16,7 @@ namespace Duality.Rendering
         private Random _random;
         private SpriteFont _font;
         private RenderTarget2D _renderTarget;
+        private Texture2D _ringTexture;
 
         public int VirtualWidth { get; private set; } = 800;
         public int VirtualHeight { get; private set; } = 600;
@@ -28,10 +29,41 @@ namespace Duality.Rendering
             _pixel.SetData(new[] { Color.White });
             _random = new Random();
             _renderTarget = new RenderTarget2D(_graphicsDevice, VirtualWidth, VirtualHeight);
+            _ringTexture = GenerateRingTexture(100); // 100 pixel base radius
         }
 
         public void Unload() {
             _renderTarget?.Dispose();
+            _ringTexture?.Dispose();
+        }
+
+
+        private Texture2D GenerateRingTexture(int radius) {
+            int diameter = radius * 2;
+            Texture2D texture = new Texture2D(_graphicsDevice, diameter, diameter);
+            Color[] colorData = new Color[diameter * diameter];
+
+            float center = radius;
+            float thickness = 4f; // 4 pixels thick
+
+            for (int y = 0; y < diameter; y++) {
+                for (int x = 0; x < diameter; x++) {
+                    float distance = Vector2.Distance(new Vector2(center, center), new Vector2(x, y));
+
+                    // If the pixel falls on the edge of the circle, color it
+                    if (distance <= radius && distance >= radius - thickness) {
+                        // Soften the edge slightly for a glow effect
+                        float alpha = 1f - Math.Abs(distance - (radius - thickness / 2)) / (thickness / 2);
+                        colorData[y * diameter + x] = Color.White * alpha;
+                    }
+                    else {
+                        colorData[y * diameter + x] = Color.Transparent;
+                    }
+                }
+            }
+
+            texture.SetData(colorData);
+            return texture;
         }
 
 
@@ -103,7 +135,7 @@ namespace Duality.Rendering
 
 
 
-        public void Draw(GameTime gameTime, Mechanics.PolarityManager polarityManager, Data.Level level, Entities.Player player, Camera camera) {
+        public void Draw(GameTime gameTime, PolarityManager polarityManager, Level level, Player player, Camera camera, BlastEffect blast = null) {
             float currentFrequency = polarityManager.CurrentFrequency;
 
             // 1. Calculate Unified Stress
@@ -160,6 +192,28 @@ namespace Duality.Rendering
                 _spriteBatch.Draw(_pixel, ghostBounds, Color.Gray * (0.3f * totalStress));
             }
             _spriteBatch.Draw(_pixel, player.Bounds, playerColor);
+
+            // Draw the expanding Blast Radius
+            if (blast != null && blast.IsActive) {
+                // The origin point is the exact center of our generated texture
+                Vector2 origin = new Vector2(_ringTexture.Width / 2f, _ringTexture.Height / 2f);
+
+                // Scale the base 100px texture up to whatever the current radius of the blast is
+                float scale = blast.CurrentRadius / (_ringTexture.Width / 2f);
+
+                // Draw it. The color scales its alpha value to fade out.
+                _spriteBatch.Draw(
+                    _ringTexture,
+                    blast.Position,
+                    null,
+                    Color.Cyan * blast.Alpha, // Cyan provides good contrast against the Red/Green world
+                    0f,
+                    origin,
+                    scale,
+                    SpriteEffects.None,
+                    0f
+                );
+            }
 
             // Render Clues (Decals)
             foreach (var decal in level.Decals) {

@@ -18,9 +18,11 @@ namespace Duality
         public InputManager _inputManager { get; private set; }
         public SpriteFont _font { get; private set; }
         public Scene _currentScene { get; private set; }
+        public GameSession Session { get; private set; }
+
 
         // State
-       // private Player _player;
+        // private Player _player;
 
         public Game1() {
             _graphics = new GraphicsDeviceManager(this);
@@ -38,6 +40,7 @@ namespace Duality
 
         protected override void Initialize() {
             _inputManager = new InputManager();
+            Session = new GameSession();
             base.Initialize();
         }
 

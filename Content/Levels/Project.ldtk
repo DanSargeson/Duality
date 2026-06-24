@@ -11,7 +11,7 @@
 	"iid": "8e7df970-48b0-11f1-91ed-b50c71501dc8",
 	"jsonVersion": "1.5.3",
 	"appBuildId": 473703,
-	"nextUid": 79,
+	"nextUid": 80,
 	"identifierStyle": "Capitalize",
 	"toc": [
 		{
@@ -41,7 +41,19 @@
 					"levelIid": "0f0768b0-48b0-11f1-8504-95a673b4eb79",
 					"layerIid": "0f07dde0-48b0-11f1-8504-8d4d9e0c921e",
 					"entityIid": "3b33d9a0-48b0-11f1-8504-d96dea7915d9"
-				}, "worldX": 1616, "worldY": 384, "widPx": 336, "heiPx": 80, "fields" : {} }
+				}, "worldX": 1616, "worldY": 384, "widPx": 336, "heiPx": 80, "fields" : {} },
+				{ "iids": {
+					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
+					"levelIid": "0f0768b0-48b0-11f1-8504-95a673b4eb79",
+					"layerIid": "0f07dde0-48b0-11f1-8504-8d4d9e0c921e",
+					"entityIid": "838a70b0-6fc0-11f1-adf8-35ac101bdb6d"
+				}, "worldX": 1552, "worldY": 208, "widPx": 320, "heiPx": 96, "fields" : {} },
+				{ "iids": {
+					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
+					"levelIid": "9945f280-6fc0-11f1-adf8-fbc91f0dff99",
+					"layerIid": "99461990-6fc0-11f1-adf8-01dcff118c75",
+					"entityIid": "37296950-6fc0-11f1-adf8-6590dd4d8d7a"
+				}, "worldX": 384, "worldY": 1184, "widPx": 272, "heiPx": 112, "fields" : {} }
 			]
 		},
 		{
@@ -83,38 +95,92 @@
 					"levelIid": "0f0768b0-48b0-11f1-8504-95a673b4eb79",
 					"layerIid": "0f07dde0-48b0-11f1-8504-8d4d9e0c921e",
 					"entityIid": "589d73c0-48b0-11f1-8504-d52bf801eb11"
-				}, "worldX": 1664, "worldY": 640, "widPx": 16, "heiPx": 112, "fields" : {} }
+				}, "worldX": 1664, "worldY": 640, "widPx": 16, "heiPx": 128, "fields" : {} },
+				{ "iids": {
+					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
+					"levelIid": "9945f280-6fc0-11f1-adf8-fbc91f0dff99",
+					"layerIid": "99461990-6fc0-11f1-adf8-01dcff118c75",
+					"entityIid": "2f816b80-6fc0-11f1-adf8-6beb4fc88e53"
+				}, "worldX": 384, "worldY": 688, "widPx": 288, "heiPx": 112, "fields" : {} }
 			]
 		},
 		{
 			"identifier": "Hazard",
 			"instances": [],
-			"instancesData": [{ "iids": {
-				"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
-				"levelIid": "8e7f31f0-48b0-11f1-91ed-912f22bce87f",
-				"layerIid": "5bccc310-48b0-11f1-91ed-9daa42287080",
-				"entityIid": "cf8f1760-48b0-11f1-91ed-638d4b7f82a2"
-			}, "worldX": 144, "worldY": 0, "widPx": 96, "heiPx": 608, "fields" : {} }]
+			"instancesData": [
+				{ "iids": {
+					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
+					"levelIid": "8e7f31f0-48b0-11f1-91ed-912f22bce87f",
+					"layerIid": "5bccc310-48b0-11f1-91ed-9daa42287080",
+					"entityIid": "cf8f1760-48b0-11f1-91ed-638d4b7f82a2"
+				}, "worldX": 144, "worldY": 0, "widPx": 96, "heiPx": 608, "fields" : {} },
+				{ "iids": {
+					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
+					"levelIid": "9945f280-6fc0-11f1-adf8-fbc91f0dff99",
+					"layerIid": "99461990-6fc0-11f1-adf8-01dcff118c75",
+					"entityIid": "e74dfdb0-6fc0-11f1-adf8-7945b377d935"
+				}, "worldX": 352, "worldY": 800, "widPx": 800, "heiPx": 384, "fields" : {} },
+				{ "iids": {
+					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
+					"levelIid": "9945f280-6fc0-11f1-adf8-fbc91f0dff99",
+					"layerIid": "99461990-6fc0-11f1-adf8-01dcff118c75",
+					"entityIid": "1c4149f0-6fc0-11f1-adf8-bb81a07a5099"
+				}, "worldX": 352, "worldY": 689, "widPx": 32, "heiPx": 128, "fields" : {} },
+				{ "iids": {
+					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
+					"levelIid": "9945f280-6fc0-11f1-adf8-fbc91f0dff99",
+					"layerIid": "99461990-6fc0-11f1-adf8-01dcff118c75",
+					"entityIid": "2355e160-6fc0-11f1-adf8-595fea2056c6"
+				}, "worldX": 352, "worldY": 1168, "widPx": 32, "heiPx": 128, "fields" : {} }
+			]
 		},
 		{
 			"identifier": "Platform",
 			"instances": [],
-			"instancesData": [{ "iids": {
-				"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
-				"levelIid": "8e7f31f0-48b0-11f1-91ed-912f22bce87f",
-				"layerIid": "5bccc310-48b0-11f1-91ed-9daa42287080",
-				"entityIid": "e72bdc50-48b0-11f1-91ed-714e4f6d07f5"
-			}, "worldX": 144, "worldY": 336, "widPx": 96, "heiPx": 16, "fields" : {} }]
+			"instancesData": [
+				{ "iids": {
+					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
+					"levelIid": "8e7f31f0-48b0-11f1-91ed-912f22bce87f",
+					"layerIid": "5bccc310-48b0-11f1-91ed-9daa42287080",
+					"entityIid": "e72bdc50-48b0-11f1-91ed-714e4f6d07f5"
+				}, "worldX": 144, "worldY": 336, "widPx": 96, "heiPx": 16, "fields" : {} },
+				{ "iids": {
+					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
+					"levelIid": "9945f280-6fc0-11f1-adf8-fbc91f0dff99",
+					"layerIid": "99461990-6fc0-11f1-adf8-01dcff118c75",
+					"entityIid": "f684a4f0-6fc0-11f1-adf8-83ee5ff0b4d2"
+				}, "worldX": 352, "worldY": 928, "widPx": 416, "heiPx": 96, "fields" : {} },
+				{ "iids": {
+					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
+					"levelIid": "9945f280-6fc0-11f1-adf8-fbc91f0dff99",
+					"layerIid": "99461990-6fc0-11f1-adf8-01dcff118c75",
+					"entityIid": "0ab67980-6fc0-11f1-adf8-83bad7ee66fc"
+				}, "worldX": 656, "worldY": 928, "widPx": 496, "heiPx": 32, "fields" : {} }
+			]
 		},
 		{
 			"identifier": "ExitZone",
 			"instances": [],
-			"instancesData": [{ "iids": {
-				"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
-				"levelIid": "8e7f31f0-48b0-11f1-91ed-912f22bce87f",
-				"layerIid": "5bccc310-48b0-11f1-91ed-9daa42287080",
-				"entityIid": "1af33210-48b0-11f1-b8d6-0734c29b6675"
-			}, "worldX": 752, "worldY": 416, "widPx": 48, "heiPx": 192, "fields" : {} }]
+			"instancesData": [
+				{ "iids": {
+					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
+					"levelIid": "8e7f31f0-48b0-11f1-91ed-912f22bce87f",
+					"layerIid": "5bccc310-48b0-11f1-91ed-9daa42287080",
+					"entityIid": "1af33210-48b0-11f1-b8d6-0734c29b6675"
+				}, "worldX": 752, "worldY": 416, "widPx": 48, "heiPx": 192, "fields" : {} },
+				{ "iids": {
+					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
+					"levelIid": "0f0768b0-48b0-11f1-8504-95a673b4eb79",
+					"layerIid": "0f07dde0-48b0-11f1-8504-8d4d9e0c921e",
+					"entityIid": "6ce419b0-6fc0-11f1-adf8-f77f6844516c"
+				}, "worldX": 1473, "worldY": 737, "widPx": 160, "heiPx": 32, "fields" : {} },
+				{ "iids": {
+					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
+					"levelIid": "9945f280-6fc0-11f1-adf8-fbc91f0dff99",
+					"layerIid": "99461990-6fc0-11f1-adf8-01dcff118c75",
+					"entityIid": "76bac1e0-6fc0-11f1-adf8-352ced3f37bd"
+				}, "worldX": 128, "worldY": 896, "widPx": 16, "heiPx": 208, "fields" : {} }
+			]
 		},
 		{
 			"identifier": "PatrolEnemy",
@@ -131,28 +197,56 @@
 					"levelIid": "0f0768b0-48b0-11f1-8504-95a673b4eb79",
 					"layerIid": "0f07dde0-48b0-11f1-8504-8d4d9e0c921e",
 					"entityIid": "5f205280-48b0-11f1-8504-b12ab0af8598"
-				}, "worldX": 2216, "worldY": 712, "widPx": 32, "heiPx": 32, "fields" : {} }
+				}, "worldX": 2216, "worldY": 712, "widPx": 32, "heiPx": 32, "fields" : {} },
+				{ "iids": {
+					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
+					"levelIid": "9945f280-6fc0-11f1-adf8-fbc91f0dff99",
+					"layerIid": "99461990-6fc0-11f1-adf8-01dcff118c75",
+					"entityIid": "68c462d0-6fc0-11f1-adf8-897f8207ec6e"
+				}, "worldX": 1176, "worldY": 1208, "widPx": 32, "heiPx": 32, "fields" : {} }
 			]
 		},
 		{
 			"identifier": "HunterEnemy",
 			"instances": [],
-			"instancesData": [{ "iids": {
-				"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
-				"levelIid": "0f0768b0-48b0-11f1-8504-95a673b4eb79",
-				"layerIid": "0f07dde0-48b0-11f1-8504-8d4d9e0c921e",
-				"entityIid": "9029da10-48b0-11f1-9be4-7b62cdaa6d1e"
-			}, "worldX": 1496, "worldY": 728, "widPx": 32, "heiPx": 32, "fields" : {} }]
+			"instancesData": [
+				{ "iids": {
+					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
+					"levelIid": "0f0768b0-48b0-11f1-8504-95a673b4eb79",
+					"layerIid": "0f07dde0-48b0-11f1-8504-8d4d9e0c921e",
+					"entityIid": "9029da10-48b0-11f1-9be4-7b62cdaa6d1e"
+				}, "worldX": 1496, "worldY": 728, "widPx": 32, "heiPx": 32, "fields" : {} },
+				{ "iids": {
+					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
+					"levelIid": "9945f280-6fc0-11f1-adf8-fbc91f0dff99",
+					"layerIid": "99461990-6fc0-11f1-adf8-01dcff118c75",
+					"entityIid": "46003d50-6fc0-11f1-adf8-e32035274242"
+				}, "worldX": 216, "worldY": 776, "widPx": 32, "heiPx": 32, "fields" : {} }
+			]
 		},
 		{
 			"identifier": "StalkerEnemy",
 			"instances": [],
-			"instancesData": [{ "iids": {
-				"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
-				"levelIid": "0f0768b0-48b0-11f1-8504-95a673b4eb79",
-				"layerIid": "0f07dde0-48b0-11f1-8504-8d4d9e0c921e",
-				"entityIid": "d6ce9190-48b0-11f1-9be4-317bffda7617"
-			}, "worldX": 1864, "worldY": 520, "widPx": 32, "heiPx": 32, "fields" : {} }]
+			"instancesData": [
+				{ "iids": {
+					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
+					"levelIid": "0f0768b0-48b0-11f1-8504-95a673b4eb79",
+					"layerIid": "0f07dde0-48b0-11f1-8504-8d4d9e0c921e",
+					"entityIid": "d6ce9190-48b0-11f1-9be4-317bffda7617"
+				}, "worldX": 1864, "worldY": 520, "widPx": 32, "heiPx": 32, "fields" : {} },
+				{ "iids": {
+					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
+					"levelIid": "9945f280-6fc0-11f1-adf8-fbc91f0dff99",
+					"layerIid": "99461990-6fc0-11f1-adf8-01dcff118c75",
+					"entityIid": "62e27f00-6fc0-11f1-adf8-e5679f1ecc14"
+				}, "worldX": 536, "worldY": 1240, "widPx": 32, "heiPx": 32, "fields" : {} },
+				{ "iids": {
+					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
+					"levelIid": "9945f280-6fc0-11f1-adf8-fbc91f0dff99",
+					"layerIid": "99461990-6fc0-11f1-adf8-01dcff118c75",
+					"entityIid": "64f420f0-6fc0-11f1-adf8-93b425b9a9a1"
+				}, "worldX": 504, "worldY": 744, "widPx": 32, "heiPx": 32, "fields" : {} }
+			]
 		}
 	],
 	"worldLayout": "Free",
@@ -2661,7 +2755,7 @@
 							"__smartColor": "#4682B4",
 							"iid": "589d73c0-48b0-11f1-8504-d52bf801eb11",
 							"width": 16,
-							"height": 112,
+							"height": 128,
 							"defUid": 5,
 							"px": [192,480],
 							"fieldInstances": [
@@ -2783,6 +2877,437 @@
 							],
 							"__worldX": 1864,
 							"__worldY": 520
+						},
+						{
+							"__identifier": "ExitZone",
+							"__grid": [0,36],
+							"__pivot": [0,0],
+							"__tags": ["region"],
+							"__tile": null,
+							"__smartColor": "#FFD700",
+							"iid": "6ce419b0-6fc0-11f1-adf8-f77f6844516c",
+							"width": 160,
+							"height": 32,
+							"defUid": 38,
+							"px": [1,577],
+							"fieldInstances": [
+								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#FFD700", "__tile": null, "defUid": 42, "realEditorValues": [] },
+								{ "__identifier": "NextLevel", "__type": "String", "__value": "Level_2", "__tile": null, "defUid": 43, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["Level_2"]
+								}] }
+							],
+							"__worldX": 1473,
+							"__worldY": 737
+						},
+						{
+							"__identifier": "InsightObstacle",
+							"__grid": [5,3],
+							"__pivot": [0,0],
+							"__tags": ["region"],
+							"__tile": null,
+							"__smartColor": "#80EF80",
+							"iid": "838a70b0-6fc0-11f1-adf8-35ac101bdb6d",
+							"width": 320,
+							"height": 96,
+							"defUid": 2,
+							"px": [80,48],
+							"fieldInstances": [
+								{ "__identifier": "Range", "__type": "Float", "__value": 0.4, "__tile": null, "defUid": 8, "realEditorValues": [] },
+								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 1, "__tile": null, "defUid": 9, "realEditorValues": [] },
+								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#80EF80", "__tile": null, "defUid": 10, "realEditorValues": [] },
+								{ "__identifier": "ObjectType", "__type": "String", "__value": "Obstacle", "__tile": null, "defUid": 15, "realEditorValues": [] }
+							],
+							"__worldX": 1552,
+							"__worldY": 208
+						}
+					]
+				}
+			],
+			"__neighbours": []
+		},
+		{
+			"identifier": "Level_2",
+			"iid": "9945f280-6fc0-11f1-adf8-fbc91f0dff99",
+			"uid": 79,
+			"worldX": 128,
+			"worldY": 688,
+			"worldDepth": 0,
+			"pxWid": 1200,
+			"pxHei": 600,
+			"__bgColor": "#696A79",
+			"bgColor": null,
+			"useAutoIdentifier": true,
+			"bgRelPath": null,
+			"bgPos": null,
+			"bgPivotX": 0.5,
+			"bgPivotY": 0.5,
+			"__smartColor": "#ADADB5",
+			"__bgPos": null,
+			"externalRelPath": null,
+			"fieldInstances": [],
+			"layerInstances": [
+				{
+					"__identifier": "Entities",
+					"__type": "Entities",
+					"__cWid": 75,
+					"__cHei": 38,
+					"__gridSize": 16,
+					"__opacity": 1,
+					"__pxTotalOffsetX": 0,
+					"__pxTotalOffsetY": 0,
+					"__tilesetDefUid": null,
+					"__tilesetRelPath": null,
+					"iid": "99461990-6fc0-11f1-adf8-01dcff118c75",
+					"levelId": 79,
+					"layerDefUid": 7,
+					"pxOffsetX": 0,
+					"pxOffsetY": 0,
+					"visible": true,
+					"optionalRules": [],
+					"intGridCsv": [],
+					"autoLayerTiles": [],
+					"seed": 3660676,
+					"overrideTilesetUid": null,
+					"gridTiles": [],
+					"entityInstances": [
+						{
+							"__identifier": "Hazard",
+							"__grid": [14,7],
+							"__pivot": [0,0],
+							"__tags": ["region"],
+							"__tile": null,
+							"__smartColor": "#0A0A0A",
+							"iid": "e74dfdb0-6fc0-11f1-adf8-7945b377d935",
+							"width": 800,
+							"height": 384,
+							"defUid": 17,
+							"px": [224,112],
+							"fieldInstances": [
+								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 0, "__tile": null, "defUid": 18, "realEditorValues": [] },
+								{ "__identifier": "Range", "__type": "Float", "__value": 100, "__tile": null, "defUid": 19, "realEditorValues": [] },
+								{ "__identifier": "ObjectType", "__type": "String", "__value": "Hazard", "__tile": null, "defUid": 20, "realEditorValues": [] },
+								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#0A0A0A", "__tile": null, "defUid": 21, "realEditorValues": [] }
+							],
+							"__worldX": 352,
+							"__worldY": 800
+						},
+						{
+							"__identifier": "Platform",
+							"__grid": [14,15],
+							"__pivot": [0,0],
+							"__tags": ["region"],
+							"__tile": null,
+							"__smartColor": "#FF6984",
+							"iid": "f684a4f0-6fc0-11f1-adf8-83ee5ff0b4d2",
+							"width": 416,
+							"height": 96,
+							"defUid": 23,
+							"px": [224,240],
+							"fieldInstances": [
+								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 0.6, "__tile": null, "defUid": 24, "realEditorValues": [{ "id": "V_Float", "params": [0.6] }] },
+								{ "__identifier": "Range", "__type": "Float", "__value": 0.8, "__tile": null, "defUid": 25, "realEditorValues": [{ "id": "V_Float", "params": [0.8] }] },
+								{ "__identifier": "ObjectType", "__type": "String", "__value": "Platform", "__tile": null, "defUid": 26, "realEditorValues": [] },
+								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#FF6984", "__tile": null, "defUid": 27, "realEditorValues": [] }
+							],
+							"__worldX": 352,
+							"__worldY": 928
+						},
+						{
+							"__identifier": "Platform",
+							"__grid": [33,15],
+							"__pivot": [0,0],
+							"__tags": ["region"],
+							"__tile": null,
+							"__smartColor": "#FF6984",
+							"iid": "0ab67980-6fc0-11f1-adf8-83bad7ee66fc",
+							"width": 496,
+							"height": 32,
+							"defUid": 23,
+							"px": [528,240],
+							"fieldInstances": [
+								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 0, "__tile": null, "defUid": 24, "realEditorValues": [{ "id": "V_Float", "params": [0] }] },
+								{ "__identifier": "Range", "__type": "Float", "__value": 100, "__tile": null, "defUid": 25, "realEditorValues": [{ "id": "V_Float", "params": [100] }] },
+								{ "__identifier": "ObjectType", "__type": "String", "__value": "Platform", "__tile": null, "defUid": 26, "realEditorValues": [] },
+								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#FF6984", "__tile": null, "defUid": 27, "realEditorValues": [] }
+							],
+							"__worldX": 656,
+							"__worldY": 928
+						},
+						{
+							"__identifier": "Hazard",
+							"__grid": [14,0],
+							"__pivot": [0,0],
+							"__tags": ["region"],
+							"__tile": null,
+							"__smartColor": "#0A0A0A",
+							"iid": "1c4149f0-6fc0-11f1-adf8-bb81a07a5099",
+							"width": 32,
+							"height": 128,
+							"defUid": 17,
+							"px": [224,1],
+							"fieldInstances": [
+								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 0, "__tile": null, "defUid": 18, "realEditorValues": [] },
+								{ "__identifier": "Range", "__type": "Float", "__value": 100, "__tile": null, "defUid": 19, "realEditorValues": [] },
+								{ "__identifier": "ObjectType", "__type": "String", "__value": "Hazard", "__tile": null, "defUid": 20, "realEditorValues": [] },
+								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#0A0A0A", "__tile": null, "defUid": 21, "realEditorValues": [] }
+							],
+							"__worldX": 352,
+							"__worldY": 689
+						},
+						{
+							"__identifier": "Hazard",
+							"__grid": [14,30],
+							"__pivot": [0,0],
+							"__tags": ["region"],
+							"__tile": null,
+							"__smartColor": "#0A0A0A",
+							"iid": "2355e160-6fc0-11f1-adf8-595fea2056c6",
+							"width": 32,
+							"height": 128,
+							"defUid": 17,
+							"px": [224,480],
+							"fieldInstances": [
+								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 0, "__tile": null, "defUid": 18, "realEditorValues": [] },
+								{ "__identifier": "Range", "__type": "Float", "__value": 100, "__tile": null, "defUid": 19, "realEditorValues": [] },
+								{ "__identifier": "ObjectType", "__type": "String", "__value": "Hazard", "__tile": null, "defUid": 20, "realEditorValues": [] },
+								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#0A0A0A", "__tile": null, "defUid": 21, "realEditorValues": [] }
+							],
+							"__worldX": 352,
+							"__worldY": 1168
+						},
+						{
+							"__identifier": "DensityObstacle",
+							"__grid": [16,0],
+							"__pivot": [0,0],
+							"__tags": ["region"],
+							"__tile": null,
+							"__smartColor": "#4682B4",
+							"iid": "2f816b80-6fc0-11f1-adf8-6beb4fc88e53",
+							"width": 288,
+							"height": 112,
+							"defUid": 5,
+							"px": [256,0],
+							"fieldInstances": [
+								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 0, "__tile": null, "defUid": 11, "realEditorValues": [] },
+								{ "__identifier": "Range", "__type": "Float", "__value": 0.4, "__tile": null, "defUid": 12, "realEditorValues": [] },
+								{ "__identifier": "ObjectType", "__type": "String", "__value": "Obstacle", "__tile": null, "defUid": 13, "realEditorValues": [] },
+								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#4682B4", "__tile": null, "defUid": 14, "realEditorValues": [] }
+							],
+							"__worldX": 384,
+							"__worldY": 688
+						},
+						{
+							"__identifier": "InsightObstacle",
+							"__grid": [16,31],
+							"__pivot": [0,0],
+							"__tags": ["region"],
+							"__tile": null,
+							"__smartColor": "#80EF80",
+							"iid": "37296950-6fc0-11f1-adf8-6590dd4d8d7a",
+							"width": 272,
+							"height": 112,
+							"defUid": 2,
+							"px": [256,496],
+							"fieldInstances": [
+								{ "__identifier": "Range", "__type": "Float", "__value": 0.4, "__tile": null, "defUid": 8, "realEditorValues": [] },
+								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 1, "__tile": null, "defUid": 9, "realEditorValues": [] },
+								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#80EF80", "__tile": null, "defUid": 10, "realEditorValues": [] },
+								{ "__identifier": "ObjectType", "__type": "String", "__value": "Obstacle", "__tile": null, "defUid": 15, "realEditorValues": [] }
+							],
+							"__worldX": 384,
+							"__worldY": 1184
+						},
+						{
+							"__identifier": "HunterEnemy",
+							"__grid": [5,5],
+							"__pivot": [0.5,0.5],
+							"__tags": ["ENEMIES"],
+							"__tile": null,
+							"__smartColor": "#FF0044",
+							"iid": "46003d50-6fc0-11f1-adf8-e32035274242",
+							"width": 32,
+							"height": 32,
+							"defUid": 52,
+							"px": [88,88],
+							"fieldInstances": [
+								{ "__identifier": "Range", "__type": "Float", "__value": 0.4, "__tile": null, "defUid": 53, "realEditorValues": [] },
+								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 1, "__tile": null, "defUid": 54, "realEditorValues": [] },
+								{ "__identifier": "Point", "__type": "Array<Point>", "__value": [
+									{ "cx": 2, "cy": 35 },
+									{ "cx": 11, "cy": 35 },
+									{ "cx": 12, "cy": 2 },
+									{ "cx": 1, "cy": 2 },
+									{ "cx": 1, "cy": 34 },
+									{ "cx": 10, "cy": 4 },
+									{ "cx": 8, "cy": 32 },
+									{ "cx": 2, "cy": 5 },
+									{ "cx": 11, "cy": 12 },
+									{ "cx": 0, "cy": 24 },
+									{ "cx": 5, "cy": 30 },
+									{ "cx": 5, "cy": 8 }
+								], "__tile": null, "defUid": 55, "realEditorValues": [
+									{
+										"id": "V_String",
+										"params": ["2,35"]
+									},
+									{
+										"id": "V_String",
+										"params": ["11,35"]
+									},
+									{
+										"id": "V_String",
+										"params": ["12,2"]
+									},
+									{
+										"id": "V_String",
+										"params": ["1,2"]
+									},
+									{
+										"id": "V_String",
+										"params": ["1,34"]
+									},
+									{
+										"id": "V_String",
+										"params": ["10,4"]
+									},
+									{
+										"id": "V_String",
+										"params": ["8,32"]
+									},
+									{
+										"id": "V_String",
+										"params": ["2,5"]
+									},
+									{
+										"id": "V_String",
+										"params": ["11,12"]
+									},
+									{
+										"id": "V_String",
+										"params": ["0,24"]
+									},
+									{
+										"id": "V_String",
+										"params": ["5,30"]
+									},
+									{
+										"id": "V_String",
+										"params": ["5,8"]
+									}
+								] },
+								{ "__identifier": "EnemyBehaviour", "__type": "LocalEnum.EnemyBehaviour", "__value": "Hunter", "__tile": null, "defUid": 56, "realEditorValues": [] },
+								{ "__identifier": "WakeDelay", "__type": "Float", "__value": 0, "__tile": null, "defUid": 57, "realEditorValues": [] }
+							],
+							"__worldX": 216,
+							"__worldY": 776
+						},
+						{
+							"__identifier": "StalkerEnemy",
+							"__grid": [25,34],
+							"__pivot": [0.5,0.5],
+							"__tags": ["ENEMIES"],
+							"__tile": null,
+							"__smartColor": "#E84019",
+							"iid": "62e27f00-6fc0-11f1-adf8-e5679f1ecc14",
+							"width": 32,
+							"height": 32,
+							"defUid": 58,
+							"px": [408,552],
+							"fieldInstances": [
+								{ "__identifier": "Range", "__type": "Float", "__value": 0.6, "__tile": null, "defUid": 59, "realEditorValues": [] },
+								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 0.5, "__tile": null, "defUid": 60, "realEditorValues": [] },
+								{ "__identifier": "Point", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 61, "realEditorValues": [] },
+								{ "__identifier": "EnemyBehaviour", "__type": "LocalEnum.EnemyBehaviour", "__value": "Hunter", "__tile": null, "defUid": 62, "realEditorValues": [] },
+								{ "__identifier": "WakeDelay", "__type": "Float", "__value": 3, "__tile": null, "defUid": 63, "realEditorValues": [] }
+							],
+							"__worldX": 536,
+							"__worldY": 1240
+						},
+						{
+							"__identifier": "StalkerEnemy",
+							"__grid": [23,3],
+							"__pivot": [0.5,0.5],
+							"__tags": ["ENEMIES"],
+							"__tile": null,
+							"__smartColor": "#E84019",
+							"iid": "64f420f0-6fc0-11f1-adf8-93b425b9a9a1",
+							"width": 32,
+							"height": 32,
+							"defUid": 58,
+							"px": [376,56],
+							"fieldInstances": [
+								{ "__identifier": "Range", "__type": "Float", "__value": 0.6, "__tile": null, "defUid": 59, "realEditorValues": [] },
+								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 0.5, "__tile": null, "defUid": 60, "realEditorValues": [] },
+								{ "__identifier": "Point", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 61, "realEditorValues": [] },
+								{ "__identifier": "EnemyBehaviour", "__type": "LocalEnum.EnemyBehaviour", "__value": "Hunter", "__tile": null, "defUid": 62, "realEditorValues": [] },
+								{ "__identifier": "WakeDelay", "__type": "Float", "__value": 3, "__tile": null, "defUid": 63, "realEditorValues": [] }
+							],
+							"__worldX": 504,
+							"__worldY": 744
+						},
+						{
+							"__identifier": "PatrolEnemy",
+							"__grid": [65,32],
+							"__pivot": [0.5,0.5],
+							"__tags": ["ENEMIES"],
+							"__tile": null,
+							"__smartColor": "#B40030",
+							"iid": "68c462d0-6fc0-11f1-adf8-897f8207ec6e",
+							"width": 32,
+							"height": 32,
+							"defUid": 4,
+							"px": [1048,520],
+							"fieldInstances": [
+								{ "__identifier": "Range", "__type": "Float", "__value": 0.4, "__tile": null, "defUid": 28, "realEditorValues": [] },
+								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 1, "__tile": null, "defUid": 29, "realEditorValues": [] },
+								{ "__identifier": "Point", "__type": "Array<Point>", "__value": [ { "cx": 65, "cy": 2 }, { "cx": 65, "cy": 36 } ], "__tile": null, "defUid": 31, "realEditorValues": [ {
+									"id": "V_String",
+									"params": ["65,2"]
+								}, {
+									"id": "V_String",
+									"params": ["65,36"]
+								} ] },
+								{ "__identifier": "EnemyBehaviour", "__type": "LocalEnum.EnemyBehaviour", "__value": "Patrol", "__tile": null, "defUid": 34, "realEditorValues": [] },
+								{ "__identifier": "WakeDelay", "__type": "Float", "__value": 0, "__tile": null, "defUid": 45, "realEditorValues": [] }
+							],
+							"__worldX": 1176,
+							"__worldY": 1208
+						},
+						{
+							"__identifier": "ExitZone",
+							"__grid": [0,13],
+							"__pivot": [0,0],
+							"__tags": ["region"],
+							"__tile": null,
+							"__smartColor": "#FFD700",
+							"iid": "76bac1e0-6fc0-11f1-adf8-352ced3f37bd",
+							"width": 16,
+							"height": 208,
+							"defUid": 38,
+							"px": [0,208],
+							"fieldInstances": [
+								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#FFD700", "__tile": null, "defUid": 42, "realEditorValues": [] },
+								{ "__identifier": "NextLevel", "__type": "String", "__value": null, "__tile": null, "defUid": 43, "realEditorValues": [] }
+							],
+							"__worldX": 128,
+							"__worldY": 896
+						},
+						{
+							"__identifier": "PlayerStart",
+							"__grid": [74,16],
+							"__pivot": [0,0],
+							"__tags": [],
+							"__tile": null,
+							"__smartColor": "#EAD4AA",
+							"iid": "7e08dfe0-6fc0-11f1-adf8-29bfca10530c",
+							"width": 16,
+							"height": 16,
+							"defUid": 36,
+							"px": [1184,256],
+							"fieldInstances": [],
+							"__worldX": 1312,
+							"__worldY": 944
 						}
 					]
 				}
