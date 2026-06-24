@@ -19,7 +19,7 @@ namespace Duality.Data
                 EnvironmentObjects = new List<EnvironmentObject>(),
                 Enemies = new List<Enemy>(),
                 Decals = new List<Decal>(),
-                Interactables = new List<InteractableObject>()
+                Interactables = new List<InteractableObject>(),
             };
 
             // Parse the LDtk JSON dynamically
@@ -87,7 +87,7 @@ namespace Duality.Data
                     CurrentLevel.NextLevelPath = GetStringField(entity, "NextLevel");
                     break;
 
-                // Group all 4 of your custom LDtk obstacle types into the same EnvironmentObject list
+                // Group all custom LDtk obstacle types into the same EnvironmentObject list
                 case "InsightObstacle":
                 case "DensityObstacle":
                 case "Hazard":
@@ -111,15 +111,24 @@ namespace Duality.Data
 
                     CurrentLevel.Enemies.Add(new Enemy(
                         new Vector2(x, y),
-                        ParseHex(GetStringField(entity, "ColourHex")), // Updated to your spelling
+                        ParseHex(GetStringField(entity, "ColourHex")),
                         GetFloatField(entity, "AnchorFrequency"),
                         waypoints) { Range = GetFloatField(entity, "Range"), Behaviour = behaviour, WakeDelay = GetFloatField(entity, "WakeDelay" )}
                     );
                     break;
+                case "Decal":
+                    CurrentLevel.Decals.Add(new Decal(
+                        new Vector2(x, y), // Position directly from LDtk
+                        GetStringField(entity, "TextContent"),
+                        ParseHex(GetStringField(entity, "ColourHex")),
+                        GetFloatField(entity, "AnchorFrequency"),
+                        GetFloatField(entity, "Range")
+                    ));
+                    break;
             }
         }
 
-        // ADD THIS HELPER METHOD underneath GetFloatField:
+        // HELPER METHOD
         private List<Vector2> GetWaypoints(JsonElement entity, string fieldName, int gridSize) {
             var waypoints = new List<Vector2>();
             foreach (var field in entity.GetProperty("fieldInstances").EnumerateArray()) {
