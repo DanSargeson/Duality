@@ -27,6 +27,18 @@ namespace Duality.Mechanics
         // Threshold at which Strain starts building
         private const float StrainThreshold = 0.8f;
 
+        public void TriggerDischarge() {
+            if (IsBurntOut) return; // Prevent spamming
+
+            // Forcibly push the system to the breaking point
+            Strain = 1.0f;
+            IsBurntOut = true;
+
+            // Note: Your existing Update loop in PolarityManager should 
+            // catch this IsBurntOut state on the next frame and naturally 
+            // handle the snap back to Density and the 4-second cooldown.
+        }
+
 
         public void Update(GameTime gameTime, bool shiftingToInsight, bool shiftingToDensity) {
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;

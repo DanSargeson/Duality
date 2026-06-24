@@ -18,6 +18,7 @@ namespace Duality
         public bool IsShiftingToInsight => _currentKeyState.IsKeyDown(Keys.Q);
         public bool IsShiftingToDensity => _currentKeyState.IsKeyDown(Keys.E);
 
+        public bool IsDischargePressed => _currentKeyState.IsKeyDown(Keys.Space) && _previousKeyState.IsKeyDown(Keys.Space);
         public bool IsInteractPressed => WasActionPressed(Keys.C);
 
         // Semantic Action: Movement (Returns a normalized vector to prevent fast diagonal movement)

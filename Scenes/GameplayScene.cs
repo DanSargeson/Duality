@@ -83,10 +83,6 @@ namespace Duality.Scenes
                 enemy.Update(gameTime, _player, _polarityManager.CurrentFrequency);
             }
 
-            //foreach(var decal in currentLevel.Decals) {
-            //    decal.Update(gameTime, _polarityManager.CurrentFrequency);
-            //}
-
             if (Game._inputManager.IsInteractPressed) {
                 // 1. Check for Documents First
                 foreach (var document in currentLevel.Documents) { // Assuming you create a Documents list in Level.cs
@@ -105,6 +101,30 @@ namespace Duality.Scenes
             }
 
             _player.Update(gameTime, Game._inputManager.GetMovementDirection(), _polarityManager, currentLevel);
+
+
+            if (Game._inputManager.IsDischargePressed && !_polarityManager.IsBurntOut && _polarityManager.CurrentFrequency >= 0.8f) { //TODO MAGIC NUMBER -  REMOVE/MOVE
+                float blastRadius = 250f;       //TODO MAGIC NUMBER -  REMOVE/MOVE
+                Vector2 playerCenter = _player.Bounds.Center.ToVector2();
+
+                for (int i = currentLevel.Enemies.Count - 1; i >= 0; i--) {
+                    var enemy = currentLevel.Enemies[i];
+
+                    // 2. The Target Check: Only affect enemies that are physically solid in the current frequency
+                    if (enemy.IsDangerous(_polarityManager.CurrentFrequency)) {
+                        Vector2 enemyCenter = enemy.Bounds.Center.ToVector2();
+                        float distance = Vector2.Distance(playerCenter, enemyCenter);
+
+                        if (distance <= blastRadius) {
+                            currentLevel.Enemies.RemoveAt(i);
+                        }
+                    }
+                }
+
+                // Trigger the burnout and the audio cue
+                _polarityManager.TriggerDischarge();
+                // _audioManager.PlaySound("ringing"); // Hook up your single-shot audio here
+            }
 
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             _camera.Follow(_player.Bounds.Center.ToVector2(), deltaTime, currentLevel.Bounds);
