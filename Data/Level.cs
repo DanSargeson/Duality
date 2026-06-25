@@ -12,6 +12,10 @@ namespace Duality.Data
         public string NextLevelPath { get; set; }
         public Rectangle ExitZone { get; set; }
 
+        public string OnLoadLog { get; set; }
+
+        public string LevelId { get; set; }
+
         public List<DocumentObject> Documents { get; set; } = new List<DocumentObject>();
 
         public List<UpgradeNode> UpgradeNodes { get; set; } = new List<UpgradeNode>();

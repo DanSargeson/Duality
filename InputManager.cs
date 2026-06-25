@@ -15,12 +15,12 @@ namespace Duality
         }
 
         // Semantic Action: Polarity Shifting (Continuous)
-        public bool IsShiftingToInsight => _currentKeyState.IsKeyDown(Keys.Q);
-        public bool IsShiftingToDensity => _currentKeyState.IsKeyDown(Keys.E);
+        public bool IsShiftingToInsight => _currentKeyState.IsKeyDown(Keys.RightShift);
+        public bool IsShiftingToDensity => _currentKeyState.IsKeyDown(Keys.LeftShift);
 
         public bool IsLogbookPressed => Keyboard.GetState().IsKeyDown(Keys.Tab) && _previousKeyState.IsKeyUp(Keys.Tab);
         public bool IsDischargePressed => _currentKeyState.IsKeyDown(Keys.Space) && _previousKeyState.IsKeyDown(Keys.Space);
-        public bool IsInteractPressed => WasActionPressed(Keys.Enter);
+        public bool IsInteractPressed => WasActionPressed(Keys.E);
 
         // Semantic Action: Movement (Returns a normalized vector to prevent fast diagonal movement)
         public Vector2 GetMovementDirection() {

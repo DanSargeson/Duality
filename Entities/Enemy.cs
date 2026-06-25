@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Duality.Entities
 {
-    public enum EnemyBehaviour { Patrol, Hunter }
+    public enum EnemyBehaviour { Patrol, Hunter, Stalker }
 
     public class Enemy : Entity
     {
@@ -43,8 +43,8 @@ namespace Duality.Entities
                 if (_wakeTimer < 0f) _wakeTimer = 0f;
             }
 
-            if (Behaviour == EnemyBehaviour.Hunter) {
-                // Hunters only chase if they exist enough to be dangerous
+            if (Behaviour == EnemyBehaviour.Hunter || Behaviour == EnemyBehaviour.Stalker) {
+                // Hunters and Stalkers only chase if they exist enough to be dangerous
                 if (IsDangerous(currentFrequency)) {
                     Vector2 direction = targetPlayer.Bounds.Center.ToVector2() - Bounds.Center.ToVector2();
                     if (direction.Length() > 0) {

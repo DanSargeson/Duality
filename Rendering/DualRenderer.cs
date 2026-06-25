@@ -247,7 +247,7 @@ namespace Duality.Rendering
 
 
 
-        public void Draw(GameTime gameTime, PolarityManager polarityManager, Level level, Player player, Camera camera, List<GlitchParticle> particles, BlastEffect blast = null) {
+        public void Draw(GameTime gameTime, PolarityManager polarityManager, FloatingTextManager textManager, Level level, Player player, Camera camera, List<GlitchParticle> particles, BlastEffect blast = null) {
             float currentFrequency = polarityManager.CurrentFrequency;
 
             //Calculate Unified Stress
@@ -372,7 +372,7 @@ namespace Duality.Rendering
                 _spriteBatch.DrawString(_font, textToDraw, decal.Position, decal.BaseColor * presence);
             }
 
-
+            textManager.Draw(_spriteBatch, _font);
             _spriteBatch.End();
 
             // 4. Procedural TV Static Overlay

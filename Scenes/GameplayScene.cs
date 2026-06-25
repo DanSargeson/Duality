@@ -33,7 +33,7 @@ namespace Duality.Scenes
         private BlastEffect _activeBlast;
         private int _logbookSelectedIndex = 0;
         private List<string> _cachedLogbook; // Holds the indexed list while the menu is open
-
+        private FloatingTextManager _textManager = new FloatingTextManager();
 
         private float _currentFrameFrequency;
 
@@ -62,7 +62,21 @@ namespace Duality.Scenes
             ApplyActiveUpgrades();
             _levelManager = new LevelManager();
             _levelManager.LoadLDtkLevel(_ldtkFilePath, _levelName);
+            if (!string.IsNullOrEmpty(_levelManager.CurrentLevel.OnLoadLog)) {
+                // Check if the system has already forced this log on the player
+                if (!Game.Session.SeenLevelLogs.Contains(_levelManager.CurrentLevel.LevelId)) {
 
+                    // Force the UI overlay
+                    _activeDocumentText = _levelManager.CurrentLevel.OnLoadLog;
+                    _currentState = GameplayState.ReadingDocument;
+
+                    // Record that they've seen it so it doesn't happen on respawn
+                    Game.Session.MarkLogAsSeen(_levelManager.CurrentLevel.LevelId);
+
+                    // Optional: Play a harsh system boot-up sound
+                    // _audioManager.PlaySound("TerminalBoot");
+                }
+            }
             _levelManager.CurrentLevel.Documents.RemoveAll(doc => Game.Session.CollectedDocuments.Contains(doc.TextContent));
             _levelManager.CurrentLevel.UpgradeNodes.RemoveAll(u => Game.Session.UnlockedUpgrades.Contains(u.UpgradeId));
 
@@ -154,6 +168,9 @@ namespace Duality.Scenes
 
                     ApplyActiveUpgrades();
 
+                    _currentState = GameplayState.ReadingDocument;
+                    _activeDocumentText = upgrade.TextContent;
+
                     // TODO: Trigger a screen flash, a sound, popup etc here
                 }
             }
@@ -231,8 +248,19 @@ namespace Duality.Scenes
                                     Size = _random.Next(2, 6) // Chunky digital squares
                                 });
                             }
+                            if (enemy.Behaviour == EnemyBehaviour.Stalker) {
+                                // Do not apply damage. Do not apply knockback.
+                                // Just spawn the clinical error directly over the Stalker's head.
 
-                            currentLevel.Enemies.RemoveAt(i);
+                                Vector2 aboveHead = new Vector2(enemy.Position.X, enemy.Position.Y - 20);
+                                _textManager.Add("[ IMMUNE ]", aboveHead, Color.Red);
+                            }
+                            else {
+
+
+                                currentLevel.Enemies.RemoveAt(i);
+                            }
+
                         }
                     }
                 }
@@ -246,6 +274,7 @@ namespace Duality.Scenes
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             _activeBlast?.Update(deltaTime);
             _camera.Follow(_player.Bounds.Center.ToVector2(), deltaTime, currentLevel.Bounds);
+            _textManager.Update(deltaTime);
 
             // Level Transition Logic
             if (currentLevel.ExitZone != Rectangle.Empty && _player.Bounds.Intersects(currentLevel.ExitZone)) {
@@ -374,8 +403,8 @@ namespace Duality.Scenes
         public override void Draw(GameTime gameTime) {
             // 1. DRAW THE WORLD TO MEMORY 
             // (This calls the massive Draw method in your DualRenderer)
-            _renderer.Draw(gameTime, _polarityManager, _levelManager.CurrentLevel, _player, _camera, _particles, _activeBlast);
-
+            _renderer.Draw(gameTime, _polarityManager, _textManager, _levelManager.CurrentLevel, _player, _camera, _particles, _activeBlast);
+            
             // 2. BLAST MEMORY TO SCREEN 
             // (Applies the CRT Shader and letterboxes the view)
             _renderer.PresentToScreen();

@@ -36,12 +36,30 @@ namespace Duality.Data
                 foreach (var level in root.GetProperty("levels").EnumerateArray()) {
                     if (level.GetProperty("identifier").GetString() == levelName) {
                         targetLevel = level;
-                        levelFound = true;
+                        levelFound = true;  
                         break;
                     }
                 }
 
                 if (!levelFound) throw new Exception($"Level '{levelName}' not found in LDtk file.");
+
+                if (targetLevel.TryGetProperty("fieldInstances", out JsonElement fi)) {
+                    System.Diagnostics.Debug.WriteLine($"--- CHECKING LEVEL: {levelName} ---");
+                    foreach (var f in fi.EnumerateArray()) {
+                        string foundName = f.GetProperty("__identifier").GetString();
+                        System.Diagnostics.Debug.WriteLine($"FOUND FIELD: '{foundName}'");
+                    }
+                }
+                else {
+                    System.Diagnostics.Debug.WriteLine($"--- NO FIELDS FOUND ON LEVEL: {levelName} ---");
+                }
+
+                CurrentLevel.OnLoadLog = GetStringField(targetLevel, "OnLoadLog");
+                string safePrint = CurrentLevel.OnLoadLog.Replace("\n", "\\n").Replace("\r", "");
+                System.Diagnostics.Debug.WriteLine($"Content of CurrentLevel.OnLoadLog: [{safePrint}]");
+
+                // LDtk's intrinsic instance ID is always strictly lowercase "iid"
+                CurrentLevel.LevelId = targetLevel.GetProperty("iid").GetString();
 
                 // Set level bounds
                 CurrentLevel.Bounds = new Rectangle(0, 0,
@@ -125,7 +143,7 @@ namespace Duality.Data
                         ParseHex(GetStringField(entity, "ColourHex")),
                         GetFloatField(entity, "AnchorFrequency"),
                         GetFloatField(entity, "Range"),
-                        GetStringField(entity, "TextContent") // The multi-line LDtk field
+                        GetStringField(entity, "TextContent")
                     ));
                     break;
                 case "Decal":
@@ -143,7 +161,8 @@ namespace Duality.Data
                         ParseHex(GetStringField(entity, "ColourHex")),
                         GetFloatField(entity, "AnchorFrequency"),
                         GetFloatField(entity, "Range"),
-                        GetStringField(entity, "UpgradeId") // The multi-line LDtk field
+                        GetStringField(entity, "UpgradeId"), 
+                        GetStringField(entity, "TextContext") 
                     ));
                     break;
                 case "LockedDoor":
@@ -180,12 +199,16 @@ namespace Duality.Data
         // --- Helper methods to extract Custom Fields from LDtk Entities ---
 
         private string GetStringField(JsonElement entity, string fieldName) {
-            foreach (var field in entity.GetProperty("fieldInstances").EnumerateArray()) {
-                if (field.GetProperty("__identifier").GetString() == fieldName) {
-                    return field.GetProperty("__value").GetString();
+            if (entity.TryGetProperty("fieldInstances", out JsonElement fieldInstances)) {
+                foreach (var field in fieldInstances.EnumerateArray()) {
+                    if (field.GetProperty("__identifier").GetString() == fieldName) {
+                        var value = field.GetProperty("__value");
+                        // Safety Check: If the field is empty in LDtk, return an empty string, don't crash!
+                        return value.ValueKind == JsonValueKind.Null ? "" : value.GetString();
+                    }
                 }
             }
-            return ""; // Default
+            return ""; // Default if the field doesn't exist at all
         }
 
         private float GetFloatField(JsonElement entity, string fieldName, float defaultValue = 0f) {

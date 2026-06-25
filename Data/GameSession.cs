@@ -14,9 +14,17 @@ namespace Duality.Data
 
         public HashSet<string> UnlockedUpgrades { get; private set; }
 
+        public List<string> SeenLevelLogs { get; set; } = new List<string>();
+
         public GameSession() {
             CollectedDocuments = new HashSet<string>();
             UnlockedUpgrades = new HashSet<string>();
+        }
+
+        public void MarkLogAsSeen(string levelId) {
+            if (!SeenLevelLogs.Contains(levelId)) {
+                SeenLevelLogs.Add(levelId);
+            }
         }
 
         public void CollectDocument(string textContent) {

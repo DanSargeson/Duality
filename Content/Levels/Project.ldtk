@@ -11,7 +11,7 @@
 	"iid": "8e7df970-48b0-11f1-91ed-b50c71501dc8",
 	"jsonVersion": "1.5.3",
 	"appBuildId": 473703,
-	"nextUid": 96,
+	"nextUid": 98,
 	"identifierStyle": "Capitalize",
 	"toc": [
 		{
@@ -1527,7 +1527,7 @@
 					"max": null,
 					"regex": null,
 					"acceptFileTypes": null,
-					"defaultOverride": { "id": "V_Float", "params": [1] },
+					"defaultOverride": { "id": "V_Float", "params": [0] },
 					"textLanguageMode": null,
 					"symmetricalRef": false,
 					"autoChainRef": true,
@@ -1864,7 +1864,7 @@
 					"acceptFileTypes": null,
 					"defaultOverride": {
 						"id": "V_String",
-						"params": ["Hunter"]
+						"params": ["Stalker"]
 					},
 					"textLanguageMode": null,
 					"symmetricalRef": false,
@@ -2572,6 +2572,43 @@
 					"allowedRefsEntityUid": null,
 					"allowedRefTags": [],
 					"tilesetUid": null
+				},
+				{
+					"identifier": "TextContext",
+					"doc": null,
+					"__type": "String",
+					"uid": 96,
+					"type": "F_Text",
+					"isArray": false,
+					"canBeNull": false,
+					"arrayMinLength": null,
+					"arrayMaxLength": null,
+					"editorDisplayMode": "Hidden",
+					"editorDisplayScale": 1,
+					"editorDisplayPos": "Above",
+					"editorLinkStyle": "StraightArrow",
+					"editorDisplayColor": null,
+					"editorAlwaysShow": false,
+					"editorShowInWorld": true,
+					"editorCutLongValues": true,
+					"editorTextSuffix": null,
+					"editorTextPrefix": null,
+					"useForSmartColor": false,
+					"exportToToc": false,
+					"searchable": false,
+					"min": null,
+					"max": null,
+					"regex": null,
+					"acceptFileTypes": null,
+					"defaultOverride": null,
+					"textLanguageMode": null,
+					"symmetricalRef": false,
+					"autoChainRef": true,
+					"allowOutOfLevelRef": true,
+					"allowedRefs": "OnlySame",
+					"allowedRefsEntityUid": null,
+					"allowedRefTags": [],
+					"tilesetUid": null
 				}
 			]
 		},
@@ -2779,7 +2816,49 @@
 			"savedSelections": [],
 			"cachedPixelData": null
 		}
-	], "enums": [{ "identifier": "EnemyBehaviour", "uid": 33, "values": [ { "id": "Patrol", "tileRect": null, "color": 12470831 }, { "id": "Hunter", "tileRect": null, "color": 14120515 } ], "iconTilesetUid": null, "externalRelPath": null, "externalFileChecksum": null, "tags": [] }], "externalEnums": [], "levelFields": [] },
+	], "enums": [{ "identifier": "EnemyBehaviour", "uid": 33, "values": [
+		{ "id": "Patrol", "tileRect": null, "color": 12470831 },
+		{ "id": "Hunter", "tileRect": null, "color": 14120515 },
+		{ "id": "Stalker", "tileRect": null, "color": 15389866 }
+	], "iconTilesetUid": null, "externalRelPath": null, "externalFileChecksum": null, "tags": [] }], "externalEnums": [], "levelFields": [
+		{
+			"identifier": "OnLoadLog",
+			"doc": null,
+			"__type": "String",
+			"uid": 97,
+			"type": "F_Text",
+			"isArray": false,
+			"canBeNull": false,
+			"arrayMinLength": null,
+			"arrayMaxLength": null,
+			"editorDisplayMode": "Hidden",
+			"editorDisplayScale": 1,
+			"editorDisplayPos": "Above",
+			"editorLinkStyle": "StraightArrow",
+			"editorDisplayColor": null,
+			"editorAlwaysShow": false,
+			"editorShowInWorld": true,
+			"editorCutLongValues": true,
+			"editorTextSuffix": null,
+			"editorTextPrefix": null,
+			"useForSmartColor": false,
+			"exportToToc": false,
+			"searchable": false,
+			"min": null,
+			"max": null,
+			"regex": null,
+			"acceptFileTypes": null,
+			"defaultOverride": null,
+			"textLanguageMode": null,
+			"symmetricalRef": false,
+			"autoChainRef": true,
+			"allowOutOfLevelRef": true,
+			"allowedRefs": "OnlySame",
+			"allowedRefsEntityUid": null,
+			"allowedRefTags": [],
+			"tilesetUid": null
+		}
+	] },
 	"levels": [
 		{
 			"identifier": "TUTORIAL",
@@ -2800,7 +2879,12 @@
 			"__smartColor": "#737373",
 			"__bgPos": null,
 			"externalRelPath": null,
-			"fieldInstances": [],
+			"fieldInstances": [{ "__identifier": "OnLoadLog", "__type": "String", "__value": "[ DIAGNOSTIC_LOG_01.sys ]\nSUBJECT: 8144-M\nTEST: Motor Function & Environmental Engagement\n\nOBSERVATION: Subject has regained consciousness. Motor functions appear intact. Subject is capable of autonomous navigation [ W A S D ] and physical interaction with containment terminals [ E ].\n\nACTION: Proceed with baseline environmental stimuli. Monitor for signs of cognitive fracture.", "__tile": null, "defUid": 97, "realEditorValues": [{
+				"id": "V_String",
+				"params": [
+					"[ DIAGNOSTIC_LOG_01.sys ]\\nSUBJECT: 8144-M\\nTEST: Motor Function & Environmental Engagement\\n\\nOBSERVATION: Subject has regained consciousness. Motor functions appear intact. Subject is capable of autonomous navigation [ W A S D ] and physical interaction with containment terminals [ E ].\\n\\nACTION: Proceed with baseline environmental stimuli. Monitor for signs of cognitive fracture."
+				]
+			}] }],
 			"layerInstances": [
 				{
 					"__identifier": "Entities",
@@ -3003,10 +3087,10 @@
 							"defUid": 64,
 							"px": [32,224],
 							"fieldInstances": [
-								{ "__identifier": "TextContent", "__type": "String", "__value": "This world is unstable\n\nPress [Q] to shift into Insight\n\nPress [E] to shift back into Density\n\nSome objects will only appear in specfic frequencies", "__tile": null, "defUid": 66, "realEditorValues": [{
+								{ "__identifier": "TextContent", "__type": "String", "__value": "[ CONTAINMENT_ALERT_04.sys ]\nWARNING: UNAUTHORIZED FREQUENCY MODULATION\n\nNOTES: Subject has bypassed localized frequency locks. They are voluntarily inducing hypoxic trauma to ascend into the Insight frequency [ RIGHT SHIFT ], before instinctively grounding themselves back into the ignorance of baseline Density [ LEFT SHIFT ].\n\nPROTOCOL: The human biological suit is not designed to sustain the truth of Insight. Extended exposure will result in critical system strain and catastrophic cognitive fracture. Do not intervene when they retreat to Density. The desperate oscillation between revelation and safety generates optimal telemetry. Let them look, but they cannot linger.", "__tile": null, "defUid": 66, "realEditorValues": [{
 									"id": "V_String",
 									"params": [
-										"This world is unstable\\n\\nPress [Q] to shift into Insight\\n\\nPress [E] to shift back into Density\\n\\nSome objects will only appear in specfic frequencies"
+										"[ CONTAINMENT_ALERT_04.sys ]\\nWARNING: UNAUTHORIZED FREQUENCY MODULATION\\n\\nNOTES: Subject has bypassed localized frequency locks. They are voluntarily inducing hypoxic trauma to ascend into the Insight frequency [ RIGHT SHIFT ], before instinctively grounding themselves back into the ignorance of baseline Density [ LEFT SHIFT ].\\n\\nPROTOCOL: The human biological suit is not designed to sustain the truth of Insight. Extended exposure will result in critical system strain and catastrophic cognitive fracture. Do not intervene when they retreat to Density. The desperate oscillation between revelation and safety generates optimal telemetry. Let them look, but they cannot linger."
 									]
 								}] },
 								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 0, "__tile": null, "defUid": 67, "realEditorValues": [] },
@@ -3029,9 +3113,9 @@
 							"defUid": 71,
 							"px": [112,33],
 							"fieldInstances": [
-								{ "__identifier": "TextContent", "__type": "String", "__value": "Press [ENTER] to pick up documents\n", "__tile": null, "defUid": 72, "realEditorValues": [{
+								{ "__identifier": "TextContent", "__type": "String", "__value": "Press [E] to pick up documents\n", "__tile": null, "defUid": 72, "realEditorValues": [{
 									"id": "V_String",
-									"params": ["Press [ENTER] to pick up documents\\n"]
+									"params": ["Press [E] to pick up documents\\n"]
 								}] },
 								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 0, "__tile": null, "defUid": 73, "realEditorValues": [] },
 								{ "__identifier": "Range", "__type": "Float", "__value": 0.4, "__tile": null, "defUid": 74, "realEditorValues": [{ "id": "V_Float", "params": [0.4] }] },
@@ -3053,10 +3137,10 @@
 							"defUid": 64,
 							"px": [704,48],
 							"fieldInstances": [
-								{ "__identifier": "TextContent", "__type": "String", "__value": "Press [TAB] to read documents you have collected\n\nPress [SPACE] while in insight to attack enemies", "__tile": null, "defUid": 66, "realEditorValues": [{
+								{ "__identifier": "TextContent", "__type": "String", "__value": " [ SYSTEM_OVERRIDE_PROTOCOL.sys ]\nSUBJECT: 8144-M\nTEST: Electro-Neural Grounding\n\nOBSERVATION: In the event of acute systemic strain, the subject has discovered they can trigger a localized electrostatic purge [ SPACEBAR ].\n\nACTION: Allow this behavior. While the purge temporarily disrupts local surveillance geometry, it violently grounds the subject back to Density and induces a mandatory exhaustion period. The pain generated by this action provides excellent yield.", "__tile": null, "defUid": 66, "realEditorValues": [{
 									"id": "V_String",
 									"params": [
-										"Press [TAB] to read documents you have collected\\n\\nPress [SPACE] while in insight to attack enemies"
+										" [ SYSTEM_OVERRIDE_PROTOCOL.sys ]\\nSUBJECT: 8144-M\\nTEST: Electro-Neural Grounding\\n\\nOBSERVATION: In the event of acute systemic strain, the subject has discovered they can trigger a localized electrostatic purge [ SPACEBAR ].\\n\\nACTION: Allow this behavior. While the purge temporarily disrupts local surveillance geometry, it violently grounds the subject back to Density and induces a mandatory exhaustion period. The pain generated by this action provides excellent yield."
 									]
 								}] },
 								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 0, "__tile": null, "defUid": 67, "realEditorValues": [] },
@@ -3079,12 +3163,12 @@
 							"defUid": 64,
 							"px": [96,432],
 							"fieldInstances": [
-								{ "__identifier": "TextContent", "__type": "String", "__value": "Some obstacles persist across all frequencies", "__tile": null, "defUid": 66, "realEditorValues": [{
+								{ "__identifier": "TextContent", "__type": "String", "__value": "Some obstacles persist across all frequencies...", "__tile": null, "defUid": 66, "realEditorValues": [{
 									"id": "V_String",
-									"params": ["Some obstacles persist across all frequencies"]
+									"params": ["Some obstacles persist across all frequencies..."]
 								}] },
-								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 0, "__tile": null, "defUid": 67, "realEditorValues": [] },
-								{ "__identifier": "Range", "__type": "Float", "__value": 100, "__tile": null, "defUid": 68, "realEditorValues": [] },
+								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 1, "__tile": null, "defUid": 67, "realEditorValues": [{ "id": "V_Float", "params": [1] }] },
+								{ "__identifier": "Range", "__type": "Float", "__value": 0.6, "__tile": null, "defUid": 68, "realEditorValues": [{ "id": "V_Float", "params": [0.6] }] },
 								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#2CE8F5", "__tile": null, "defUid": 70, "realEditorValues": [] }
 							],
 							"__worldX": 96,
@@ -3131,8 +3215,8 @@
 									"id": "V_String",
 									"params": ["Beware the creatures that hide in Insight"]
 								}] },
-								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 0, "__tile": null, "defUid": 67, "realEditorValues": [] },
-								{ "__identifier": "Range", "__type": "Float", "__value": 100, "__tile": null, "defUid": 68, "realEditorValues": [] },
+								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 1, "__tile": null, "defUid": 67, "realEditorValues": [{ "id": "V_Float", "params": [1] }] },
+								{ "__identifier": "Range", "__type": "Float", "__value": 0.4, "__tile": null, "defUid": 68, "realEditorValues": [{ "id": "V_Float", "params": [0.4] }] },
 								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#2CE8F5", "__tile": null, "defUid": 70, "realEditorValues": [] }
 							],
 							"__worldX": 688,
@@ -3162,7 +3246,7 @@
 			"__smartColor": "#ADADB5",
 			"__bgPos": null,
 			"externalRelPath": null,
-			"fieldInstances": [],
+			"fieldInstances": [{ "__identifier": "OnLoadLog", "__type": "String", "__value": "", "__tile": null, "defUid": 97, "realEditorValues": [null] }],
 			"layerInstances": [
 				{
 					"__identifier": "Entities",
@@ -3476,7 +3560,13 @@
 									"id": "V_String",
 									"params": ["DeepLungs"]
 								}] },
-								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#E4A672", "__tile": null, "defUid": 95, "realEditorValues": [] }
+								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#E4A672", "__tile": null, "defUid": 95, "realEditorValues": [] },
+								{ "__identifier": "TextContext", "__type": "String", "__value": "PATIENT UPDATE: 8144-M\n    OBSERVATION: Subject is demonstrating spontaneous respiratory adaptation. Hypoxic threshold has expanded well beyond baseline parameters.\n    ACTION: Do not intervene. Monitor subject's resilience. Increased capacity for suffering noted.", "__tile": null, "defUid": 96, "realEditorValues": [{
+									"id": "V_String",
+									"params": [
+										"PATIENT UPDATE: 8144-M\\n    OBSERVATION: Subject is demonstrating spontaneous respiratory adaptation. Hypoxic threshold has expanded well beyond baseline parameters.\\n    ACTION: Do not intervene. Monitor subject's resilience. Increased capacity for suffering noted."
+									]
+								}] }
 							],
 							"__worldX": 1088,
 							"__worldY": 240
@@ -3501,7 +3591,13 @@
 									"id": "V_String",
 									"params": ["RapidGrounding"]
 								}] },
-								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#E4A672", "__tile": null, "defUid": 95, "realEditorValues": [] }
+								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#E4A672", "__tile": null, "defUid": 95, "realEditorValues": [] },
+								{ "__identifier": "TextContext", "__type": "String", "__value": "PATIENT UPDATE: 8144-M\n    OBSERVATION: Subject's neurological recovery following a Class-3 cognitive fracture is accelerating. Heart rate stabilization is occurring at an anomalous speed.\n    ACTION: Increase systemic pressure. The subject is adapting to the current stress protocol.", "__tile": null, "defUid": 96, "realEditorValues": [{
+									"id": "V_String",
+									"params": [
+										"PATIENT UPDATE: 8144-M\\n    OBSERVATION: Subject's neurological recovery following a Class-3 cognitive fracture is accelerating. Heart rate stabilization is occurring at an anomalous speed.\\n    ACTION: Increase systemic pressure. The subject is adapting to the current stress protocol."
+									]
+								}] }
 							],
 							"__worldX": 1360,
 							"__worldY": 544
@@ -3678,7 +3774,10 @@
 								{ "__identifier": "Range", "__type": "Float", "__value": 0.6, "__tile": null, "defUid": 59, "realEditorValues": [] },
 								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 0.5, "__tile": null, "defUid": 60, "realEditorValues": [] },
 								{ "__identifier": "Point", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 61, "realEditorValues": [] },
-								{ "__identifier": "EnemyBehaviour", "__type": "LocalEnum.EnemyBehaviour", "__value": "Hunter", "__tile": null, "defUid": 62, "realEditorValues": [] },
+								{ "__identifier": "EnemyBehaviour", "__type": "LocalEnum.EnemyBehaviour", "__value": "Stalker", "__tile": null, "defUid": 62, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["Stalker"]
+								}] },
 								{ "__identifier": "WakeDelay", "__type": "Float", "__value": 3, "__tile": null, "defUid": 63, "realEditorValues": [{ "id": "V_Float", "params": [3] }] },
 								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#FF0044", "__tile": null, "defUid": 94, "realEditorValues": [] }
 							],
@@ -3709,7 +3808,7 @@
 			"__smartColor": "#ADADB5",
 			"__bgPos": null,
 			"externalRelPath": null,
-			"fieldInstances": [],
+			"fieldInstances": [{ "__identifier": "OnLoadLog", "__type": "String", "__value": "", "__tile": null, "defUid": 97, "realEditorValues": [] }],
 			"layerInstances": [
 				{
 					"__identifier": "Entities",
@@ -3896,7 +3995,7 @@
 							"px": [88,88],
 							"fieldInstances": [
 								{ "__identifier": "Range", "__type": "Float", "__value": 0.4, "__tile": null, "defUid": 53, "realEditorValues": [] },
-								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 1, "__tile": null, "defUid": 54, "realEditorValues": [] },
+								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 0, "__tile": null, "defUid": 54, "realEditorValues": [] },
 								{ "__identifier": "Point", "__type": "Array<Point>", "__value": [
 									{ "cx": 2, "cy": 35 },
 									{ "cx": 11, "cy": 35 },
@@ -3983,7 +4082,10 @@
 								{ "__identifier": "Range", "__type": "Float", "__value": 0.6, "__tile": null, "defUid": 59, "realEditorValues": [] },
 								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 0.5, "__tile": null, "defUid": 60, "realEditorValues": [] },
 								{ "__identifier": "Point", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 61, "realEditorValues": [] },
-								{ "__identifier": "EnemyBehaviour", "__type": "LocalEnum.EnemyBehaviour", "__value": "Hunter", "__tile": null, "defUid": 62, "realEditorValues": [] },
+								{ "__identifier": "EnemyBehaviour", "__type": "LocalEnum.EnemyBehaviour", "__value": "Stalker", "__tile": null, "defUid": 62, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["Stalker"]
+								}] },
 								{ "__identifier": "WakeDelay", "__type": "Float", "__value": 3, "__tile": null, "defUid": 63, "realEditorValues": [] },
 								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#FF0044", "__tile": null, "defUid": 94, "realEditorValues": [] }
 							],
@@ -4006,7 +4108,10 @@
 								{ "__identifier": "Range", "__type": "Float", "__value": 0.6, "__tile": null, "defUid": 59, "realEditorValues": [] },
 								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 0.5, "__tile": null, "defUid": 60, "realEditorValues": [] },
 								{ "__identifier": "Point", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 61, "realEditorValues": [] },
-								{ "__identifier": "EnemyBehaviour", "__type": "LocalEnum.EnemyBehaviour", "__value": "Hunter", "__tile": null, "defUid": 62, "realEditorValues": [] },
+								{ "__identifier": "EnemyBehaviour", "__type": "LocalEnum.EnemyBehaviour", "__value": "Stalker", "__tile": null, "defUid": 62, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["Stalker"]
+								}] },
 								{ "__identifier": "WakeDelay", "__type": "Float", "__value": 3, "__tile": null, "defUid": 63, "realEditorValues": [] },
 								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#FF0044", "__tile": null, "defUid": 94, "realEditorValues": [] }
 							],
