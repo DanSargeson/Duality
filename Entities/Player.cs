@@ -23,7 +23,6 @@ namespace Duality.Entities
         // The full rendering bounds
         public Rectangle Bounds => new Rectangle((int)Position.X, (int)Position.Y, Width, Height);
 
-
         public bool IsInsideAnyObstacle(Data.Level level) {
             // Check normal walls
             foreach (var obj in level.EnvironmentObjects) {
@@ -32,7 +31,7 @@ namespace Duality.Entities
                 }
             }
 
-            // Check locked doors
+            // Check standard interactables (if they act as walls when closed)
             foreach (var interactable in level.Interactables) {
                 if (interactable.IsClosed && Bounds.Intersects(interactable.Bounds)) {
                     return true;

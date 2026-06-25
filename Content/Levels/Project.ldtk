@@ -155,7 +155,7 @@
 					"levelIid": "8e7f31f0-48b0-11f1-91ed-912f22bce87f",
 					"layerIid": "5bccc310-48b0-11f1-91ed-9daa42287080",
 					"entityIid": "e72bdc50-48b0-11f1-91ed-714e4f6d07f5"
-				}, "worldX": 144, "worldY": 336, "widPx": 96, "heiPx": 32, "fields" : {} },
+				}, "worldX": 144, "worldY": 320, "widPx": 96, "heiPx": 64, "fields" : {} },
 				{ "iids": {
 					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
 					"levelIid": "9945f280-6fc0-11f1-adf8-fbc91f0dff99",
@@ -2849,16 +2849,16 @@
 						},
 						{
 							"__identifier": "Platform",
-							"__grid": [9,21],
+							"__grid": [9,20],
 							"__pivot": [0,0],
 							"__tags": ["region"],
 							"__tile": null,
 							"__smartColor": "#FF6984",
 							"iid": "e72bdc50-48b0-11f1-91ed-714e4f6d07f5",
 							"width": 96,
-							"height": 32,
+							"height": 64,
 							"defUid": 23,
-							"px": [144,336],
+							"px": [144,320],
 							"fieldInstances": [
 								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 1, "__tile": null, "defUid": 24, "realEditorValues": [] },
 								{ "__identifier": "Range", "__type": "Float", "__value": 0.4, "__tile": null, "defUid": 25, "realEditorValues": [] },
@@ -2866,7 +2866,7 @@
 								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#FF6984", "__tile": null, "defUid": 27, "realEditorValues": [] }
 							],
 							"__worldX": 144,
-							"__worldY": 336
+							"__worldY": 320
 						},
 						{
 							"__identifier": "PlayerStart",

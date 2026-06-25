@@ -286,18 +286,15 @@ namespace Duality.Rendering
                 float presence = entity.GetPresence(currentFrequency);
                 if (presence <= 0f) return;
 
-                float alpha = presence;
-
-                if (presence < 0.5f) { // If it's not "mostly" solid yet
-                                       // Fading: Draw as a dark silhouette, growing more opaque as presence increases
+                // We no longer guess the math. We ask the Entity directly.
+                if (!entity.IsSolid(currentFrequency)) {
+                    // FADING / GHOST PHASE
                     Color shadowColor = Color.Lerp(Color.Gray, entity.BaseColor, 0.3f);
-                    _spriteBatch.Draw(_pixel, bounds, shadowColor * alpha);
+                    _spriteBatch.Draw(_pixel, bounds, shadowColor * presence);
                 }
                 else {
-                    // SOLID
+                    // FULLY SOLID PHASE
                     _spriteBatch.Draw(_pixel, bounds, entity.BaseColor * 0.9f);
-
-                    // Tactile Cue: Only draw the border if it's FULLY solid
                     DrawHollowRectangle(bounds, Color.White, 2);
                 }
             };

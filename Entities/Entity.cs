@@ -22,5 +22,10 @@ namespace Duality.Entities
             // Returns a value between 0.0 (invisible) and 1.0 (fully solid)
             return 1f - (distance / Range);
         }
+
+        public virtual bool IsSolid(float currentFrequency) {
+            // If presence hits 0.5f (50%), it becomes physically and visually solid.
+            return GetPresence(currentFrequency) >= 0.5f;
+        }
     }
 }

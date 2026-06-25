@@ -59,13 +59,7 @@ namespace Duality.Scenes
             _polarityManager = new PolarityManager();
             _polarityManager.Strain = Game.Session.CarriedStrain;
             _polarityManager.CurrentFrequency = Game.Session.CarriedFrequency;
-            if (Game.Session.UnlockedUpgrades.Contains("DeepLungs")) {
-                _polarityManager.MaxInsightTime = 8.0f; // Give them more time
-            }
-
-            if (Game.Session.UnlockedUpgrades.Contains("RapidGrounding")) {
-                _polarityManager.RecoveryTime = 2.0f; // Halve the burnout cooldown
-            }
+            ApplyActiveUpgrades();
             _levelManager = new LevelManager();
             _levelManager.LoadLDtkLevel(_ldtkFilePath, _levelName);
 
@@ -85,6 +79,21 @@ namespace Duality.Scenes
             _renderer = new DualRenderer(Game.GraphicsDevice, Game._font, Game.Content);
             _camera = new Camera(_renderer.VirtualWidth, _renderer.VirtualHeight);
             _audioManager.LoadContent(Game.Content);
+        }
+
+
+        private void ApplyActiveUpgrades() {
+            // Reset to base defaults first so we have a clean slate
+            _polarityManager.MaxInsightTime = 3.0f;
+            _polarityManager.RecoveryTime = 4.0f;
+
+            // Apply modifiers
+            if (Game.Session.UnlockedUpgrades.Contains("DeepLungs")) {
+                _polarityManager.MaxInsightTime = 10.0f;
+            }
+            if (Game.Session.UnlockedUpgrades.Contains("RapidGrounding")) {
+                _polarityManager.RecoveryTime = 2.0f;
+            }
         }
 
         public override void Update(GameTime gameTime) {
@@ -142,6 +151,8 @@ namespace Duality.Scenes
 
                     Game.Session.UnlockUpgrade(upgrade.UpgradeId); // Save permanently
                     upgrade.IsCollected = true; // Remove locally
+
+                    ApplyActiveUpgrades();
 
                     // TODO: Trigger a screen flash, a sound, popup etc here
                 }
