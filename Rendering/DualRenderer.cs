@@ -22,6 +22,8 @@ namespace Duality.Rendering
         private Texture2D _ringTexture;
 
         private Effect _crtEffect;
+        private float _shaderTime;
+        private float _shaderIntensity;
 
         public int VirtualWidth { get; private set; } = 800;
         public int VirtualHeight { get; private set; } = 600;
@@ -58,7 +60,7 @@ namespace Duality.Rendering
 
         // Inside DualRenderer.cs
         public void DrawKeypadOverlay(string typedCode, bool isError) {
-            _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
+            _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, GetUIScaleMatrix());
 
             // Dim the background
             _spriteBatch.Draw(_pixel, new Rectangle(0, 0, VirtualWidth, VirtualHeight), Color.Black * 0.8f);
@@ -108,7 +110,7 @@ namespace Duality.Rendering
 
 
         public void DrawLogbookOverlay(List<string> documents, int selectedIndex) {
-            _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
+            _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, GetUIScaleMatrix());
 
             //Heavy background dim to obscure the paused game
             _spriteBatch.Draw(_pixel, new Rectangle(0, 0, VirtualWidth, VirtualHeight), Color.Black * 0.95f);
@@ -180,7 +182,7 @@ namespace Duality.Rendering
         public void DrawDocumentOverlay(string documentText) {
             // We start a new batch. 
             // IMPORTANT: This must be called BEFORE the final "DRAW TO SCREEN" block where the render target is cleared.
-            _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
+            _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, GetUIScaleMatrix());
 
             //Dim the gameplay in the background
             _spriteBatch.Draw(_pixel, new Rectangle(0, 0, VirtualWidth, VirtualHeight), Color.Black * 0.8f);
@@ -253,7 +255,8 @@ namespace Duality.Rendering
             float baseTension = (float)Math.Pow(currentFrequency, 3);
             float totalStress = polarityManager.TotalStress;
 
-            Color bgColor = Color.Lerp(new Color(20, 20, 20), Color.White, currentFrequency);
+            //Color bgColor = Color.Lerp(new Color(20, 20, 20), Color.White, currentFrequency);
+            Color bgColor = Color.Lerp(new Color(10, 12, 15), new Color(30, 2, 2), currentFrequency);
 
             _graphicsDevice.SetRenderTarget(_renderTarget);
             _graphicsDevice.Clear(bgColor);
@@ -415,9 +418,65 @@ namespace Duality.Rendering
                 _spriteBatch.End();
             }
 
+            //if (polarityManager.Strain > 0) {
+            //    // Start a new batch for UI so it ignores the camera transform and sticks to the screen
+            //    _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
+
+            //    Rectangle strainBg = new Rectangle(VirtualWidth / 2 - 100, 20, 200, 15);
+            //    Rectangle strainFg = new Rectangle(VirtualWidth / 2 - 100, 20, (int)(200 * polarityManager.Strain), 15);
+
+            //    _spriteBatch.Draw(_pixel, strainBg, Color.DarkRed * 0.5f);
+            //    _spriteBatch.Draw(_pixel, strainFg, polarityManager.IsBurntOut ? Color.White : Color.Red);
+
+            //    string txt = polarityManager.IsBurntOut ? "SYSTEM BURNOUT" : "SYSTEM STRAIN";
+            //    Vector2 size = _font.MeasureString(txt);
+            //    _spriteBatch.DrawString(_font, txt, new Vector2(VirtualWidth / 2 - size.X / 2, 40), polarityManager.IsBurntOut ? Color.Red : Color.White);
+
+            //    _spriteBatch.End();
+            //}
+
+
+            _shaderTime = (float)gameTime.TotalGameTime.TotalSeconds;
+            // _shaderIntensity = 0.2f + (currentFrequency * 8.0f) + (totalStress * 25.0f);
+            _shaderIntensity = 0.2f + (currentFrequency * 0.4f) + (totalStress * 1.5f);
+
+            // Unbind the render target so it's ready to be read as a texture
+            _graphicsDevice.SetRenderTarget(null);
+
+            // =============================================================
+            // PASS 2: DRAW THE CANVAS TO THE SCREEN WITH THE SHADER
+            // =============================================================
+
+            //// 1. Unbind the RenderTarget so we draw to the physical monitor
+            //_graphicsDevice.SetRenderTarget(null);
+            //_graphicsDevice.Clear(Color.Black);
+
+            //// 2. Inject the dynamic math into the HLSL Shader
+            //float time = (float)gameTime.TotalGameTime.TotalSeconds;
+            //_crtEffect.Parameters["Time"]?.SetValue(time);
+
+            //// Make the glitch intensity react to both the dimension AND the system stress
+            //float intensity = 0.2f + (currentFrequency * 8.0f) + (totalStress * 25.0f);
+            //_crtEffect.Parameters["Intensity"]?.SetValue(intensity);
+
+            //// 3. Draw the canvas using the CRT Shader
+            //// Note: We use SpriteSortMode.Immediate so the shader applies immediately to this batch
+            //_spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Opaque, SamplerState.PointClamp, null, null, _crtEffect);
+
+            //// Stretch the render target to perfectly fit the player's window
+            //Rectangle screenRect = new Rectangle(0, 0, _graphicsDevice.PresentationParameters.BackBufferWidth, _graphicsDevice.PresentationParameters.BackBufferHeight);
+
+            //_spriteBatch.Draw(_renderTarget, screenRect, Color.White);
+
+            //_spriteBatch.End();
+
+        }
+
+
+        public void DrawHUD(PolarityManager polarityManager) {
             if (polarityManager.Strain > 0) {
-                // Start a new batch for UI so it ignores the camera transform and sticks to the screen
-                _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
+                // We inject the UI matrix here so it scales perfectly but ignores the camera and shader!
+                _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, GetUIScaleMatrix());
 
                 Rectangle strainBg = new Rectangle(VirtualWidth / 2 - 100, 20, 200, 15);
                 Rectangle strainFg = new Rectangle(VirtualWidth / 2 - 100, 20, (int)(200 * polarityManager.Strain), 15);
@@ -433,14 +492,33 @@ namespace Duality.Rendering
             }
         }
 
+
+        private Matrix GetUIScaleMatrix() {
+            Rectangle dest = CalculateDestinationRectangle();
+            float scaleX = (float)dest.Width / VirtualWidth;
+            float scaleY = (float)dest.Height / VirtualHeight;
+
+            // This perfectly aligns your UI to the letterboxed game screen
+            return Matrix.CreateScale(scaleX, scaleY, 1f) * Matrix.CreateTranslation(dest.X, dest.Y, 0);
+        }
+
+
         public void PresentToScreen() {
             // --- DRAW TO SCREEN ---
             _graphicsDevice.SetRenderTarget(null);
             _graphicsDevice.Clear(Color.Black);
 
+            // Pass the cached parameters into the HLSL effect
+            _crtEffect.Parameters["Time"]?.SetValue(_shaderTime);
+            _crtEffect.Parameters["Intensity"]?.SetValue(_shaderIntensity);
+
             Rectangle destinationRect = CalculateDestinationRectangle();
-            _spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Opaque, SamplerState.PointClamp);
+
+            // Use SpriteSortMode.Immediate and pass the effect to apply the shader to the scaling pass
+            _spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Opaque, SamplerState.PointClamp, null, null, _crtEffect);
+
             _spriteBatch.Draw(_renderTarget, destinationRect, Color.White);
+
             _spriteBatch.End();
         }
 

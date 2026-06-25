@@ -358,19 +358,47 @@ namespace Duality.Scenes
         }
 
         public override void Draw(GameTime gameTime) {
+            // 1. DRAW THE WORLD TO MEMORY 
+            // (This calls the massive Draw method in your DualRenderer)
             _renderer.Draw(gameTime, _polarityManager, _levelManager.CurrentLevel, _player, _camera, _particles, _activeBlast);
-            if (_currentState == GameplayState.ReadingDocument) {
-                _renderer.DrawDocumentOverlay(_activeDocumentText);
-            }
-            else if (_currentState == GameplayState.Logbook) { 
-                _renderer.DrawLogbookOverlay(_cachedLogbook, _logbookSelectedIndex);
-            }
-            else if(_currentState == GameplayState.EnteringCode) {
 
-                _renderer.DrawKeypadOverlay(_currentTypedCode, _showAccessDenied);
-            }
-
+            // 2. BLAST MEMORY TO SCREEN 
+            // (Applies the CRT Shader and letterboxes the view)
             _renderer.PresentToScreen();
+
+            // 3. DRAW UI ON TOP 
+            // (Clean, un-glitched, perfectly scaled)
+            _renderer.DrawHUD(_polarityManager);
+
+            // 4. DRAW ACTIVE MENUS
+            // (Dim the screen and draw the interactive UI over the shader)
+            switch (_currentState) {
+                case GameplayState.EnteringCode:
+                    _renderer.DrawKeypadOverlay(_currentTypedCode, _showAccessDenied);
+                    break;
+                case GameplayState.ReadingDocument:
+                    _renderer.DrawDocumentOverlay(_activeDocumentText);
+                    break;
+                case GameplayState.Logbook:
+                    _renderer.DrawLogbookOverlay(_cachedLogbook, _logbookSelectedIndex);
+                    break;
+            }
         }
+
+        //public override void Draw(GameTime gameTime) {
+        //    _renderer.Draw(gameTime, _polarityManager, _levelManager.CurrentLevel, _player, _camera, _particles, _activeBlast);
+        //    if (_currentState == GameplayState.ReadingDocument) {
+        //        _renderer.DrawDocumentOverlay(_activeDocumentText);
+        //    }
+        //    else if (_currentState == GameplayState.Logbook) { 
+        //        _renderer.DrawLogbookOverlay(_cachedLogbook, _logbookSelectedIndex);
+        //    }
+        //    else if(_currentState == GameplayState.EnteringCode) {
+
+        //        _renderer.DrawKeypadOverlay(_currentTypedCode, _showAccessDenied);
+        //    }
+
+        //    _renderer.PresentToScreen();
+        //}
     }
 }
