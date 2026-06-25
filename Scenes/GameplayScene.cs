@@ -35,6 +35,9 @@ namespace Duality.Scenes
         private List<string> _cachedLogbook; // Holds the indexed list while the menu is open
 
 
+        private float _currentFrameFrequency;
+
+
         private LockedDoor _activeDoor;
         private string _currentTypedCode = "";
         private bool _showAccessDenied = false;
@@ -115,7 +118,7 @@ namespace Duality.Scenes
             _audioManager.Update(gameTime, _polarityManager.CurrentFrequency, _polarityManager.TotalStress, _polarityManager.IsBurntOut);
 
             var currentLevel = _levelManager.CurrentLevel;
-
+            _currentFrameFrequency = _polarityManager.CurrentFrequency;
 
             if (Game._inputManager.IsLogbookPressed) {
                 _currentState = GameplayState.Logbook;
@@ -129,7 +132,7 @@ namespace Duality.Scenes
 
             // Enemies now require the player reference for Hunter behaviour
             foreach (var enemy in currentLevel.Enemies) {
-                enemy.Update(gameTime, _player, _polarityManager.CurrentFrequency);
+                enemy.Update(gameTime, _player, _currentFrameFrequency);
             }
 
 
@@ -173,7 +176,7 @@ namespace Duality.Scenes
                 if (currentLevel.LockedDoors != null) {
                     foreach (var door in currentLevel.LockedDoors) {
                         // Ensure it's locked, we are standing near it, AND it's physically solid in our current dimension
-                        if (door.IsLocked && door.IsSolid(_polarityManager.CurrentFrequency) && door.InteractionArea.Intersects(_player.Bounds)) {
+                        if (door.IsLocked && door.IsSolid(_currentFrameFrequency) && door.InteractionArea.Intersects(_player.Bounds)) {
 
                             _activeDoor = door;
                             _currentTypedCode = "";
@@ -189,7 +192,7 @@ namespace Duality.Scenes
             _player.Update(gameTime, Game._inputManager.GetMovementDirection(), _polarityManager, currentLevel);
 
 
-            if (Game._inputManager.IsDischargePressed && !_polarityManager.IsBurntOut && _polarityManager.CurrentFrequency >= 0.8f) { //TODO MAGIC NUMBER -  REMOVE/MOVE
+            if (Game._inputManager.IsDischargePressed && !_polarityManager.IsBurntOut && _currentFrameFrequency >= 0.8f) { //TODO MAGIC NUMBER -  REMOVE/MOVE
                 float blastRadius = 150f;       //TODO MAGIC NUMBER -  REMOVE/MOVE
                 Vector2 playerCenter = _player.Bounds.Center.ToVector2();
 
@@ -199,7 +202,7 @@ namespace Duality.Scenes
                     var enemy = currentLevel.Enemies[i];
 
                     // 2. The Target Check: Only affect enemies that are physically solid in the current frequency
-                    if (enemy.IsDangerous(_polarityManager.CurrentFrequency)) {
+                    if (enemy.IsDangerous(_currentFrameFrequency)) {
                         Vector2 enemyCenter = enemy.Bounds.Center.ToVector2();
                         float distance = Vector2.Distance(playerCenter, enemyCenter);
 
@@ -238,7 +241,7 @@ namespace Duality.Scenes
 
                 //Save the system strain and frequency before moving
                 Game.Session.CarriedStrain = _polarityManager.Strain;
-                Game.Session.CarriedFrequency = _polarityManager.CurrentFrequency;
+                Game.Session.CarriedFrequency = _currentFrameFrequency;
 
                 if (!string.IsNullOrEmpty(currentLevel.NextLevelPath))
                     Game.ChangeScene(new GameplayScene(Game, _ldtkFilePath, currentLevel.NextLevelPath));
