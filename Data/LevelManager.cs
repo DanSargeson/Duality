@@ -20,7 +20,9 @@ namespace Duality.Data
                 Enemies = new List<Enemy>(),
                 Decals = new List<Decal>(),
                 Interactables = new List<InteractableObject>(),
-                Documents = new List<DocumentObject>()
+                Documents = new List<DocumentObject>(),
+                LockedDoors = new List<LockedDoor>(),
+                UpgradeNodes = new List<UpgradeNode>()
             };
 
             // Parse the LDtk JSON dynamically
@@ -135,6 +137,24 @@ namespace Duality.Data
                         GetFloatField(entity, "Range")
                     ));
                     break;
+                case "Upgrade":
+                    CurrentLevel.UpgradeNodes.Add(new UpgradeNode(
+                        bounds,
+                        ParseHex(GetStringField(entity, "ColourHex")),
+                        GetFloatField(entity, "AnchorFrequency"),
+                        GetFloatField(entity, "Range"),
+                        GetStringField(entity, "UpgradeId") // The multi-line LDtk field
+                    ));
+                    break;
+                case "LockedDoor":
+                    CurrentLevel.LockedDoors.Add(new LockedDoor(
+                        bounds,
+                        ParseHex(GetStringField(entity, "ColourHex")),
+                        GetFloatField(entity, "AnchorFrequency"),
+                        GetFloatField(entity, "Range"),
+                        GetStringField(entity, "Passcode") // The multi-line LDtk field
+                    ));
+                    break;
             }
         }
 
@@ -168,14 +188,24 @@ namespace Duality.Data
             return ""; // Default
         }
 
-        private float GetFloatField(JsonElement entity, string fieldName) {
-            foreach (var field in entity.GetProperty("fieldInstances").EnumerateArray()) {
-                if (field.GetProperty("__identifier").GetString() == fieldName) {
-                    var value = field.GetProperty("__value");
-                    return value.ValueKind == JsonValueKind.Null ? 0f : value.GetSingle();
+        private float GetFloatField(JsonElement entity, string fieldName, float defaultValue = 0f) {
+            if (entity.TryGetProperty("fieldInstances", out JsonElement fieldInstances)) {
+                foreach (var field in fieldInstances.EnumerateArray()) {
+                    if (field.GetProperty("__identifier").GetString() == fieldName) {
+                        var value = field.GetProperty("__value");
+                        return value.ValueKind == JsonValueKind.Null ? defaultValue : value.GetSingle();
+                    }
                 }
             }
-            return 0f; // Default
+
+            // THE TRACKER ALARM: Tells you exactly WHERE the failing entity is in the world
+            string entityType = entity.GetProperty("__identifier").GetString();
+            int x = entity.GetProperty("px")[0].GetInt32();
+            int y = entity.GetProperty("px")[1].GetInt32();
+
+            System.Diagnostics.Debug.WriteLine($"[WARNING] {entityType} at X:{x}, Y:{y} is missing '{fieldName}'. Using default: {defaultValue}");
+
+            return defaultValue;
         }
 
         private Color ParseHex(string hex) {

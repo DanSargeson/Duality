@@ -17,6 +17,7 @@ namespace Duality
         // Systems
         public InputManager _inputManager { get; private set; }
         public SpriteFont _font { get; private set; }
+
         public Scene _currentScene { get; private set; }
         public GameSession Session { get; private set; }
 
@@ -48,7 +49,7 @@ namespace Duality
             // Initialize renderer here because it requires the GraphicsDevice to be ready
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             _font = Content.Load<SpriteFont>("Font");
-
+  
             ChangeScene(new MainMenuScene(this));
         }
 

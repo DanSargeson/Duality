@@ -39,6 +39,14 @@ namespace Duality.Entities
                 }
             }
 
+            if (level.LockedDoors != null) {
+                foreach (var door in level.LockedDoors) {
+                    if (door.IsLocked && Bounds.Intersects(door.Bounds)) {
+                        return true;
+                    }
+                }
+            }
+
             return false;
         }
 
@@ -104,6 +112,15 @@ namespace Duality.Entities
                     return true;
                 }
             }
+
+            if (level.LockedDoors != null) {
+                foreach (var door in level.LockedDoors) {
+                    if (door.IsLocked && door.IsSolid(currentFrequency) && Bounds.Intersects(door.Bounds)) {
+                        return true;
+                    }
+                }
+            }
+
             return false;
         }
 

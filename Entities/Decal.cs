@@ -17,7 +17,7 @@ namespace Duality.Entities
 
             BaseColor = color;
             AnchorFrequency = anchorFrequency;
-            Range = range;
+            Range = range <= 0f ? 0.4f : range;
 
             PrecalculateScrambledText();
         }
@@ -54,10 +54,7 @@ namespace Duality.Entities
             // If we are extremely close to the anchor, show the perfect text
             if (distance < 0.05f) return TextVariations[0];
 
-            // Calculate which pre-generated string to pull.
-            // Tuning: The '20f' multiplier means the text becomes 100% corrupted 
-            // when the player is 0.5f frequency away from the anchor.
-            int corruptionIndex = Math.Min((int)(distance * 20f), 9);
+            int corruptionIndex = Math.Min((int)(distance * 10f), 9);
 
             return TextVariations[corruptionIndex];
         }

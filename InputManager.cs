@@ -18,8 +18,9 @@ namespace Duality
         public bool IsShiftingToInsight => _currentKeyState.IsKeyDown(Keys.Q);
         public bool IsShiftingToDensity => _currentKeyState.IsKeyDown(Keys.E);
 
+        public bool IsLogbookPressed => Keyboard.GetState().IsKeyDown(Keys.Tab) && _previousKeyState.IsKeyUp(Keys.Tab);
         public bool IsDischargePressed => _currentKeyState.IsKeyDown(Keys.Space) && _previousKeyState.IsKeyDown(Keys.Space);
-        public bool IsInteractPressed => WasActionPressed(Keys.C);
+        public bool IsInteractPressed => WasActionPressed(Keys.Enter);
 
         // Semantic Action: Movement (Returns a normalized vector to prevent fast diagonal movement)
         public Vector2 GetMovementDirection() {
@@ -46,6 +47,10 @@ namespace Duality
         }
 
         // Example of a semantic single-press action
+
+        public bool IsUpPressed => WasActionPressed(Keys.W) || WasActionPressed(Keys.Up);
+        public bool IsDownPressed => WasActionPressed(Keys.S) || WasActionPressed(Keys.Down);
+        public bool IsCancelPressed => WasActionPressed(Keys.Escape);
         public bool IsPausePressed => WasActionPressed(Keys.Escape);
     }
 }

@@ -6,11 +6,11 @@ namespace Duality.Mechanics
     public class PolarityManager
     {
         // 0.0 is pure Density, 1.0 is pure Insight
-        public float CurrentFrequency { get; private set; } = 0.0f;
+        public float CurrentFrequency { get; set; } = 0.0f;
         public float ShiftSpeed { get; set; } = 0.5f;
 
         // Overload & Burnout Mechanics
-        public float Strain { get; private set; } = 0.0f; // 0.0 to 1.0
+        public float Strain { get; set; } = 0.0f; // 0.0 to 1.0
         public bool IsBurntOut { get; private set; } = false;
 
         public float TotalStress {

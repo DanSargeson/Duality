@@ -6,6 +6,8 @@ namespace Duality.Entities
     {
         public string TextContent { get; private set; }
 
+        public bool IsCollected { get; set; } = false;
+
         public DocumentObject(Rectangle bounds, Color color, float anchorFrequency, float range, string textContent) : base(bounds, color, anchorFrequency) {
             Bounds = bounds;
             BaseColor = color;
