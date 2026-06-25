@@ -112,7 +112,7 @@ namespace Duality.Scenes
         private void UpdateActiveState(GameTime gameTime) {
 
             _polarityManager.Update(gameTime, Game._inputManager.IsShiftingToInsight, Game._inputManager.IsShiftingToDensity);
-            _audioManager.Update(_polarityManager.CurrentFrequency, _polarityManager.TotalStress);
+            _audioManager.Update(gameTime, _polarityManager.CurrentFrequency, _polarityManager.TotalStress, _polarityManager.IsBurntOut);
 
             var currentLevel = _levelManager.CurrentLevel;
 

@@ -25,7 +25,7 @@ namespace Duality.Entities
         // The physics/collision check
         public bool IsSolid(float currentFrequency) {
             // Objects become passable if their presence drops below a certain threshold
-            return GetPresence(currentFrequency) > 0.5f;
+            return GetPresence(currentFrequency) >= 0.8f;
         }
     }
 }

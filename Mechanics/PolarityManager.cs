@@ -7,7 +7,15 @@ namespace Duality.Mechanics
     {
         // 0.0 is pure Density, 1.0 is pure Insight
         public float CurrentFrequency { get; set; } = 0.0f;
-        public float ShiftSpeed { get; set; } = 0.5f;
+
+
+        // Pushing into Insight takes 4 full seconds. 
+        // This gives the heartbeat a massive runway to accelerate.
+        public float ShiftInSpeed { get; set; } = 0.20f;
+
+        // Escaping back to Density takes 1.5 seconds. 
+        // Fast enough to feel like a panic reflex.
+        public float ShiftOutSpeed { get; set; } = 0.66f;
 
         // Overload & Burnout Mechanics
         public float Strain { get; set; } = 0.0f; // 0.0 to 1.0
@@ -15,8 +23,13 @@ namespace Duality.Mechanics
 
         public float TotalStress {
             get {
-                float baseTension = (float)System.Math.Pow(CurrentFrequency, 3);
-                return System.Math.Max(baseTension, Strain) * CurrentFrequency;
+                // Shifting into Insight provides the first 40% of the panic
+                float baseTension = CurrentFrequency * 0.4f;
+
+                // The actual system melting down provides the remaining 60%
+                float strainTension = Strain * 0.6f;
+
+                return baseTension + strainTension;
             }
         }
 
@@ -46,9 +59,9 @@ namespace Duality.Mechanics
             // 1. Handle Shifting
             // We ignore Insight input if the system is burnt out, and forcefully pull to Density
             if (shiftingToInsight && !IsBurntOut)
-                CurrentFrequency += ShiftSpeed * deltaTime;
+                CurrentFrequency += ShiftInSpeed * deltaTime;
             if (shiftingToDensity || IsBurntOut)
-                CurrentFrequency -= ShiftSpeed * deltaTime;
+                CurrentFrequency -= ShiftOutSpeed * deltaTime;
 
             CurrentFrequency = MathHelper.Clamp(CurrentFrequency, 0.0f, 1.0f);
 

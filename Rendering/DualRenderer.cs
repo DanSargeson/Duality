@@ -286,36 +286,19 @@ namespace Duality.Rendering
                 float presence = entity.GetPresence(currentFrequency);
                 if (presence <= 0f) return;
 
-                bool isSolid = presence >= 0.5f;
+                float alpha = presence;
 
-                if (!isSolid) {
-                    // SHADOW MODE (0.0f to 0.49f)
-                    // Cap the alpha so it never gets too bright before becoming solid
-                    float shadowAlpha = presence * 0.8f;
-
-                    // Lerp the base color heavily toward black so it looks like a dead silhouette/hologram
+                if (presence < 0.8f) { // If it's not "mostly" solid yet
+                                       // Fading: Draw as a dark silhouette, growing more opaque as presence increases
                     Color shadowColor = Color.Lerp(Color.Black, entity.BaseColor, 0.3f);
-
-                    // When you use sprites later, passing 'shadowColor * shadowAlpha' will 
-                    // perfectly tint your sprite dark and transparent.
-                    _spriteBatch.Draw(_pixel, bounds, shadowColor * shadowAlpha);
+                    _spriteBatch.Draw(_pixel, bounds, shadowColor * alpha);
                 }
                 else {
-                    // SOLID MODE (0.5f to 1.0f)
-                    // Keep alpha high (0.8 to 1.0) so it feels physically present
-                    float solidAlpha = 0.5f + (presence * 0.5f);
+                    // SOLID
+                    _spriteBatch.Draw(_pixel, bounds, entity.BaseColor * 0.9f);
 
-                    _spriteBatch.Draw(_pixel, bounds, entity.BaseColor * solidAlpha);
-
-                    // THE TACTILE CUE: Draw a crisp outline to indicate the collision boundary.
-                    // It pulses slightly as it gets closer to its perfect anchor frequency.
-                    Color boxColor = Color.White * solidAlpha;
-                    DrawHollowRectangle(bounds, boxColor, 2);
-
-                    // TODO finish polish: Draw corner brackets instead of a full box for a "glitch targeting" look
-                    int bracketSize = 6;
-                    DrawHollowRectangle(new Rectangle(bounds.X, bounds.Y, bracketSize, 2), boxColor, 2); // Top-Left H
-                    DrawHollowRectangle(new Rectangle(bounds.X, bounds.Y, 2, bracketSize), boxColor, 2); // Top-Left V
+                    // Tactile Cue: Only draw the border if it's FULLY solid
+                    DrawHollowRectangle(bounds, Color.White * 0.4f, 2);
                 }
             };
 

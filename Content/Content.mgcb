@@ -13,17 +13,23 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin Audio/heartbeat.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/heartbeat.wav
+
 #begin Audio/hum.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Audio/hum.wav
 
-#begin Audio/ringing.wav
+#begin Audio/static.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:Audio/ringing.wav
+/build:Audio/static.wav
 
 #begin CRT.fx
 /importer:EffectImporter

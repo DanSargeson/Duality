@@ -18,7 +18,7 @@ namespace Duality.Entities
         }
 
         public bool IsSolid(float currentFrequency) {
-            return GetPresence(currentFrequency) > 0.5f;
+            return GetPresence(currentFrequency) >= 0.8f;
         }
     }
 }
