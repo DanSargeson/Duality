@@ -288,9 +288,9 @@ namespace Duality.Rendering
 
                 float alpha = presence;
 
-                if (presence < 0.8f) { // If it's not "mostly" solid yet
+                if (presence < 0.5f) { // If it's not "mostly" solid yet
                                        // Fading: Draw as a dark silhouette, growing more opaque as presence increases
-                    Color shadowColor = Color.Lerp(Color.Black, entity.BaseColor, 0.3f);
+                    Color shadowColor = Color.Lerp(Color.Gray, entity.BaseColor, 0.3f);
                     _spriteBatch.Draw(_pixel, bounds, shadowColor * alpha);
                 }
                 else {
@@ -298,7 +298,7 @@ namespace Duality.Rendering
                     _spriteBatch.Draw(_pixel, bounds, entity.BaseColor * 0.9f);
 
                     // Tactile Cue: Only draw the border if it's FULLY solid
-                    DrawHollowRectangle(bounds, Color.White * 0.4f, 2);
+                    DrawHollowRectangle(bounds, Color.White, 2);
                 }
             };
 
