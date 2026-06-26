@@ -11,7 +11,7 @@
 	"iid": "8e7df970-48b0-11f1-91ed-b50c71501dc8",
 	"jsonVersion": "1.5.3",
 	"appBuildId": 473703,
-	"nextUid": 98,
+	"nextUid": 100,
 	"identifierStyle": "Capitalize",
 	"toc": [
 		{
@@ -59,7 +59,37 @@
 					"levelIid": "9945f280-6fc0-11f1-adf8-fbc91f0dff99",
 					"layerIid": "99461990-6fc0-11f1-adf8-01dcff118c75",
 					"entityIid": "37296950-6fc0-11f1-adf8-6590dd4d8d7a"
-				}, "worldX": 256, "worldY": 1096, "widPx": 272, "heiPx": 112, "fields" : {} }
+				}, "worldX": 656, "worldY": 1680, "widPx": 272, "heiPx": 112, "fields" : {} },
+				{ "iids": {
+					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
+					"levelIid": "cbb238e0-6fc0-11f1-99a7-2f11b3d1bb1e",
+					"layerIid": "cbb28700-6fc0-11f1-99a7-c1e7f5ba5d3c",
+					"entityIid": "f95c9740-6fc0-11f1-99a7-d55f7417a5c5"
+				}, "worldX": 800, "worldY": 656, "widPx": 528, "heiPx": 80, "fields" : {} },
+				{ "iids": {
+					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
+					"levelIid": "cbb238e0-6fc0-11f1-99a7-2f11b3d1bb1e",
+					"layerIid": "cbb28700-6fc0-11f1-99a7-c1e7f5ba5d3c",
+					"entityIid": "9bc017f0-6fc0-11f1-99a7-952a81b2afa7"
+				}, "worldX": 800, "worldY": 768, "widPx": 528, "heiPx": 128, "fields" : {} },
+				{ "iids": {
+					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
+					"levelIid": "cbb238e0-6fc0-11f1-99a7-2f11b3d1bb1e",
+					"layerIid": "cbb28700-6fc0-11f1-99a7-c1e7f5ba5d3c",
+					"entityIid": "da4b7230-6fc0-11f1-99a7-cf904d1fd240"
+				}, "worldX": 1312, "worldY": 896, "widPx": 288, "heiPx": 16, "fields" : {} },
+				{ "iids": {
+					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
+					"levelIid": "725d0ac0-6fc0-11f1-99a7-b9041209a0d6",
+					"layerIid": "725d31d0-6fc0-11f1-99a7-8b1995ae8925",
+					"entityIid": "2f285740-6fc0-11f1-99a7-475fe1f2eaac"
+				}, "worldX": 1600, "worldY": 1184, "widPx": 112, "heiPx": 192, "fields" : {} },
+				{ "iids": {
+					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
+					"levelIid": "725d0ac0-6fc0-11f1-99a7-b9041209a0d6",
+					"layerIid": "725d31d0-6fc0-11f1-99a7-8b1995ae8925",
+					"entityIid": "391514f0-6fc0-11f1-99a7-a3ddf4aeb801"
+				}, "worldX": 1601, "worldY": 1345, "widPx": 368, "heiPx": 448, "fields" : {} }
 			]
 		},
 		{
@@ -95,7 +125,151 @@
 					"levelIid": "9945f280-6fc0-11f1-adf8-fbc91f0dff99",
 					"layerIid": "99461990-6fc0-11f1-adf8-01dcff118c75",
 					"entityIid": "2f816b80-6fc0-11f1-adf8-6beb4fc88e53"
-				}, "worldX": 256, "worldY": 600, "widPx": 288, "heiPx": 112, "fields" : {} }
+				}, "worldX": 656, "worldY": 1184, "widPx": 288, "heiPx": 112, "fields" : {} },
+				{ "iids": {
+					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
+					"levelIid": "cbb238e0-6fc0-11f1-99a7-2f11b3d1bb1e",
+					"layerIid": "cbb28700-6fc0-11f1-99a7-c1e7f5ba5d3c",
+					"entityIid": "ea411920-6fc0-11f1-99a7-8533b96aef33"
+				}, "worldX": 800, "worldY": 641, "widPx": 528, "heiPx": 16, "fields" : {} },
+				{ "iids": {
+					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
+					"levelIid": "cbb238e0-6fc0-11f1-99a7-2f11b3d1bb1e",
+					"layerIid": "cbb28700-6fc0-11f1-99a7-c1e7f5ba5d3c",
+					"entityIid": "0b6d6090-6fc0-11f1-99a7-a3830cfa267d"
+				}, "worldX": 1376, "worldY": 640, "widPx": 224, "heiPx": 16, "fields" : {} },
+				{ "iids": {
+					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
+					"levelIid": "cbb238e0-6fc0-11f1-99a7-2f11b3d1bb1e",
+					"layerIid": "cbb28700-6fc0-11f1-99a7-c1e7f5ba5d3c",
+					"entityIid": "332debe0-6fc0-11f1-99a7-81788a229b30"
+				}, "worldX": 1552, "worldY": 672, "widPx": 48, "heiPx": 32, "fields" : {} },
+				{ "iids": {
+					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
+					"levelIid": "cbb238e0-6fc0-11f1-99a7-2f11b3d1bb1e",
+					"layerIid": "cbb28700-6fc0-11f1-99a7-c1e7f5ba5d3c",
+					"entityIid": "39bf2280-6fc0-11f1-99a7-77ac16a540ef"
+				}, "worldX": 1552, "worldY": 752, "widPx": 48, "heiPx": 32, "fields" : {} },
+				{ "iids": {
+					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
+					"levelIid": "cbb238e0-6fc0-11f1-99a7-2f11b3d1bb1e",
+					"layerIid": "cbb28700-6fc0-11f1-99a7-c1e7f5ba5d3c",
+					"entityIid": "42a9b270-6fc0-11f1-99a7-4fb0507af668"
+				}, "worldX": 1552, "worldY": 832, "widPx": 48, "heiPx": 32, "fields" : {} },
+				{ "iids": {
+					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
+					"levelIid": "cbb238e0-6fc0-11f1-99a7-2f11b3d1bb1e",
+					"layerIid": "cbb28700-6fc0-11f1-99a7-c1e7f5ba5d3c",
+					"entityIid": "5c309420-6fc0-11f1-99a7-fd2baeb23de3"
+				}, "worldX": 880, "worldY": 880, "widPx": 448, "heiPx": 16, "fields" : {} },
+				{ "iids": {
+					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
+					"levelIid": "cbb238e0-6fc0-11f1-99a7-2f11b3d1bb1e",
+					"layerIid": "cbb28700-6fc0-11f1-99a7-c1e7f5ba5d3c",
+					"entityIid": "768d3c60-6fc0-11f1-99a7-d76c2c270429"
+				}, "worldX": 1312, "worldY": 640, "widPx": 16, "heiPx": 256, "fields" : {} },
+				{ "iids": {
+					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
+					"levelIid": "cbb238e0-6fc0-11f1-99a7-2f11b3d1bb1e",
+					"layerIid": "cbb28700-6fc0-11f1-99a7-c1e7f5ba5d3c",
+					"entityIid": "b149b450-6fc0-11f1-99a7-11ff94e54296"
+				}, "worldX": 880, "worldY": 896, "widPx": 16, "heiPx": 224, "fields" : {} },
+				{ "iids": {
+					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
+					"levelIid": "cbb238e0-6fc0-11f1-99a7-2f11b3d1bb1e",
+					"layerIid": "cbb28700-6fc0-11f1-99a7-c1e7f5ba5d3c",
+					"entityIid": "b9840710-6fc0-11f1-99a7-67674a2ae8f6"
+				}, "worldX": 1088, "worldY": 896, "widPx": 16, "heiPx": 128, "fields" : {} },
+				{ "iids": {
+					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
+					"levelIid": "cbb238e0-6fc0-11f1-99a7-2f11b3d1bb1e",
+					"layerIid": "cbb28700-6fc0-11f1-99a7-c1e7f5ba5d3c",
+					"entityIid": "bd0f29a0-6fc0-11f1-99a7-2f67a4400e83"
+				}, "worldX": 1296, "worldY": 896, "widPx": 16, "heiPx": 128, "fields" : {} },
+				{ "iids": {
+					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
+					"levelIid": "cbb238e0-6fc0-11f1-99a7-2f11b3d1bb1e",
+					"layerIid": "cbb28700-6fc0-11f1-99a7-c1e7f5ba5d3c",
+					"entityIid": "fea049d0-6fc0-11f1-99a7-133f2ef01c98"
+				}, "worldX": 1376, "worldY": 880, "widPx": 224, "heiPx": 16, "fields" : {} },
+				{ "iids": {
+					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
+					"levelIid": "cbb238e0-6fc0-11f1-99a7-2f11b3d1bb1e",
+					"layerIid": "cbb28700-6fc0-11f1-99a7-c1e7f5ba5d3c",
+					"entityIid": "08131c90-6fc0-11f1-99a7-4323ad7843c5"
+				}, "worldX": 1296, "worldY": 1072, "widPx": 16, "heiPx": 112, "fields" : {} },
+				{ "iids": {
+					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
+					"levelIid": "cbb238e0-6fc0-11f1-99a7-2f11b3d1bb1e",
+					"layerIid": "cbb28700-6fc0-11f1-99a7-c1e7f5ba5d3c",
+					"entityIid": "150fd960-6fc0-11f1-99a7-bb8ccf884ebb"
+				}, "worldX": 1088, "worldY": 1072, "widPx": 16, "heiPx": 112, "fields" : {} },
+				{ "iids": {
+					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
+					"levelIid": "725d0ac0-6fc0-11f1-99a7-b9041209a0d6",
+					"layerIid": "725d31d0-6fc0-11f1-99a7-8b1995ae8925",
+					"entityIid": "b6dbadf0-6fc0-11f1-99a7-ab304c73fac8"
+				}, "worldX": 1600, "worldY": 1168, "widPx": 80, "heiPx": 16, "fields" : {} },
+				{ "iids": {
+					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
+					"levelIid": "725d0ac0-6fc0-11f1-99a7-b9041209a0d6",
+					"layerIid": "725d31d0-6fc0-11f1-99a7-8b1995ae8925",
+					"entityIid": "bc19b0a0-6fc0-11f1-99a7-03a04888933e"
+				}, "worldX": 1680, "worldY": 992, "widPx": 16, "heiPx": 192, "fields" : {} },
+				{ "iids": {
+					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
+					"levelIid": "725d0ac0-6fc0-11f1-99a7-b9041209a0d6",
+					"layerIid": "725d31d0-6fc0-11f1-99a7-8b1995ae8925",
+					"entityIid": "c2498d60-6fc0-11f1-99a7-4f6cf057426f"
+				}, "worldX": 1680, "worldY": 960, "widPx": 208, "heiPx": 16, "fields" : {} },
+				{ "iids": {
+					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
+					"levelIid": "725d0ac0-6fc0-11f1-99a7-b9041209a0d6",
+					"layerIid": "725d31d0-6fc0-11f1-99a7-8b1995ae8925",
+					"entityIid": "c663f7a0-6fc0-11f1-99a7-aff703f519c6"
+				}, "worldX": 1888, "worldY": 960, "widPx": 16, "heiPx": 320, "fields" : {} },
+				{ "iids": {
+					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
+					"levelIid": "725d0ac0-6fc0-11f1-99a7-b9041209a0d6",
+					"layerIid": "725d31d0-6fc0-11f1-99a7-8b1995ae8925",
+					"entityIid": "d14accc0-6fc0-11f1-99a7-3365ffc8384d"
+				}, "worldX": 1824, "worldY": 1280, "widPx": 80, "heiPx": 16, "fields" : {} },
+				{ "iids": {
+					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
+					"levelIid": "725d0ac0-6fc0-11f1-99a7-b9041209a0d6",
+					"layerIid": "725d31d0-6fc0-11f1-99a7-8b1995ae8925",
+					"entityIid": "d7e35660-6fc0-11f1-99a7-152a10dc8425"
+				}, "worldX": 1952, "worldY": 928, "widPx": 16, "heiPx": 416, "fields" : {} },
+				{ "iids": {
+					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
+					"levelIid": "725d0ac0-6fc0-11f1-99a7-b9041209a0d6",
+					"layerIid": "725d31d0-6fc0-11f1-99a7-8b1995ae8925",
+					"entityIid": "ef5a6ae0-6fc0-11f1-99a7-ef2a469c1256"
+				}, "worldX": 1776, "worldY": 1328, "widPx": 176, "heiPx": 16, "fields" : {} },
+				{ "iids": {
+					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
+					"levelIid": "725d0ac0-6fc0-11f1-99a7-b9041209a0d6",
+					"layerIid": "725d31d0-6fc0-11f1-99a7-8b1995ae8925",
+					"entityIid": "f2d93160-6fc0-11f1-99a7-abf7664631ef"
+				}, "worldX": 1808, "worldY": 1024, "widPx": 16, "heiPx": 272, "fields" : {} },
+				{ "iids": {
+					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
+					"levelIid": "725d0ac0-6fc0-11f1-99a7-b9041209a0d6",
+					"layerIid": "725d31d0-6fc0-11f1-99a7-8b1995ae8925",
+					"entityIid": "0ca7ca70-6fc0-11f1-99a7-cf33895c5373"
+				}, "worldX": 1760, "worldY": 1056, "widPx": 16, "heiPx": 288, "fields" : {} },
+				{ "iids": {
+					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
+					"levelIid": "725d0ac0-6fc0-11f1-99a7-b9041209a0d6",
+					"layerIid": "725d31d0-6fc0-11f1-99a7-8b1995ae8925",
+					"entityIid": "18e0e920-6fc0-11f1-99a7-dde85a794902"
+				}, "worldX": 1696, "worldY": 1008, "widPx": 128, "heiPx": 16, "fields" : {} },
+				{ "iids": {
+					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
+					"levelIid": "725d0ac0-6fc0-11f1-99a7-b9041209a0d6",
+					"layerIid": "725d31d0-6fc0-11f1-99a7-8b1995ae8925",
+					"entityIid": "1ea90360-6fc0-11f1-99a7-bb1c38e844ca"
+				}, "worldX": 1712, "worldY": 1024, "widPx": 16, "heiPx": 560, "fields" : {} }
 			]
 		},
 		{
@@ -131,19 +305,19 @@
 					"levelIid": "9945f280-6fc0-11f1-adf8-fbc91f0dff99",
 					"layerIid": "99461990-6fc0-11f1-adf8-01dcff118c75",
 					"entityIid": "e74dfdb0-6fc0-11f1-adf8-7945b377d935"
-				}, "worldX": 224, "worldY": 712, "widPx": 800, "heiPx": 384, "fields" : {} },
+				}, "worldX": 624, "worldY": 1296, "widPx": 800, "heiPx": 384, "fields" : {} },
 				{ "iids": {
 					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
 					"levelIid": "9945f280-6fc0-11f1-adf8-fbc91f0dff99",
 					"layerIid": "99461990-6fc0-11f1-adf8-01dcff118c75",
 					"entityIid": "1c4149f0-6fc0-11f1-adf8-bb81a07a5099"
-				}, "worldX": 224, "worldY": 601, "widPx": 32, "heiPx": 128, "fields" : {} },
+				}, "worldX": 624, "worldY": 1185, "widPx": 32, "heiPx": 128, "fields" : {} },
 				{ "iids": {
 					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
 					"levelIid": "9945f280-6fc0-11f1-adf8-fbc91f0dff99",
 					"layerIid": "99461990-6fc0-11f1-adf8-01dcff118c75",
 					"entityIid": "2355e160-6fc0-11f1-adf8-595fea2056c6"
-				}, "worldX": 224, "worldY": 1080, "widPx": 32, "heiPx": 128, "fields" : {} }
+				}, "worldX": 624, "worldY": 1664, "widPx": 32, "heiPx": 128, "fields" : {} }
 			]
 		},
 		{
@@ -161,13 +335,13 @@
 					"levelIid": "9945f280-6fc0-11f1-adf8-fbc91f0dff99",
 					"layerIid": "99461990-6fc0-11f1-adf8-01dcff118c75",
 					"entityIid": "f684a4f0-6fc0-11f1-adf8-83ee5ff0b4d2"
-				}, "worldX": 224, "worldY": 840, "widPx": 416, "heiPx": 96, "fields" : {} },
+				}, "worldX": 624, "worldY": 1424, "widPx": 416, "heiPx": 96, "fields" : {} },
 				{ "iids": {
 					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
 					"levelIid": "9945f280-6fc0-11f1-adf8-fbc91f0dff99",
 					"layerIid": "99461990-6fc0-11f1-adf8-01dcff118c75",
 					"entityIid": "0ab67980-6fc0-11f1-adf8-83bad7ee66fc"
-				}, "worldX": 528, "worldY": 840, "widPx": 496, "heiPx": 32, "fields" : {} }
+				}, "worldX": 928, "worldY": 1424, "widPx": 496, "heiPx": 32, "fields" : {} }
 			]
 		},
 		{
@@ -191,7 +365,19 @@
 					"levelIid": "9945f280-6fc0-11f1-adf8-fbc91f0dff99",
 					"layerIid": "99461990-6fc0-11f1-adf8-01dcff118c75",
 					"entityIid": "76bac1e0-6fc0-11f1-adf8-352ced3f37bd"
-				}, "worldX": 0, "worldY": 808, "widPx": 16, "heiPx": 208, "fields" : {} }
+				}, "worldX": 400, "worldY": 1392, "widPx": 16, "heiPx": 208, "fields" : {} },
+				{ "iids": {
+					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
+					"levelIid": "cbb238e0-6fc0-11f1-99a7-2f11b3d1bb1e",
+					"layerIid": "cbb28700-6fc0-11f1-99a7-c1e7f5ba5d3c",
+					"entityIid": "42b2bdb0-6fc0-11f1-99a7-1f6d8b41bc3f"
+				}, "worldX": 1584, "worldY": 1088, "widPx": 16, "heiPx": 96, "fields" : {} },
+				{ "iids": {
+					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
+					"levelIid": "725d0ac0-6fc0-11f1-99a7-b9041209a0d6",
+					"layerIid": "725d31d0-6fc0-11f1-99a7-8b1995ae8925",
+					"entityIid": "a702d340-6fc0-11f1-99a7-b5f80f5880b9"
+				}, "worldX": 1600, "worldY": 1376, "widPx": 32, "heiPx": 96, "fields" : {} }
 			]
 		},
 		{
@@ -209,7 +395,7 @@
 					"levelIid": "9945f280-6fc0-11f1-adf8-fbc91f0dff99",
 					"layerIid": "99461990-6fc0-11f1-adf8-01dcff118c75",
 					"entityIid": "68c462d0-6fc0-11f1-adf8-897f8207ec6e"
-				}, "worldX": 1048, "worldY": 1120, "widPx": 32, "heiPx": 32, "fields" : {} }
+				}, "worldX": 1448, "worldY": 1704, "widPx": 32, "heiPx": 32, "fields" : {} }
 			]
 		},
 		{
@@ -220,7 +406,7 @@
 				"levelIid": "9945f280-6fc0-11f1-adf8-fbc91f0dff99",
 				"layerIid": "99461990-6fc0-11f1-adf8-01dcff118c75",
 				"entityIid": "46003d50-6fc0-11f1-adf8-e32035274242"
-			}, "worldX": 88, "worldY": 688, "widPx": 32, "heiPx": 32, "fields" : {} }]
+			}, "worldX": 488, "worldY": 1272, "widPx": 32, "heiPx": 32, "fields" : {} }]
 		},
 		{
 			"identifier": "StalkerEnemy",
@@ -228,22 +414,16 @@
 			"instancesData": [
 				{ "iids": {
 					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
-					"levelIid": "0f0768b0-48b0-11f1-8504-95a673b4eb79",
-					"layerIid": "0f07dde0-48b0-11f1-8504-8d4d9e0c921e",
-					"entityIid": "217c0950-6fc0-11f1-adf8-8182e6b1f3c6"
-				}, "worldX": 1048, "worldY": 344, "widPx": 32, "heiPx": 32, "fields" : {} },
-				{ "iids": {
-					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
 					"levelIid": "9945f280-6fc0-11f1-adf8-fbc91f0dff99",
 					"layerIid": "99461990-6fc0-11f1-adf8-01dcff118c75",
 					"entityIid": "62e27f00-6fc0-11f1-adf8-e5679f1ecc14"
-				}, "worldX": 408, "worldY": 1152, "widPx": 32, "heiPx": 32, "fields" : {} },
+				}, "worldX": 808, "worldY": 1736, "widPx": 32, "heiPx": 32, "fields" : {} },
 				{ "iids": {
 					"worldIid": "8e7e2080-48b0-11f1-91ed-538e93befd65",
 					"levelIid": "9945f280-6fc0-11f1-adf8-fbc91f0dff99",
 					"layerIid": "99461990-6fc0-11f1-adf8-01dcff118c75",
 					"entityIid": "64f420f0-6fc0-11f1-adf8-93b425b9a9a1"
-				}, "worldX": 376, "worldY": 656, "widPx": 32, "heiPx": 32, "fields" : {} }
+				}, "worldX": 776, "worldY": 1240, "widPx": 32, "heiPx": 32, "fields" : {} }
 			]
 		}
 	],
@@ -1266,7 +1446,7 @@
 					"max": null,
 					"regex": null,
 					"acceptFileTypes": null,
-					"defaultOverride": { "id": "V_Float", "params": [1] },
+					"defaultOverride": { "id": "V_Float", "params": [0] },
 					"textLanguageMode": null,
 					"symmetricalRef": false,
 					"autoChainRef": true,
@@ -3137,10 +3317,10 @@
 							"defUid": 64,
 							"px": [704,48],
 							"fieldInstances": [
-								{ "__identifier": "TextContent", "__type": "String", "__value": " [ SYSTEM_OVERRIDE_PROTOCOL.sys ]\nSUBJECT: 8144-M\nTEST: Electro-Neural Grounding\n\nOBSERVATION: In the event of acute systemic strain, the subject has discovered they can trigger a localized electrostatic purge [ SPACEBAR ].\n\nACTION: Allow this behavior. While the purge temporarily disrupts local surveillance geometry, it violently grounds the subject back to Density and induces a mandatory exhaustion period. The pain generated by this action provides excellent yield.", "__tile": null, "defUid": 66, "realEditorValues": [{
+								{ "__identifier": "TextContent", "__type": "String", "__value": " [ SYSTEM_OVERRIDE_PROTOCOL.sys ]\nSUBJECT: 8144-M\nTEST: Electro-Neural Grounding\n\nOBSERVATION: In the event of acute systemic strain, the subject has discovered they can trigger a localised electrostatic purge [ SPACEBAR ].\n\nACTION: Allow this behaviour. While the purge temporarily disrupts local surveillance geometry, it violently grounds the subject back to Density and induces a mandatory exhaustion period. The pain generated by this action provides excellent yield.", "__tile": null, "defUid": 66, "realEditorValues": [{
 									"id": "V_String",
 									"params": [
-										" [ SYSTEM_OVERRIDE_PROTOCOL.sys ]\\nSUBJECT: 8144-M\\nTEST: Electro-Neural Grounding\\n\\nOBSERVATION: In the event of acute systemic strain, the subject has discovered they can trigger a localized electrostatic purge [ SPACEBAR ].\\n\\nACTION: Allow this behavior. While the purge temporarily disrupts local surveillance geometry, it violently grounds the subject back to Density and induces a mandatory exhaustion period. The pain generated by this action provides excellent yield."
+										" [ SYSTEM_OVERRIDE_PROTOCOL.sys ]\\nSUBJECT: 8144-M\\nTEST: Electro-Neural Grounding\\n\\nOBSERVATION: In the event of acute systemic strain, the subject has discovered they can trigger a localised electrostatic purge [ SPACEBAR ].\\n\\nACTION: Allow this behaviour. While the purge temporarily disrupts local surveillance geometry, it violently grounds the subject back to Density and induces a mandatory exhaustion period. The pain generated by this action provides excellent yield."
 									]
 								}] },
 								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 0, "__tile": null, "defUid": 67, "realEditorValues": [] },
@@ -3211,9 +3391,9 @@
 							"defUid": 64,
 							"px": [688,464],
 							"fieldInstances": [
-								{ "__identifier": "TextContent", "__type": "String", "__value": "Beware the creatures that hide in Insight", "__tile": null, "defUid": 66, "realEditorValues": [{
+								{ "__identifier": "TextContent", "__type": "String", "__value": "Beware the creatures that lurk in Density", "__tile": null, "defUid": 66, "realEditorValues": [{
 									"id": "V_String",
-									"params": ["Beware the creatures that hide in Insight"]
+									"params": ["Beware the creatures that lurk in Density"]
 								}] },
 								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 1, "__tile": null, "defUid": 67, "realEditorValues": [{ "id": "V_Float", "params": [1] }] },
 								{ "__identifier": "Range", "__type": "Float", "__value": 0.4, "__tile": null, "defUid": 68, "realEditorValues": [{ "id": "V_Float", "params": [0.4] }] },
@@ -3225,7 +3405,7 @@
 					]
 				}
 			],
-			"__neighbours": [ { "levelIid": "0f0768b0-48b0-11f1-8504-95a673b4eb79", "dir": "e" }, { "levelIid": "9945f280-6fc0-11f1-adf8-fbc91f0dff99", "dir": "s" } ]
+			"__neighbours": [{ "levelIid": "0f0768b0-48b0-11f1-8504-95a673b4eb79", "dir": "e" }]
 		},
 		{
 			"identifier": "Level_1",
@@ -3386,7 +3566,7 @@
 							"px": [744,552],
 							"fieldInstances": [
 								{ "__identifier": "Range", "__type": "Float", "__value": 0.4, "__tile": null, "defUid": 28, "realEditorValues": [] },
-								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 1, "__tile": null, "defUid": 29, "realEditorValues": [] },
+								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 0, "__tile": null, "defUid": 29, "realEditorValues": [] },
 								{ "__identifier": "Point", "__type": "Array<Point>", "__value": [
 									{ "cx": 44, "cy": 16 },
 									{ "cx": 35, "cy": 12 },
@@ -3592,10 +3772,10 @@
 									"params": ["RapidGrounding"]
 								}] },
 								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#E4A672", "__tile": null, "defUid": 95, "realEditorValues": [] },
-								{ "__identifier": "TextContext", "__type": "String", "__value": "PATIENT UPDATE: 8144-M\n    OBSERVATION: Subject's neurological recovery following a Class-3 cognitive fracture is accelerating. Heart rate stabilization is occurring at an anomalous speed.\n    ACTION: Increase systemic pressure. The subject is adapting to the current stress protocol.", "__tile": null, "defUid": 96, "realEditorValues": [{
+								{ "__identifier": "TextContext", "__type": "String", "__value": "PATIENT UPDATE: 8144-M\nOBSERVATION: Subject's neurological recovery following a Class-3 cognitive fracture is accelerating. Heart rate stabilisation is occurring at an anomalous speed.\nACTION: Increase systemic pressure. The subject is adapting to the current stress protocol.", "__tile": null, "defUid": 96, "realEditorValues": [{
 									"id": "V_String",
 									"params": [
-										"PATIENT UPDATE: 8144-M\\n    OBSERVATION: Subject's neurological recovery following a Class-3 cognitive fracture is accelerating. Heart rate stabilization is occurring at an anomalous speed.\\n    ACTION: Increase systemic pressure. The subject is adapting to the current stress protocol."
+										"PATIENT UPDATE: 8144-M\\nOBSERVATION: Subject's neurological recovery following a Class-3 cognitive fracture is accelerating. Heart rate stabilisation is occurring at an anomalous speed.\\nACTION: Increase systemic pressure. The subject is adapting to the current stress protocol."
 									]
 								}] }
 							],
@@ -3747,60 +3927,34 @@
 							"defUid": 64,
 							"px": [512,0],
 							"fieldInstances": [
-								{ "__identifier": "TextContent", "__type": "String", "__value": "Some enemies will hunt the space between", "__tile": null, "defUid": 66, "realEditorValues": [{
+								{ "__identifier": "TextContent", "__type": "String", "__value": "Some routinely patrol the halls ", "__tile": null, "defUid": 66, "realEditorValues": [{
 									"id": "V_String",
-									"params": ["Some enemies will hunt the space between"]
+									"params": ["Some routinely patrol the halls "]
 								}] },
-								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 0, "__tile": null, "defUid": 67, "realEditorValues": [] },
+								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 1, "__tile": null, "defUid": 67, "realEditorValues": [{ "id": "V_Float", "params": [1] }] },
 								{ "__identifier": "Range", "__type": "Float", "__value": 100, "__tile": null, "defUid": 68, "realEditorValues": [] },
 								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#2CE8F5", "__tile": null, "defUid": 70, "realEditorValues": [] }
 							],
 							"__worldX": 1312,
 							"__worldY": 0
-						},
-						{
-							"__identifier": "StalkerEnemy",
-							"__grid": [15,21],
-							"__pivot": [0.5,0.5],
-							"__tags": ["ENEMIES"],
-							"__tile": null,
-							"__smartColor": "#FF0044",
-							"iid": "217c0950-6fc0-11f1-adf8-8182e6b1f3c6",
-							"width": 32,
-							"height": 32,
-							"defUid": 58,
-							"px": [248,344],
-							"fieldInstances": [
-								{ "__identifier": "Range", "__type": "Float", "__value": 0.6, "__tile": null, "defUid": 59, "realEditorValues": [] },
-								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 0.5, "__tile": null, "defUid": 60, "realEditorValues": [] },
-								{ "__identifier": "Point", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 61, "realEditorValues": [] },
-								{ "__identifier": "EnemyBehaviour", "__type": "LocalEnum.EnemyBehaviour", "__value": "Stalker", "__tile": null, "defUid": 62, "realEditorValues": [{
-									"id": "V_String",
-									"params": ["Stalker"]
-								}] },
-								{ "__identifier": "WakeDelay", "__type": "Float", "__value": 3, "__tile": null, "defUid": 63, "realEditorValues": [{ "id": "V_Float", "params": [3] }] },
-								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#FF0044", "__tile": null, "defUid": 94, "realEditorValues": [] }
-							],
-							"__worldX": 1048,
-							"__worldY": 344
 						}
 					]
 				}
 			],
-			"__neighbours": [ { "levelIid": "8e7f31f0-48b0-11f1-91ed-912f22bce87f", "dir": "w" }, { "levelIid": "9945f280-6fc0-11f1-adf8-fbc91f0dff99", "dir": "s" } ]
+			"__neighbours": [{ "levelIid": "8e7f31f0-48b0-11f1-91ed-912f22bce87f", "dir": "w" }]
 		},
 		{
-			"identifier": "Level_2",
+			"identifier": "Level_4",
 			"iid": "9945f280-6fc0-11f1-adf8-fbc91f0dff99",
 			"uid": 79,
-			"worldX": 0,
-			"worldY": 600,
+			"worldX": 400,
+			"worldY": 1184,
 			"worldDepth": 0,
 			"pxWid": 1200,
 			"pxHei": 600,
 			"__bgColor": "#696A79",
 			"bgColor": null,
-			"useAutoIdentifier": true,
+			"useAutoIdentifier": false,
 			"bgRelPath": null,
 			"bgPos": null,
 			"bgPivotX": 0.5,
@@ -3852,8 +4006,8 @@
 								{ "__identifier": "ObjectType", "__type": "String", "__value": "Hazard", "__tile": null, "defUid": 20, "realEditorValues": [] },
 								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#0A0A0A", "__tile": null, "defUid": 21, "realEditorValues": [] }
 							],
-							"__worldX": 224,
-							"__worldY": 712
+							"__worldX": 624,
+							"__worldY": 1296
 						},
 						{
 							"__identifier": "Platform",
@@ -3873,8 +4027,8 @@
 								{ "__identifier": "ObjectType", "__type": "String", "__value": "Platform", "__tile": null, "defUid": 26, "realEditorValues": [] },
 								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#FF6984", "__tile": null, "defUid": 27, "realEditorValues": [] }
 							],
-							"__worldX": 224,
-							"__worldY": 840
+							"__worldX": 624,
+							"__worldY": 1424
 						},
 						{
 							"__identifier": "Platform",
@@ -3894,8 +4048,8 @@
 								{ "__identifier": "ObjectType", "__type": "String", "__value": "Platform", "__tile": null, "defUid": 26, "realEditorValues": [] },
 								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#FF6984", "__tile": null, "defUid": 27, "realEditorValues": [] }
 							],
-							"__worldX": 528,
-							"__worldY": 840
+							"__worldX": 928,
+							"__worldY": 1424
 						},
 						{
 							"__identifier": "Hazard",
@@ -3915,8 +4069,8 @@
 								{ "__identifier": "ObjectType", "__type": "String", "__value": "Hazard", "__tile": null, "defUid": 20, "realEditorValues": [] },
 								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#0A0A0A", "__tile": null, "defUid": 21, "realEditorValues": [] }
 							],
-							"__worldX": 224,
-							"__worldY": 601
+							"__worldX": 624,
+							"__worldY": 1185
 						},
 						{
 							"__identifier": "Hazard",
@@ -3936,8 +4090,8 @@
 								{ "__identifier": "ObjectType", "__type": "String", "__value": "Hazard", "__tile": null, "defUid": 20, "realEditorValues": [] },
 								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#0A0A0A", "__tile": null, "defUid": 21, "realEditorValues": [] }
 							],
-							"__worldX": 224,
-							"__worldY": 1080
+							"__worldX": 624,
+							"__worldY": 1664
 						},
 						{
 							"__identifier": "DensityObstacle",
@@ -3957,8 +4111,8 @@
 								{ "__identifier": "ObjectType", "__type": "String", "__value": "Obstacle", "__tile": null, "defUid": 13, "realEditorValues": [] },
 								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#4682B4", "__tile": null, "defUid": 14, "realEditorValues": [] }
 							],
-							"__worldX": 256,
-							"__worldY": 600
+							"__worldX": 656,
+							"__worldY": 1184
 						},
 						{
 							"__identifier": "InsightObstacle",
@@ -3978,8 +4132,8 @@
 								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#80EF80", "__tile": null, "defUid": 10, "realEditorValues": [] },
 								{ "__identifier": "ObjectType", "__type": "String", "__value": "Obstacle", "__tile": null, "defUid": 15, "realEditorValues": [] }
 							],
-							"__worldX": 256,
-							"__worldY": 1096
+							"__worldX": 656,
+							"__worldY": 1680
 						},
 						{
 							"__identifier": "HunterEnemy",
@@ -4063,8 +4217,8 @@
 								{ "__identifier": "WakeDelay", "__type": "Float", "__value": 0, "__tile": null, "defUid": 57, "realEditorValues": [] },
 								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#FF0044", "__tile": null, "defUid": 93, "realEditorValues": [] }
 							],
-							"__worldX": 88,
-							"__worldY": 688
+							"__worldX": 488,
+							"__worldY": 1272
 						},
 						{
 							"__identifier": "StalkerEnemy",
@@ -4089,8 +4243,8 @@
 								{ "__identifier": "WakeDelay", "__type": "Float", "__value": 3, "__tile": null, "defUid": 63, "realEditorValues": [] },
 								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#FF0044", "__tile": null, "defUid": 94, "realEditorValues": [] }
 							],
-							"__worldX": 408,
-							"__worldY": 1152
+							"__worldX": 808,
+							"__worldY": 1736
 						},
 						{
 							"__identifier": "StalkerEnemy",
@@ -4115,8 +4269,8 @@
 								{ "__identifier": "WakeDelay", "__type": "Float", "__value": 3, "__tile": null, "defUid": 63, "realEditorValues": [] },
 								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#FF0044", "__tile": null, "defUid": 94, "realEditorValues": [] }
 							],
-							"__worldX": 376,
-							"__worldY": 656
+							"__worldX": 776,
+							"__worldY": 1240
 						},
 						{
 							"__identifier": "PatrolEnemy",
@@ -4132,7 +4286,7 @@
 							"px": [1048,520],
 							"fieldInstances": [
 								{ "__identifier": "Range", "__type": "Float", "__value": 0.4, "__tile": null, "defUid": 28, "realEditorValues": [] },
-								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 1, "__tile": null, "defUid": 29, "realEditorValues": [] },
+								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 0, "__tile": null, "defUid": 29, "realEditorValues": [] },
 								{ "__identifier": "Point", "__type": "Array<Point>", "__value": [ { "cx": 65, "cy": 2 }, { "cx": 65, "cy": 36 } ], "__tile": null, "defUid": 31, "realEditorValues": [ {
 									"id": "V_String",
 									"params": ["65,2"]
@@ -4144,8 +4298,8 @@
 								{ "__identifier": "WakeDelay", "__type": "Float", "__value": 0, "__tile": null, "defUid": 45, "realEditorValues": [] },
 								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#FF0044", "__tile": null, "defUid": 92, "realEditorValues": [] }
 							],
-							"__worldX": 1048,
-							"__worldY": 1120
+							"__worldX": 1448,
+							"__worldY": 1704
 						},
 						{
 							"__identifier": "ExitZone",
@@ -4163,8 +4317,8 @@
 								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#FFD700", "__tile": null, "defUid": 42, "realEditorValues": [] },
 								{ "__identifier": "NextLevel", "__type": "String", "__value": null, "__tile": null, "defUid": 43, "realEditorValues": [] }
 							],
-							"__worldX": 0,
-							"__worldY": 808
+							"__worldX": 400,
+							"__worldY": 1392
 						},
 						{
 							"__identifier": "PlayerStart",
@@ -4179,13 +4333,851 @@
 							"defUid": 36,
 							"px": [1184,256],
 							"fieldInstances": [],
-							"__worldX": 1184,
-							"__worldY": 856
+							"__worldX": 1584,
+							"__worldY": 1440
 						}
 					]
 				}
 			],
-			"__neighbours": [ { "levelIid": "8e7f31f0-48b0-11f1-91ed-912f22bce87f", "dir": "n" }, { "levelIid": "0f0768b0-48b0-11f1-8504-95a673b4eb79", "dir": "n" } ]
+			"__neighbours": [ { "levelIid": "cbb238e0-6fc0-11f1-99a7-2f11b3d1bb1e", "dir": "n" }, { "levelIid": "725d0ac0-6fc0-11f1-99a7-b9041209a0d6", "dir": "e" } ]
+		},
+		{
+			"identifier": "Level_2",
+			"iid": "cbb238e0-6fc0-11f1-99a7-2f11b3d1bb1e",
+			"uid": 98,
+			"worldX": 800,
+			"worldY": 608,
+			"worldDepth": 0,
+			"pxWid": 800,
+			"pxHei": 576,
+			"__bgColor": "#696A79",
+			"bgColor": null,
+			"useAutoIdentifier": false,
+			"bgRelPath": null,
+			"bgPos": null,
+			"bgPivotX": 0.5,
+			"bgPivotY": 0.5,
+			"__smartColor": "#ADADB5",
+			"__bgPos": null,
+			"externalRelPath": null,
+			"fieldInstances": [{ "__identifier": "OnLoadLog", "__type": "String", "__value": "", "__tile": null, "defUid": 97, "realEditorValues": [] }],
+			"layerInstances": [
+				{
+					"__identifier": "Entities",
+					"__type": "Entities",
+					"__cWid": 50,
+					"__cHei": 36,
+					"__gridSize": 16,
+					"__opacity": 1,
+					"__pxTotalOffsetX": 0,
+					"__pxTotalOffsetY": 0,
+					"__tilesetDefUid": null,
+					"__tilesetRelPath": null,
+					"iid": "cbb28700-6fc0-11f1-99a7-c1e7f5ba5d3c",
+					"levelId": 98,
+					"layerDefUid": 7,
+					"pxOffsetX": 0,
+					"pxOffsetY": 0,
+					"visible": true,
+					"optionalRules": [],
+					"intGridCsv": [],
+					"autoLayerTiles": [],
+					"seed": 9240090,
+					"overrideTilesetUid": null,
+					"gridTiles": [],
+					"entityInstances": [
+						{
+							"__identifier": "Document",
+							"__grid": [2,0],
+							"__pivot": [0,0],
+							"__tags": ["TEXT"],
+							"__tile": null,
+							"__smartColor": "#2CE8F5",
+							"iid": "db062c20-6fc0-11f1-99a7-293eb373fbdf",
+							"width": 16,
+							"height": 16,
+							"defUid": 64,
+							"px": [32,0],
+							"fieldInstances": [
+								{ "__identifier": "TextContent", "__type": "String", "__value": null, "__tile": null, "defUid": 66, "realEditorValues": [] },
+								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 0, "__tile": null, "defUid": 67, "realEditorValues": [] },
+								{ "__identifier": "Range", "__type": "Float", "__value": 100, "__tile": null, "defUid": 68, "realEditorValues": [] },
+								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#2CE8F5", "__tile": null, "defUid": 70, "realEditorValues": [] }
+							],
+							"__worldX": 832,
+							"__worldY": 608
+						},
+						{
+							"__identifier": "DensityObstacle",
+							"__grid": [0,2],
+							"__pivot": [0,0],
+							"__tags": ["region"],
+							"__tile": null,
+							"__smartColor": "#4682B4",
+							"iid": "ea411920-6fc0-11f1-99a7-8533b96aef33",
+							"width": 528,
+							"height": 16,
+							"defUid": 5,
+							"px": [0,33],
+							"fieldInstances": [
+								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 0, "__tile": null, "defUid": 11, "realEditorValues": [] },
+								{ "__identifier": "Range", "__type": "Float", "__value": 0.4, "__tile": null, "defUid": 12, "realEditorValues": [] },
+								{ "__identifier": "ObjectType", "__type": "String", "__value": "Obstacle", "__tile": null, "defUid": 13, "realEditorValues": [] },
+								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#4682B4", "__tile": null, "defUid": 14, "realEditorValues": [] }
+							],
+							"__worldX": 800,
+							"__worldY": 641
+						},
+						{
+							"__identifier": "InsightObstacle",
+							"__grid": [0,3],
+							"__pivot": [0,0],
+							"__tags": ["region"],
+							"__tile": null,
+							"__smartColor": "#80EF80",
+							"iid": "f95c9740-6fc0-11f1-99a7-d55f7417a5c5",
+							"width": 528,
+							"height": 80,
+							"defUid": 2,
+							"px": [0,48],
+							"fieldInstances": [
+								{ "__identifier": "Range", "__type": "Float", "__value": 0.4, "__tile": null, "defUid": 8, "realEditorValues": [] },
+								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 1, "__tile": null, "defUid": 9, "realEditorValues": [] },
+								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#80EF80", "__tile": null, "defUid": 10, "realEditorValues": [] },
+								{ "__identifier": "ObjectType", "__type": "String", "__value": "Obstacle", "__tile": null, "defUid": 15, "realEditorValues": [] }
+							],
+							"__worldX": 800,
+							"__worldY": 656
+						},
+						{
+							"__identifier": "DensityObstacle",
+							"__grid": [36,2],
+							"__pivot": [0,0],
+							"__tags": ["region"],
+							"__tile": null,
+							"__smartColor": "#4682B4",
+							"iid": "0b6d6090-6fc0-11f1-99a7-a3830cfa267d",
+							"width": 224,
+							"height": 16,
+							"defUid": 5,
+							"px": [576,32],
+							"fieldInstances": [
+								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 0, "__tile": null, "defUid": 11, "realEditorValues": [] },
+								{ "__identifier": "Range", "__type": "Float", "__value": 0.4, "__tile": null, "defUid": 12, "realEditorValues": [] },
+								{ "__identifier": "ObjectType", "__type": "String", "__value": "Obstacle", "__tile": null, "defUid": 13, "realEditorValues": [] },
+								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#4682B4", "__tile": null, "defUid": 14, "realEditorValues": [] }
+							],
+							"__worldX": 1376,
+							"__worldY": 640
+						},
+						{
+							"__identifier": "Decal",
+							"__grid": [36,3],
+							"__pivot": [0,0],
+							"__tags": ["TEXT"],
+							"__tile": null,
+							"__smartColor": "#4AF52C",
+							"iid": "13480720-6fc0-11f1-99a7-5fcb8395461e",
+							"width": 1,
+							"height": 1,
+							"defUid": 71,
+							"px": [576,48],
+							"fieldInstances": [
+								{ "__identifier": "TextContent", "__type": "String", "__value": "Ward 2", "__tile": null, "defUid": 72, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["Ward 2"]
+								}] },
+								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 0, "__tile": null, "defUid": 73, "realEditorValues": [] },
+								{ "__identifier": "Range", "__type": "Float", "__value": 0.8, "__tile": null, "defUid": 74, "realEditorValues": [] },
+								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#4AF52C", "__tile": null, "defUid": 75, "realEditorValues": [] }
+							],
+							"__worldX": 1376,
+							"__worldY": 656
+						},
+						{
+							"__identifier": "DensityObstacle",
+							"__grid": [47,4],
+							"__pivot": [0,0],
+							"__tags": ["region"],
+							"__tile": null,
+							"__smartColor": "#4682B4",
+							"iid": "332debe0-6fc0-11f1-99a7-81788a229b30",
+							"width": 48,
+							"height": 32,
+							"defUid": 5,
+							"px": [752,64],
+							"fieldInstances": [
+								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 0, "__tile": null, "defUid": 11, "realEditorValues": [] },
+								{ "__identifier": "Range", "__type": "Float", "__value": 0.4, "__tile": null, "defUid": 12, "realEditorValues": [] },
+								{ "__identifier": "ObjectType", "__type": "String", "__value": "Obstacle", "__tile": null, "defUid": 13, "realEditorValues": [] },
+								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#4682B4", "__tile": null, "defUid": 14, "realEditorValues": [] }
+							],
+							"__worldX": 1552,
+							"__worldY": 672
+						},
+						{
+							"__identifier": "DensityObstacle",
+							"__grid": [47,9],
+							"__pivot": [0,0],
+							"__tags": ["region"],
+							"__tile": null,
+							"__smartColor": "#4682B4",
+							"iid": "39bf2280-6fc0-11f1-99a7-77ac16a540ef",
+							"width": 48,
+							"height": 32,
+							"defUid": 5,
+							"px": [752,144],
+							"fieldInstances": [
+								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 0, "__tile": null, "defUid": 11, "realEditorValues": [] },
+								{ "__identifier": "Range", "__type": "Float", "__value": 0.4, "__tile": null, "defUid": 12, "realEditorValues": [] },
+								{ "__identifier": "ObjectType", "__type": "String", "__value": "Obstacle", "__tile": null, "defUid": 13, "realEditorValues": [] },
+								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#4682B4", "__tile": null, "defUid": 14, "realEditorValues": [] }
+							],
+							"__worldX": 1552,
+							"__worldY": 752
+						},
+						{
+							"__identifier": "DensityObstacle",
+							"__grid": [47,14],
+							"__pivot": [0,0],
+							"__tags": ["region"],
+							"__tile": null,
+							"__smartColor": "#4682B4",
+							"iid": "42a9b270-6fc0-11f1-99a7-4fb0507af668",
+							"width": 48,
+							"height": 32,
+							"defUid": 5,
+							"px": [752,224],
+							"fieldInstances": [
+								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 0, "__tile": null, "defUid": 11, "realEditorValues": [] },
+								{ "__identifier": "Range", "__type": "Float", "__value": 0.4, "__tile": null, "defUid": 12, "realEditorValues": [] },
+								{ "__identifier": "ObjectType", "__type": "String", "__value": "Obstacle", "__tile": null, "defUid": 13, "realEditorValues": [] },
+								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#4682B4", "__tile": null, "defUid": 14, "realEditorValues": [] }
+							],
+							"__worldX": 1552,
+							"__worldY": 832
+						},
+						{
+							"__identifier": "DensityObstacle",
+							"__grid": [5,17],
+							"__pivot": [0,0],
+							"__tags": ["region"],
+							"__tile": null,
+							"__smartColor": "#4682B4",
+							"iid": "5c309420-6fc0-11f1-99a7-fd2baeb23de3",
+							"width": 448,
+							"height": 16,
+							"defUid": 5,
+							"px": [80,272],
+							"fieldInstances": [
+								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 0, "__tile": null, "defUid": 11, "realEditorValues": [] },
+								{ "__identifier": "Range", "__type": "Float", "__value": 0.4, "__tile": null, "defUid": 12, "realEditorValues": [] },
+								{ "__identifier": "ObjectType", "__type": "String", "__value": "Obstacle", "__tile": null, "defUid": 13, "realEditorValues": [] },
+								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#4682B4", "__tile": null, "defUid": 14, "realEditorValues": [] }
+							],
+							"__worldX": 880,
+							"__worldY": 880
+						},
+						{
+							"__identifier": "DensityObstacle",
+							"__grid": [32,2],
+							"__pivot": [0,0],
+							"__tags": ["region"],
+							"__tile": null,
+							"__smartColor": "#4682B4",
+							"iid": "768d3c60-6fc0-11f1-99a7-d76c2c270429",
+							"width": 16,
+							"height": 256,
+							"defUid": 5,
+							"px": [512,32],
+							"fieldInstances": [
+								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 0, "__tile": null, "defUid": 11, "realEditorValues": [] },
+								{ "__identifier": "Range", "__type": "Float", "__value": 0.4, "__tile": null, "defUid": 12, "realEditorValues": [] },
+								{ "__identifier": "ObjectType", "__type": "String", "__value": "Obstacle", "__tile": null, "defUid": 13, "realEditorValues": [] },
+								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#4682B4", "__tile": null, "defUid": 14, "realEditorValues": [] }
+							],
+							"__worldX": 1312,
+							"__worldY": 640
+						},
+						{
+							"__identifier": "InsightObstacle",
+							"__grid": [0,10],
+							"__pivot": [0,0],
+							"__tags": ["region"],
+							"__tile": null,
+							"__smartColor": "#80EF80",
+							"iid": "9bc017f0-6fc0-11f1-99a7-952a81b2afa7",
+							"width": 528,
+							"height": 128,
+							"defUid": 2,
+							"px": [0,160],
+							"fieldInstances": [
+								{ "__identifier": "Range", "__type": "Float", "__value": 0.4, "__tile": null, "defUid": 8, "realEditorValues": [] },
+								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 1, "__tile": null, "defUid": 9, "realEditorValues": [] },
+								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#80EF80", "__tile": null, "defUid": 10, "realEditorValues": [] },
+								{ "__identifier": "ObjectType", "__type": "String", "__value": "Obstacle", "__tile": null, "defUid": 15, "realEditorValues": [] }
+							],
+							"__worldX": 800,
+							"__worldY": 768
+						},
+						{
+							"__identifier": "DensityObstacle",
+							"__grid": [5,18],
+							"__pivot": [0,0],
+							"__tags": ["region"],
+							"__tile": null,
+							"__smartColor": "#4682B4",
+							"iid": "b149b450-6fc0-11f1-99a7-11ff94e54296",
+							"width": 16,
+							"height": 224,
+							"defUid": 5,
+							"px": [80,288],
+							"fieldInstances": [
+								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 0, "__tile": null, "defUid": 11, "realEditorValues": [] },
+								{ "__identifier": "Range", "__type": "Float", "__value": 0.4, "__tile": null, "defUid": 12, "realEditorValues": [] },
+								{ "__identifier": "ObjectType", "__type": "String", "__value": "Obstacle", "__tile": null, "defUid": 13, "realEditorValues": [] },
+								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#4682B4", "__tile": null, "defUid": 14, "realEditorValues": [] }
+							],
+							"__worldX": 880,
+							"__worldY": 896
+						},
+						{
+							"__identifier": "DensityObstacle",
+							"__grid": [18,18],
+							"__pivot": [0,0],
+							"__tags": ["region"],
+							"__tile": null,
+							"__smartColor": "#4682B4",
+							"iid": "b9840710-6fc0-11f1-99a7-67674a2ae8f6",
+							"width": 16,
+							"height": 128,
+							"defUid": 5,
+							"px": [288,288],
+							"fieldInstances": [
+								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 0, "__tile": null, "defUid": 11, "realEditorValues": [] },
+								{ "__identifier": "Range", "__type": "Float", "__value": 0.4, "__tile": null, "defUid": 12, "realEditorValues": [] },
+								{ "__identifier": "ObjectType", "__type": "String", "__value": "Obstacle", "__tile": null, "defUid": 13, "realEditorValues": [] },
+								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#4682B4", "__tile": null, "defUid": 14, "realEditorValues": [] }
+							],
+							"__worldX": 1088,
+							"__worldY": 896
+						},
+						{
+							"__identifier": "DensityObstacle",
+							"__grid": [31,18],
+							"__pivot": [0,0],
+							"__tags": ["region"],
+							"__tile": null,
+							"__smartColor": "#4682B4",
+							"iid": "bd0f29a0-6fc0-11f1-99a7-2f67a4400e83",
+							"width": 16,
+							"height": 128,
+							"defUid": 5,
+							"px": [496,288],
+							"fieldInstances": [
+								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 0, "__tile": null, "defUid": 11, "realEditorValues": [] },
+								{ "__identifier": "Range", "__type": "Float", "__value": 0.4, "__tile": null, "defUid": 12, "realEditorValues": [] },
+								{ "__identifier": "ObjectType", "__type": "String", "__value": "Obstacle", "__tile": null, "defUid": 13, "realEditorValues": [] },
+								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#4682B4", "__tile": null, "defUid": 14, "realEditorValues": [] }
+							],
+							"__worldX": 1296,
+							"__worldY": 896
+						},
+						{
+							"__identifier": "InsightObstacle",
+							"__grid": [32,18],
+							"__pivot": [0,0],
+							"__tags": ["region"],
+							"__tile": null,
+							"__smartColor": "#80EF80",
+							"iid": "da4b7230-6fc0-11f1-99a7-cf904d1fd240",
+							"width": 288,
+							"height": 16,
+							"defUid": 2,
+							"px": [512,288],
+							"fieldInstances": [
+								{ "__identifier": "Range", "__type": "Float", "__value": 0.4, "__tile": null, "defUid": 8, "realEditorValues": [] },
+								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 1, "__tile": null, "defUid": 9, "realEditorValues": [] },
+								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#80EF80", "__tile": null, "defUid": 10, "realEditorValues": [] },
+								{ "__identifier": "ObjectType", "__type": "String", "__value": "Obstacle", "__tile": null, "defUid": 15, "realEditorValues": [] }
+							],
+							"__worldX": 1312,
+							"__worldY": 896
+						},
+						{
+							"__identifier": "DensityObstacle",
+							"__grid": [36,17],
+							"__pivot": [0,0],
+							"__tags": ["region"],
+							"__tile": null,
+							"__smartColor": "#4682B4",
+							"iid": "fea049d0-6fc0-11f1-99a7-133f2ef01c98",
+							"width": 224,
+							"height": 16,
+							"defUid": 5,
+							"px": [576,272],
+							"fieldInstances": [
+								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 0, "__tile": null, "defUid": 11, "realEditorValues": [] },
+								{ "__identifier": "Range", "__type": "Float", "__value": 0.4, "__tile": null, "defUid": 12, "realEditorValues": [] },
+								{ "__identifier": "ObjectType", "__type": "String", "__value": "Obstacle", "__tile": null, "defUid": 13, "realEditorValues": [] },
+								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#4682B4", "__tile": null, "defUid": 14, "realEditorValues": [] }
+							],
+							"__worldX": 1376,
+							"__worldY": 880
+						},
+						{
+							"__identifier": "DensityObstacle",
+							"__grid": [31,29],
+							"__pivot": [0,0],
+							"__tags": ["region"],
+							"__tile": null,
+							"__smartColor": "#4682B4",
+							"iid": "08131c90-6fc0-11f1-99a7-4323ad7843c5",
+							"width": 16,
+							"height": 112,
+							"defUid": 5,
+							"px": [496,464],
+							"fieldInstances": [
+								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 0, "__tile": null, "defUid": 11, "realEditorValues": [] },
+								{ "__identifier": "Range", "__type": "Float", "__value": 0.4, "__tile": null, "defUid": 12, "realEditorValues": [] },
+								{ "__identifier": "ObjectType", "__type": "String", "__value": "Obstacle", "__tile": null, "defUid": 13, "realEditorValues": [] },
+								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#4682B4", "__tile": null, "defUid": 14, "realEditorValues": [] }
+							],
+							"__worldX": 1296,
+							"__worldY": 1072
+						},
+						{
+							"__identifier": "DensityObstacle",
+							"__grid": [18,29],
+							"__pivot": [0,0],
+							"__tags": ["region"],
+							"__tile": null,
+							"__smartColor": "#4682B4",
+							"iid": "150fd960-6fc0-11f1-99a7-bb8ccf884ebb",
+							"width": 16,
+							"height": 112,
+							"defUid": 5,
+							"px": [288,464],
+							"fieldInstances": [
+								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 0, "__tile": null, "defUid": 11, "realEditorValues": [] },
+								{ "__identifier": "Range", "__type": "Float", "__value": 0.4, "__tile": null, "defUid": 12, "realEditorValues": [] },
+								{ "__identifier": "ObjectType", "__type": "String", "__value": "Obstacle", "__tile": null, "defUid": 13, "realEditorValues": [] },
+								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#4682B4", "__tile": null, "defUid": 14, "realEditorValues": [] }
+							],
+							"__worldX": 1088,
+							"__worldY": 1072
+						},
+						{
+							"__identifier": "LockedDoor",
+							"__grid": [5,32],
+							"__pivot": [0,0],
+							"__tags": ["TEXT"],
+							"__tile": null,
+							"__smartColor": "#F52CD2",
+							"iid": "287424c0-6fc0-11f1-99a7-ff458f5a02ac",
+							"width": 16,
+							"height": 64,
+							"defUid": 86,
+							"px": [80,512],
+							"fieldInstances": [
+								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 0, "__tile": null, "defUid": 88, "realEditorValues": [] },
+								{ "__identifier": "Range", "__type": "Float", "__value": 100, "__tile": null, "defUid": 89, "realEditorValues": [] },
+								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#F52CD2", "__tile": null, "defUid": 90, "realEditorValues": [] },
+								{ "__identifier": "Passcode", "__type": "String", "__value": "NOTHINGHERE", "__tile": null, "defUid": 91, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["NOTHINGHERE"]
+								}] }
+							],
+							"__worldX": 880,
+							"__worldY": 1120
+						},
+						{
+							"__identifier": "ExitZone",
+							"__grid": [49,30],
+							"__pivot": [0,0],
+							"__tags": ["region"],
+							"__tile": null,
+							"__smartColor": "#FFD700",
+							"iid": "42b2bdb0-6fc0-11f1-99a7-1f6d8b41bc3f",
+							"width": 16,
+							"height": 96,
+							"defUid": 38,
+							"px": [784,480],
+							"fieldInstances": [
+								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#FFD700", "__tile": null, "defUid": 42, "realEditorValues": [] },
+								{ "__identifier": "NextLevel", "__type": "String", "__value": "Level_3", "__tile": null, "defUid": 43, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["Level_3"]
+								}] }
+							],
+							"__worldX": 1584,
+							"__worldY": 1088
+						}
+					]
+				}
+			],
+			"__neighbours": [ { "levelIid": "9945f280-6fc0-11f1-adf8-fbc91f0dff99", "dir": "s" }, { "levelIid": "725d0ac0-6fc0-11f1-99a7-b9041209a0d6", "dir": "e" } ]
+		},
+		{
+			"identifier": "Level_3",
+			"iid": "725d0ac0-6fc0-11f1-99a7-b9041209a0d6",
+			"uid": 99,
+			"worldX": 1600,
+			"worldY": 928,
+			"worldDepth": 0,
+			"pxWid": 368,
+			"pxHei": 848,
+			"__bgColor": "#696A79",
+			"bgColor": null,
+			"useAutoIdentifier": false,
+			"bgRelPath": null,
+			"bgPos": null,
+			"bgPivotX": 0.5,
+			"bgPivotY": 0.5,
+			"__smartColor": "#ADADB5",
+			"__bgPos": null,
+			"externalRelPath": null,
+			"fieldInstances": [{ "__identifier": "OnLoadLog", "__type": "String", "__value": "", "__tile": null, "defUid": 97, "realEditorValues": [] }],
+			"layerInstances": [
+				{
+					"__identifier": "Entities",
+					"__type": "Entities",
+					"__cWid": 23,
+					"__cHei": 53,
+					"__gridSize": 16,
+					"__opacity": 1,
+					"__pxTotalOffsetX": 0,
+					"__pxTotalOffsetY": 0,
+					"__tilesetDefUid": null,
+					"__tilesetRelPath": null,
+					"iid": "725d31d0-6fc0-11f1-99a7-8b1995ae8925",
+					"levelId": 99,
+					"layerDefUid": 7,
+					"pxOffsetX": 0,
+					"pxOffsetY": 0,
+					"visible": true,
+					"optionalRules": [],
+					"intGridCsv": [],
+					"autoLayerTiles": [],
+					"seed": 1005768,
+					"overrideTilesetUid": null,
+					"gridTiles": [],
+					"entityInstances": [
+						{
+							"__identifier": "ExitZone",
+							"__grid": [0,28],
+							"__pivot": [0,0],
+							"__tags": ["region"],
+							"__tile": null,
+							"__smartColor": "#FFD700",
+							"iid": "a702d340-6fc0-11f1-99a7-b5f80f5880b9",
+							"width": 32,
+							"height": 96,
+							"defUid": 38,
+							"px": [0,448],
+							"fieldInstances": [
+								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#FFD700", "__tile": null, "defUid": 42, "realEditorValues": [] },
+								{ "__identifier": "NextLevel", "__type": "String", "__value": "Level_4", "__tile": null, "defUid": 43, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["Level_4"]
+								}] }
+							],
+							"__worldX": 1600,
+							"__worldY": 1376
+						},
+						{
+							"__identifier": "PlayerStart",
+							"__grid": [0,12],
+							"__pivot": [0,0],
+							"__tags": [],
+							"__tile": null,
+							"__smartColor": "#EAD4AA",
+							"iid": "b4638200-6fc0-11f1-99a7-e18a5cd6368c",
+							"width": 16,
+							"height": 16,
+							"defUid": 36,
+							"px": [0,192],
+							"fieldInstances": [],
+							"__worldX": 1600,
+							"__worldY": 1120
+						},
+						{
+							"__identifier": "DensityObstacle",
+							"__grid": [0,15],
+							"__pivot": [0,0],
+							"__tags": ["region"],
+							"__tile": null,
+							"__smartColor": "#4682B4",
+							"iid": "b6dbadf0-6fc0-11f1-99a7-ab304c73fac8",
+							"width": 80,
+							"height": 16,
+							"defUid": 5,
+							"px": [0,240],
+							"fieldInstances": [
+								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 0, "__tile": null, "defUid": 11, "realEditorValues": [] },
+								{ "__identifier": "Range", "__type": "Float", "__value": 0.4, "__tile": null, "defUid": 12, "realEditorValues": [] },
+								{ "__identifier": "ObjectType", "__type": "String", "__value": "Obstacle", "__tile": null, "defUid": 13, "realEditorValues": [] },
+								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#4682B4", "__tile": null, "defUid": 14, "realEditorValues": [] }
+							],
+							"__worldX": 1600,
+							"__worldY": 1168
+						},
+						{
+							"__identifier": "DensityObstacle",
+							"__grid": [5,4],
+							"__pivot": [0,0],
+							"__tags": ["region"],
+							"__tile": null,
+							"__smartColor": "#4682B4",
+							"iid": "bc19b0a0-6fc0-11f1-99a7-03a04888933e",
+							"width": 16,
+							"height": 192,
+							"defUid": 5,
+							"px": [80,64],
+							"fieldInstances": [
+								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 0, "__tile": null, "defUid": 11, "realEditorValues": [] },
+								{ "__identifier": "Range", "__type": "Float", "__value": 0.4, "__tile": null, "defUid": 12, "realEditorValues": [] },
+								{ "__identifier": "ObjectType", "__type": "String", "__value": "Obstacle", "__tile": null, "defUid": 13, "realEditorValues": [] },
+								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#4682B4", "__tile": null, "defUid": 14, "realEditorValues": [] }
+							],
+							"__worldX": 1680,
+							"__worldY": 992
+						},
+						{
+							"__identifier": "DensityObstacle",
+							"__grid": [5,2],
+							"__pivot": [0,0],
+							"__tags": ["region"],
+							"__tile": null,
+							"__smartColor": "#4682B4",
+							"iid": "c2498d60-6fc0-11f1-99a7-4f6cf057426f",
+							"width": 208,
+							"height": 16,
+							"defUid": 5,
+							"px": [80,32],
+							"fieldInstances": [
+								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 0, "__tile": null, "defUid": 11, "realEditorValues": [] },
+								{ "__identifier": "Range", "__type": "Float", "__value": 0.4, "__tile": null, "defUid": 12, "realEditorValues": [] },
+								{ "__identifier": "ObjectType", "__type": "String", "__value": "Obstacle", "__tile": null, "defUid": 13, "realEditorValues": [] },
+								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#4682B4", "__tile": null, "defUid": 14, "realEditorValues": [] }
+							],
+							"__worldX": 1680,
+							"__worldY": 960
+						},
+						{
+							"__identifier": "DensityObstacle",
+							"__grid": [18,2],
+							"__pivot": [0,0],
+							"__tags": ["region"],
+							"__tile": null,
+							"__smartColor": "#4682B4",
+							"iid": "c663f7a0-6fc0-11f1-99a7-aff703f519c6",
+							"width": 16,
+							"height": 320,
+							"defUid": 5,
+							"px": [288,32],
+							"fieldInstances": [
+								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 0, "__tile": null, "defUid": 11, "realEditorValues": [] },
+								{ "__identifier": "Range", "__type": "Float", "__value": 0.4, "__tile": null, "defUid": 12, "realEditorValues": [] },
+								{ "__identifier": "ObjectType", "__type": "String", "__value": "Obstacle", "__tile": null, "defUid": 13, "realEditorValues": [] },
+								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#4682B4", "__tile": null, "defUid": 14, "realEditorValues": [] }
+							],
+							"__worldX": 1888,
+							"__worldY": 960
+						},
+						{
+							"__identifier": "DensityObstacle",
+							"__grid": [14,22],
+							"__pivot": [0,0],
+							"__tags": ["region"],
+							"__tile": null,
+							"__smartColor": "#4682B4",
+							"iid": "d14accc0-6fc0-11f1-99a7-3365ffc8384d",
+							"width": 80,
+							"height": 16,
+							"defUid": 5,
+							"px": [224,352],
+							"fieldInstances": [
+								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 0, "__tile": null, "defUid": 11, "realEditorValues": [] },
+								{ "__identifier": "Range", "__type": "Float", "__value": 0.4, "__tile": null, "defUid": 12, "realEditorValues": [] },
+								{ "__identifier": "ObjectType", "__type": "String", "__value": "Obstacle", "__tile": null, "defUid": 13, "realEditorValues": [] },
+								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#4682B4", "__tile": null, "defUid": 14, "realEditorValues": [] }
+							],
+							"__worldX": 1824,
+							"__worldY": 1280
+						},
+						{
+							"__identifier": "DensityObstacle",
+							"__grid": [22,0],
+							"__pivot": [0,0],
+							"__tags": ["region"],
+							"__tile": null,
+							"__smartColor": "#4682B4",
+							"iid": "d7e35660-6fc0-11f1-99a7-152a10dc8425",
+							"width": 16,
+							"height": 416,
+							"defUid": 5,
+							"px": [352,0],
+							"fieldInstances": [
+								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 0, "__tile": null, "defUid": 11, "realEditorValues": [] },
+								{ "__identifier": "Range", "__type": "Float", "__value": 0.4, "__tile": null, "defUid": 12, "realEditorValues": [] },
+								{ "__identifier": "ObjectType", "__type": "String", "__value": "Obstacle", "__tile": null, "defUid": 13, "realEditorValues": [] },
+								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#4682B4", "__tile": null, "defUid": 14, "realEditorValues": [] }
+							],
+							"__worldX": 1952,
+							"__worldY": 928
+						},
+						{
+							"__identifier": "DensityObstacle",
+							"__grid": [11,25],
+							"__pivot": [0,0],
+							"__tags": ["region"],
+							"__tile": null,
+							"__smartColor": "#4682B4",
+							"iid": "ef5a6ae0-6fc0-11f1-99a7-ef2a469c1256",
+							"width": 176,
+							"height": 16,
+							"defUid": 5,
+							"px": [176,400],
+							"fieldInstances": [
+								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 0, "__tile": null, "defUid": 11, "realEditorValues": [] },
+								{ "__identifier": "Range", "__type": "Float", "__value": 0.4, "__tile": null, "defUid": 12, "realEditorValues": [] },
+								{ "__identifier": "ObjectType", "__type": "String", "__value": "Obstacle", "__tile": null, "defUid": 13, "realEditorValues": [] },
+								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#4682B4", "__tile": null, "defUid": 14, "realEditorValues": [] }
+							],
+							"__worldX": 1776,
+							"__worldY": 1328
+						},
+						{
+							"__identifier": "DensityObstacle",
+							"__grid": [13,6],
+							"__pivot": [0,0],
+							"__tags": ["region"],
+							"__tile": null,
+							"__smartColor": "#4682B4",
+							"iid": "f2d93160-6fc0-11f1-99a7-abf7664631ef",
+							"width": 16,
+							"height": 272,
+							"defUid": 5,
+							"px": [208,96],
+							"fieldInstances": [
+								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 0, "__tile": null, "defUid": 11, "realEditorValues": [] },
+								{ "__identifier": "Range", "__type": "Float", "__value": 0.4, "__tile": null, "defUid": 12, "realEditorValues": [] },
+								{ "__identifier": "ObjectType", "__type": "String", "__value": "Obstacle", "__tile": null, "defUid": 13, "realEditorValues": [] },
+								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#4682B4", "__tile": null, "defUid": 14, "realEditorValues": [] }
+							],
+							"__worldX": 1808,
+							"__worldY": 1024
+						},
+						{
+							"__identifier": "DensityObstacle",
+							"__grid": [10,8],
+							"__pivot": [0,0],
+							"__tags": ["region"],
+							"__tile": null,
+							"__smartColor": "#4682B4",
+							"iid": "0ca7ca70-6fc0-11f1-99a7-cf33895c5373",
+							"width": 16,
+							"height": 288,
+							"defUid": 5,
+							"px": [160,128],
+							"fieldInstances": [
+								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 0, "__tile": null, "defUid": 11, "realEditorValues": [] },
+								{ "__identifier": "Range", "__type": "Float", "__value": 0.4, "__tile": null, "defUid": 12, "realEditorValues": [] },
+								{ "__identifier": "ObjectType", "__type": "String", "__value": "Obstacle", "__tile": null, "defUid": 13, "realEditorValues": [] },
+								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#4682B4", "__tile": null, "defUid": 14, "realEditorValues": [] }
+							],
+							"__worldX": 1760,
+							"__worldY": 1056
+						},
+						{
+							"__identifier": "DensityObstacle",
+							"__grid": [6,5],
+							"__pivot": [0,0],
+							"__tags": ["region"],
+							"__tile": null,
+							"__smartColor": "#4682B4",
+							"iid": "18e0e920-6fc0-11f1-99a7-dde85a794902",
+							"width": 128,
+							"height": 16,
+							"defUid": 5,
+							"px": [96,80],
+							"fieldInstances": [
+								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 0, "__tile": null, "defUid": 11, "realEditorValues": [] },
+								{ "__identifier": "Range", "__type": "Float", "__value": 0.4, "__tile": null, "defUid": 12, "realEditorValues": [] },
+								{ "__identifier": "ObjectType", "__type": "String", "__value": "Obstacle", "__tile": null, "defUid": 13, "realEditorValues": [] },
+								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#4682B4", "__tile": null, "defUid": 14, "realEditorValues": [] }
+							],
+							"__worldX": 1696,
+							"__worldY": 1008
+						},
+						{
+							"__identifier": "DensityObstacle",
+							"__grid": [7,6],
+							"__pivot": [0,0],
+							"__tags": ["region"],
+							"__tile": null,
+							"__smartColor": "#4682B4",
+							"iid": "1ea90360-6fc0-11f1-99a7-bb1c38e844ca",
+							"width": 16,
+							"height": 560,
+							"defUid": 5,
+							"px": [112,96],
+							"fieldInstances": [
+								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 0, "__tile": null, "defUid": 11, "realEditorValues": [] },
+								{ "__identifier": "Range", "__type": "Float", "__value": 0.4, "__tile": null, "defUid": 12, "realEditorValues": [] },
+								{ "__identifier": "ObjectType", "__type": "String", "__value": "Obstacle", "__tile": null, "defUid": 13, "realEditorValues": [] },
+								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#4682B4", "__tile": null, "defUid": 14, "realEditorValues": [] }
+							],
+							"__worldX": 1712,
+							"__worldY": 1024
+						},
+						{
+							"__identifier": "InsightObstacle",
+							"__grid": [0,16],
+							"__pivot": [0,0],
+							"__tags": ["region"],
+							"__tile": null,
+							"__smartColor": "#80EF80",
+							"iid": "2f285740-6fc0-11f1-99a7-475fe1f2eaac",
+							"width": 112,
+							"height": 192,
+							"defUid": 2,
+							"px": [0,256],
+							"fieldInstances": [
+								{ "__identifier": "Range", "__type": "Float", "__value": 0.4, "__tile": null, "defUid": 8, "realEditorValues": [] },
+								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 1, "__tile": null, "defUid": 9, "realEditorValues": [] },
+								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#80EF80", "__tile": null, "defUid": 10, "realEditorValues": [] },
+								{ "__identifier": "ObjectType", "__type": "String", "__value": "Obstacle", "__tile": null, "defUid": 15, "realEditorValues": [] }
+							],
+							"__worldX": 1600,
+							"__worldY": 1184
+						},
+						{
+							"__identifier": "InsightObstacle",
+							"__grid": [0,26],
+							"__pivot": [0,0],
+							"__tags": ["region"],
+							"__tile": null,
+							"__smartColor": "#80EF80",
+							"iid": "391514f0-6fc0-11f1-99a7-a3ddf4aeb801",
+							"width": 368,
+							"height": 448,
+							"defUid": 2,
+							"px": [1,417],
+							"fieldInstances": [
+								{ "__identifier": "Range", "__type": "Float", "__value": 0.4, "__tile": null, "defUid": 8, "realEditorValues": [] },
+								{ "__identifier": "AnchorFrequency", "__type": "Float", "__value": 1, "__tile": null, "defUid": 9, "realEditorValues": [] },
+								{ "__identifier": "ColourHex", "__type": "Color", "__value": "#80EF80", "__tile": null, "defUid": 10, "realEditorValues": [] },
+								{ "__identifier": "ObjectType", "__type": "String", "__value": "Obstacle", "__tile": null, "defUid": 15, "realEditorValues": [] }
+							],
+							"__worldX": 1601,
+							"__worldY": 1345
+						}
+					]
+				}
+			],
+			"__neighbours": [ { "levelIid": "9945f280-6fc0-11f1-adf8-fbc91f0dff99", "dir": "w" }, { "levelIid": "cbb238e0-6fc0-11f1-99a7-2f11b3d1bb1e", "dir": "w" } ]
 		}
 	],
 	"worlds": [],
