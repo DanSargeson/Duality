@@ -87,6 +87,11 @@ namespace Duality.Entities
                 // Caught! Bounce back to the last safe spot
                 Position = StartPosition;
                 polarityManager.SetFrequency(0f);
+
+                // Hard reset EVERY enemy in the room so the Stalker doesn't spawn-camp you
+                foreach (var enemy in level.Enemies) {
+                    enemy.ResetToSpawn();
+                }
             }
 
             // 5. Clamp Player to Level Bounds

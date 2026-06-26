@@ -34,6 +34,7 @@ namespace Duality.Scenes
         private int _logbookSelectedIndex = 0;
         private List<string> _cachedLogbook; // Holds the indexed list while the menu is open
         private FloatingTextManager _textManager = new FloatingTextManager();
+        private float requiredStress = 0.5f;
 
         private float _currentFrameFrequency;
 
@@ -155,7 +156,7 @@ namespace Duality.Scenes
 
             // Enemies now require the player reference for Hunter behaviour
             foreach (var enemy in currentLevel.Enemies) {
-                enemy.Update(gameTime, _player, _currentFrameFrequency);
+                enemy.Update(gameTime, _player, _currentFrameFrequency, _particles, currentLevel);
             }
 
 
@@ -220,54 +221,59 @@ namespace Duality.Scenes
             _player.Update(gameTime, Game._inputManager.GetMovementDirection(), _polarityManager, currentLevel);
 
 
-            if (Game._inputManager.IsDischargePressed && !_polarityManager.IsBurntOut && _currentFrameFrequency >= 0.8f) { //TODO MAGIC NUMBER -  REMOVE/MOVE
-                float blastRadius = 150f;       //TODO MAGIC NUMBER -  REMOVE/MOVE
+            if (Game._inputManager.IsDischargePressed && !_polarityManager.IsBurntOut && _currentFrameFrequency >= 0.8f && _polarityManager.TotalStress >= requiredStress) {
+                float blastRadius = 150f; //TODO MAGIC NUMBER
                 Vector2 playerCenter = _player.Bounds.Center.ToVector2();
+
+                // 1. The Violent Grounding: Snap the player back to Density instantly.
+                // Ensure your rendering and polarity managers respect this forced overwrite.
+                _currentFrameFrequency = 0f;
 
                 _activeBlast = new BlastEffect(playerCenter, blastRadius);
 
                 for (int i = currentLevel.Enemies.Count - 1; i >= 0; i--) {
                     var enemy = currentLevel.Enemies[i];
+                    Vector2 enemyCenter = enemy.Bounds.Center.ToVector2();
+                    float distance = Vector2.Distance(playerCenter, enemyCenter);
 
-                    // 2. The Target Check: Only affect enemies that are physically solid in the current frequency
-                    if (enemy.IsDangerous(_currentFrameFrequency)) {
-                        Vector2 enemyCenter = enemy.Bounds.Center.ToVector2();
-                        float distance = Vector2.Distance(playerCenter, enemyCenter);
+                    // 2. Spatial Check: Is the entity inside the blast radius?
+                    if (distance <= blastRadius) {
 
-                        if (distance <= blastRadius) {
+                        // Calculate text position once
+                        Vector2 textPosition = new Vector2(enemy.Position.X, enemy.Position.Y - 20);
 
-                            // SPAWN PARTICLES BEFORE DELETING THE ENEMY
+                        if (enemy.Behaviour == EnemyBehaviour.Stalker) {
+                            // Stalker lives in Deep Insight. The blast detonates in Density beneath them.
+                            // Spawn the clinical error directly over the Stalker's head.
+                            _textManager.Add("[ PHASE_LOCKED ]", textPosition, Color.Red);
+                        }
+                        else {
+                            // It's a standard guard living in Density. The blast hits them.
+
+                            // SPAWN PARTICLES
                             for (int p = 0; p < 15; p++) {
                                 _particles.Add(new GlitchParticle {
                                     Position = enemyCenter,
-                                    // Shoot outward in a random 360-degree direction
                                     Velocity = new Vector2((float)_random.NextDouble() * 2 - 1, (float)_random.NextDouble() * 2 - 1) * _random.Next(150, 400),
                                     BaseColor = enemy.BaseColor,
-                                    MaxLife = 0.5f + (float)_random.NextDouble() * 0.5f, // Lasts 0.5 to 1.0 seconds
+                                    MaxLife = 0.5f + (float)_random.NextDouble() * 0.5f,
                                     Life = 0.5f + (float)_random.NextDouble() * 0.5f,
-                                    Size = _random.Next(2, 6) // Chunky digital squares
+                                    Size = _random.Next(2, 6)
                                 });
                             }
-                            if (enemy.Behaviour == EnemyBehaviour.Stalker) {
-                                // Do not apply damage. Do not apply knockback.
-                                // Just spawn the clinical error directly over the Stalker's head.
 
-                                Vector2 aboveHead = new Vector2(enemy.Position.X, enemy.Position.Y - 20);
-                                _textManager.Add("[ IMMUNE ]", aboveHead, Color.Red);
-                            }
-                            else {
+                            // SPAWN KILL CONFIRMATION TEXT
+                            _textManager.Add("[ TERMINATED ]", textPosition, Color.White);
 
-
-                                currentLevel.Enemies.RemoveAt(i);
-                            }
-
+                            // DELETE ENEMY
+                            currentLevel.Enemies.RemoveAt(i);
                         }
                     }
                 }
 
                 // Trigger the burnout and the audio cue
                 _polarityManager.TriggerDischarge();
-                // _audioManager.PlaySound("ringing"); // Hook up your single-shot audio here
+                // _audioManager.PlaySound("ringing"); 
             }
 
 
