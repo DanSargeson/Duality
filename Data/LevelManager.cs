@@ -113,6 +113,7 @@ namespace Duality.Data
                 case "DensityObstacle":
                 case "Hazard":
                 case "Platform":
+                case "Furniture":
                     Enum.TryParse(GetStringField(entity, "ObjectType"), out ObjectType objType);
                     CurrentLevel.EnvironmentObjects.Add(new EnvironmentObject(
                         bounds,
@@ -172,6 +173,15 @@ namespace Duality.Data
                         GetFloatField(entity, "AnchorFrequency"),
                         GetFloatField(entity, "Range"),
                         GetStringField(entity, "Passcode") // The multi-line LDtk field
+                    ));
+                    break;
+                case "Sign":
+                    CurrentLevel.Signs.Add(new SignObject(
+                        bounds,
+                        ParseHex(GetStringField(entity, "ColourHex")),
+                        GetFloatField(entity, "AnchorFrequency"),
+                        GetFloatField(entity, "Range"),
+                        GetStringField(entity, "TextContent")
                     ));
                     break;
             }

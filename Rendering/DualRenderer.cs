@@ -321,6 +321,11 @@ namespace Duality.Rendering
                 }
             }
 
+            foreach(var sign in level.Signs) {
+
+                drawBlock(sign, sign.Bounds);
+            }
+
             if (level.LockedDoors != null) {
                 foreach (var door in level.LockedDoors) {
                     // Only draw the door if it hasn't been hacked yet

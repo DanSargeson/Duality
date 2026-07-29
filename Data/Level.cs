@@ -18,6 +18,8 @@ namespace Duality.Data
 
         public List<DocumentObject> Documents { get; set; } = new List<DocumentObject>();
 
+        public List<SignObject> Signs { get; set; } = new List<SignObject>();
+
         public List<UpgradeNode> UpgradeNodes { get; set; } = new List<UpgradeNode>();
 
         public List<EnvironmentObject> EnvironmentObjects { get; set; } = new List<EnvironmentObject>();

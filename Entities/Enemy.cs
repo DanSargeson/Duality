@@ -18,6 +18,11 @@ namespace Duality.Entities
         private float _trailSpawnRate = 0.1f; // Drops a data footprint every 0.1 seconds
         private Random _random = new Random();
 
+        //TODO: At some point look at A* pathfinding for the enemy behaviours, so they can navigate around obstacles instead of getting stuck. For now they turn around and go the other way if they hit a wall
+        private int _patrolDirection = 1; // 1 = forward through waypoints, -1 = backward
+        private float _stuckTimer = 0f;
+
+
         public Vector2 StartPosition { get; private set; }
 
         public float WakeDelay { get; set; } = 0f;
@@ -53,7 +58,7 @@ namespace Duality.Entities
 
             foreach (var obj in level.EnvironmentObjects) {
                 // The enemy checks solidity against its OWN dimension, not the player's
-                if (obj.Type == ObjectType.Obstacle && obj.IsSolid(AnchorFrequency) && Bounds.Intersects(obj.Bounds)) {
+                if ((obj.Type == ObjectType.Obstacle || obj.Type == ObjectType.Hazard) && obj.IsSolid(AnchorFrequency) && Bounds.Intersects(obj.Bounds)) {
                     return true;
                 }
             }
@@ -121,12 +126,36 @@ namespace Duality.Entities
                     Vector2 target = Waypoints[_currentWaypointIndex];
                     Vector2 direction = target - Position;
 
+                    // 1. Have we reached the waypoint?
                     if (direction.Length() < 5f) {
-                        _currentWaypointIndex = (_currentWaypointIndex + 1) % Waypoints.Count;
+                        // Move to the next waypoint based on our current direction
+                        _currentWaypointIndex = (_currentWaypointIndex + _patrolDirection + Waypoints.Count) % Waypoints.Count;
+                        _stuckTimer = 0f; // Reset stuck timer
                     }
                     else {
                         direction.Normalize();
+
+                        // Record exactly where we are before applying physics
+                        Vector2 positionBeforeMove = Position;
+
                         ApplyMovement(direction * Speed * deltaTime, level);
+
+                        // 2. Stuck Detection
+                        // If our position didn't change at all, we hit a flat wall or a closed door.
+                        if (Position == positionBeforeMove) {
+                            _stuckTimer += deltaTime;
+
+                            // If they push against a wall for 0.5 seconds, they give up and turn around
+                            if (_stuckTimer > 0.5f) {
+                                _patrolDirection *= -1; // Reverse the patrol route
+                                _currentWaypointIndex = (_currentWaypointIndex + _patrolDirection + Waypoints.Count) % Waypoints.Count;
+                                _stuckTimer = 0f;
+                            }
+                        }
+                        else {
+                            // We successfully moved (even if we were sliding along a wall). Reset the timer.
+                            _stuckTimer = 0f;
+                        }
                     }
                 }
             }

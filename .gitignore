@@ -1,0 +1,7 @@
+.config/
+.vscode/
+bin/
+obj/
+app.manifest
+Icon.ico
+.git/

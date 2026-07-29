@@ -179,7 +179,7 @@ namespace Duality.Scenes
 
             //Document manger
             if (Game._inputManager.IsInteractPressed) {
-                // 1. Check for Documents First
+                //Check for Documents First
                 foreach (var document in currentLevel.Documents) {
                     // Check that it hasn't been collected yet!
                     if (!document.IsCollected && document.InteractionArea.Intersects(_player.Bounds)) {
@@ -188,9 +188,26 @@ namespace Duality.Scenes
                         Game.Session.CollectDocument(document.TextContent); // Save globally
 
                         document.IsCollected = true; // Mark as picked up locally
-
+                        // TODO: Play a terminal typing sound here
+                        // _audioManager.PlaySound("typing_clicks");
                         _currentState = GameplayState.ReadingDocument;
                         return;
+                    }
+                }
+                //Signs do not save to gloabal session
+                if (currentLevel.Signs != null) {
+                    foreach (var sign in currentLevel.Signs) {
+                        if (sign.InteractionArea.Intersects(_player.Bounds)) {
+
+                            // Feed the sign text directly into the terminal overlay
+                            _activeDocumentText = sign.TextContent;
+                            _currentState = GameplayState.ReadingDocument;
+
+                            // TODO: Play a minor mechanical "click" sound here instead of a heavy terminal boot
+                            // _audioManager.PlaySound("button_click");
+
+                            return; // Halt interactions
+                        }
                     }
                 }
 
@@ -285,14 +302,27 @@ namespace Duality.Scenes
             // Level Transition Logic
             if (currentLevel.ExitZone != Rectangle.Empty && _player.Bounds.Intersects(currentLevel.ExitZone)) {
 
-                //Save the system strain and frequency before moving
-                Game.Session.CarriedStrain = _polarityManager.Strain;
-                Game.Session.CarriedFrequency = _currentFrameFrequency;
+                // Calculate presence: 0.0 at frequency 0.5, and 1.0 at frequencies 0.0 and 1.0
+                float exitPresence = Math.Abs(_currentFrameFrequency - 0.5f) * 2f;
 
-                if (!string.IsNullOrEmpty(currentLevel.NextLevelPath))
-                    Game.ChangeScene(new GameplayScene(Game, _ldtkFilePath, currentLevel.NextLevelPath));
-                else
-                    Game.ChangeScene(new MainMenuScene(Game)); // Back to menu if game is over
+                // The door only registers interaction if it is at least 80% physically anchored
+                if (exitPresence >= 0.8f) {
+                    // Save the system strain and frequency before moving
+                    Game.Session.CarriedStrain = _polarityManager.Strain;
+                    Game.Session.CarriedFrequency = _currentFrameFrequency;
+
+                    if (!string.IsNullOrEmpty(currentLevel.NextLevelPath))
+                        Game.ChangeScene(new GameplayScene(Game, _ldtkFilePath, currentLevel.NextLevelPath));
+                    else
+                        Game.ChangeScene(new MainMenuScene(Game));
+                }
+                else {
+                    // Optional: Spawn a faint UI warning or particle burst to show the gate is de-synchronized
+                    if (_random.NextDouble() < 0.05) {
+                        Vector2 gateCenter = currentLevel.ExitZone.Center.ToVector2();
+                        _textManager.Add("[ REGISTRY_ERROR ]", new Vector2(gateCenter.X - 40, gateCenter.Y), Color.DarkGray);
+                    }
+                }
             }
 
 

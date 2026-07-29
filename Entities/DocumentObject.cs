@@ -18,7 +18,7 @@ namespace Duality.Entities
             // Inflate the interaction area slightly so the player doesn't 
             // have to stand pixel-perfectly on top of the document to read it.
             InteractionArea = bounds;
-            InteractionArea.Inflate(15, 15);
+            InteractionArea.Inflate(20, 20);
         }
     }
 }
